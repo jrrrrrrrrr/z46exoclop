@@ -16,29 +16,23 @@
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;overflow-x:hidden;}
 
-/* Cinematic bg with forest glow */
 .bg-layers{position:fixed;inset:0;pointer-events:none;z-index:0;}
-.bg-layers::before{content:'';position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse 80% 50% at 50% 100%,rgba(0,60,20,.5) 0%,transparent 60%),
-    radial-gradient(ellipse 40% 40% at 15% 80%,rgba(80,20,0,.3) 0%,transparent 50%),
-    radial-gradient(ellipse 40% 40% at 85% 75%,rgba(40,0,70,.3) 0%,transparent 50%),
-    radial-gradient(ellipse 60% 30% at 50% 5%,rgba(0,30,60,.3) 0%,transparent 50%);}
+.bg-layers::before{content:'';position:absolute;inset:0;background:
+  radial-gradient(ellipse 80% 50% at 50% 100%,rgba(0,60,20,.45) 0%,transparent 60%),
+  radial-gradient(ellipse 40% 40% at 15% 80%,rgba(80,20,0,.25) 0%,transparent 50%),
+  radial-gradient(ellipse 40% 40% at 85% 75%,rgba(40,0,70,.25) 0%,transparent 50%);}
 
 .stars{position:fixed;inset:0;pointer-events:none;z-index:0;}
 .stars::before{content:'';position:absolute;inset:0;background-image:
   radial-gradient(1px 1px at 5% 8%,rgba(255,255,255,.9),transparent),
   radial-gradient(1px 1px at 18% 65%,rgba(255,255,255,.7),transparent),
-  radial-gradient(1.5px 1.5px at 45% 22%,rgba(255,225,53,.6),transparent),
+  radial-gradient(1.5px 1.5px at 45% 22%,rgba(255,225,53,.5),transparent),
   radial-gradient(1px 1px at 70% 55%,rgba(255,255,255,.8),transparent),
-  radial-gradient(1px 1px at 88% 10%,rgba(255,107,53,.5),transparent),
-  radial-gradient(1px 1px at 30% 85%,rgba(255,255,255,.5),transparent),
-  radial-gradient(2px 2px at 55% 78%,rgba(179,79,255,.5),transparent),
+  radial-gradient(1px 1px at 88% 10%,rgba(255,107,53,.4),transparent),
+  radial-gradient(2px 2px at 55% 78%,rgba(179,79,255,.4),transparent),
   radial-gradient(1px 1px at 12% 38%,rgba(255,255,255,.4),transparent),
-  radial-gradient(1px 1px at 75% 28%,rgba(0,255,136,.4),transparent),
-  radial-gradient(1.5px 1.5px at 42% 3%,rgba(255,255,255,.7),transparent),
-  radial-gradient(1px 1px at 93% 90%,rgba(255,255,255,.5),transparent),
-  radial-gradient(1px 1px at 60% 12%,rgba(255,79,203,.4),transparent);}
+  radial-gradient(1.5px 1.5px at 42% 3%,rgba(255,255,255,.6),transparent),
+  radial-gradient(1px 1px at 93% 90%,rgba(255,255,255,.4),transparent);}
 
 /* ── NAV ── */
 nav{display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;
@@ -56,41 +50,37 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 2rem
 /* ── HERO ── */
 .mq-hero{position:relative;z-index:1;text-align:center;padding:4rem 2rem 3rem;
   border-bottom:1px solid rgba(255,107,53,.12);}
-
 .mushroom-parade{display:flex;gap:1rem;justify-content:center;font-size:2.8rem;
   margin-bottom:1.5rem;flex-wrap:wrap;}
 .mushroom-parade span{animation:float 2.5s ease-in-out infinite;}
 .mushroom-parade span:nth-child(1){animation-delay:0s;}
-.mushroom-parade span:nth-child(2){animation-delay:.25s;}
-.mushroom-parade span:nth-child(3){animation-delay:.5s;}
-.mushroom-parade span:nth-child(4){animation-delay:.75s;}
-.mushroom-parade span:nth-child(5){animation-delay:1s;}
-.mushroom-parade span:nth-child(6){animation-delay:1.25s;}
-@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-16px);}}
+.mushroom-parade span:nth-child(2){animation-delay:.2s;}
+.mushroom-parade span:nth-child(3){animation-delay:.4s;}
+.mushroom-parade span:nth-child(4){animation-delay:.6s;}
+.mushroom-parade span:nth-child(5){animation-delay:.8s;}
+.mushroom-parade span:nth-child(6){animation-delay:1s;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
 
-.mq-logo{font-family:'Bangers',cursive;font-size:clamp(3.5rem,11vw,8.5rem);
+.mq-logo{font-family:'Bangers',cursive;font-size:clamp(3.5rem,11vw,8rem);
   letter-spacing:6px;line-height:.9;display:block;
   background:linear-gradient(135deg,var(--mq-gold) 0%,var(--mq-orange) 50%,var(--mq-purple) 100%);
   background-size:200% auto;-webkit-background-clip:text;background-clip:text;
   -webkit-text-fill-color:transparent;color:transparent;
   animation:shimmer 5s linear infinite;margin-bottom:.6rem;}
 @keyframes shimmer{0%{background-position:0% center;}100%{background-position:200% center;}}
-
-.mq-subtitle{font-family:'Fredoka One',cursive;font-size:clamp(1rem,2.5vw,1.5rem);
-  color:var(--muted);letter-spacing:3px;margin-bottom:1.5rem;}
+.mq-subtitle{font-family:'Fredoka One',cursive;font-size:clamp(.95rem,2.5vw,1.4rem);
+  color:var(--muted);letter-spacing:3px;margin-bottom:1.2rem;}
 .mq-subtitle span{color:var(--mq-gold);}
-
-.mq-tagline{max-width:580px;margin:0 auto 2rem;font-size:1.05rem;color:var(--muted);line-height:1.8;}
+.mq-tagline{max-width:620px;margin:0 auto 1.8rem;font-size:1rem;color:var(--muted);line-height:1.8;}
 .mq-tagline strong{color:var(--text);}
 
 .badge-row{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem;}
-.badge{font-family:'Fredoka One',cursive;font-size:.9rem;padding:.4rem 1.1rem;
-  border-radius:100px;letter-spacing:.5px;}
+.badge{font-family:'Fredoka One',cursive;font-size:.88rem;padding:.38rem 1.1rem;border-radius:100px;}
 .badge-gold{background:linear-gradient(135deg,var(--mq-gold),#ff9500);color:#000;}
 .badge-orange{background:linear-gradient(135deg,var(--mq-orange),#cc0033);color:#fff;}
 .badge-purple{background:linear-gradient(135deg,var(--mq-purple),#5500bb);color:#fff;}
+.badge-green{background:linear-gradient(135deg,var(--accent5),#009955);color:#000;}
 
-/* Quick nav */
 .movie-nav{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;}
 .movie-nav-btn{font-family:'Fredoka One',cursive;font-size:.88rem;padding:.5rem 1.2rem;
   border-radius:100px;border:2px solid var(--border);background:transparent;
@@ -103,154 +93,129 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 2rem
 /* ── CONTAINER ── */
 .container{max-width:1100px;margin:0 auto;padding:0 2rem;position:relative;z-index:1;}
 
-/* ── MOVIE SECTIONS ── */
-.movies-section{padding:3rem 0 1rem;}
 .section-label{font-family:'Bangers',cursive;font-size:2rem;letter-spacing:4px;
-  text-align:center;margin-bottom:2.5rem;color:var(--mq-gold);}
+  text-align:center;margin:3rem 0 2rem;}
 
-/* Individual movie block */
-.movie-block{margin-bottom:4rem;scroll-margin-top:80px;}
+/* ── MOVIE BLOCK ── */
+.movie-block{margin-bottom:4.5rem;scroll-margin-top:80px;}
 
 .movie-header{display:flex;align-items:center;gap:1.2rem;margin-bottom:1.5rem;}
-.movie-number{width:56px;height:56px;border-radius:50%;
+.movie-number{width:54px;height:54px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;
-  font-family:'Bangers',cursive;font-size:1.8rem;flex-shrink:0;border:3px solid currentColor;}
-.movie-header-text h2{font-family:'Bangers',cursive;font-size:2rem;letter-spacing:2px;line-height:1;}
-.movie-header-text p{color:var(--muted);font-size:.88rem;font-style:italic;margin-top:.2rem;}
+  font-family:'Bangers',cursive;font-size:1.7rem;flex-shrink:0;
+  border:3px solid currentColor;background:rgba(255,255,255,.04);}
+.movie-header-info h2{font-family:'Bangers',cursive;font-size:2rem;letter-spacing:2px;line-height:1;}
+.movie-header-info p{color:var(--muted);font-size:.85rem;margin-top:.2rem;}
 
-/* Movie card layout */
+/* Movie card */
 .movie-card{background:var(--card);border-radius:22px;overflow:hidden;
   border:2px solid var(--m-border);transition:box-shadow .3s;}
-.movie-card:hover{box-shadow:0 20px 60px rgba(0,0,0,.6);}
+.movie-card:hover{box-shadow:0 20px 55px rgba(0,0,0,.55);}
 
-/* Player area */
+/* Player */
 .movie-player{position:relative;padding-top:56.25%;background:#030308;}
-.movie-player iframe{position:absolute;inset:0;width:100%;height:100%;border:none;pointer-events:none;}
-.movie-card.playing .movie-player iframe{pointer-events:all;}
+.movie-player iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
 
-.player-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  flex-direction:column;gap:1.2rem;cursor:pointer;
-  background:linear-gradient(to top,rgba(0,0,0,.6) 0%,rgba(0,0,0,.1) 60%,transparent 100%);
-  transition:opacity .3s;z-index:2;}
-.movie-card.playing .player-overlay{opacity:0;pointer-events:none;}
+/* Info layout: left=text, right=sidebar */
+.movie-body{display:grid;grid-template-columns:1fr 280px;gap:0;}
 
-.big-play{width:80px;height:80px;background:rgba(255,255,255,.12);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  border:3px solid rgba(255,255,255,.3);transition:all .25s;padding-left:6px;
-  backdrop-filter:blur(8px);}
-.player-overlay:hover .big-play{background:rgba(255,0,0,.7);border-color:transparent;
-  transform:scale(1.1);box-shadow:0 0 40px rgba(255,0,0,.4);}
-.big-play svg{width:28px;height:28px;fill:#fff;}
-
-.overlay-title{font-family:'Bangers',cursive;font-size:1.6rem;letter-spacing:2px;
-  color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.8);}
-.overlay-sub{font-size:.8rem;color:rgba(255,255,255,.6);letter-spacing:1px;
-  text-transform:uppercase;font-weight:700;}
-
-/* Placeholder when no ID */
-.placeholder-player{position:absolute;inset:0;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:1rem;
-  background:linear-gradient(135deg,rgba(20,8,40,1),rgba(6,8,14,1));}
-.ph-emoji{font-size:5rem;animation:float 3s ease-in-out infinite;}
-.ph-title{font-family:'Bangers',cursive;font-size:1.4rem;letter-spacing:2px;color:var(--muted);}
-.ph-sub{font-size:.78rem;color:var(--muted);opacity:.6;letter-spacing:1px;text-transform:uppercase;}
-.ph-add{font-size:.72rem;color:var(--accent2);opacity:.7;margin-top:.3rem;}
-
-/* Movie info panel */
-.movie-info{padding:1.8rem 2rem 2rem;display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:start;}
-.movie-info-main{}
-.movie-info-side{display:flex;flex-direction:column;gap:.7rem;align-items:flex-end;}
-
-.movie-badge{display:inline-flex;align-items:center;gap:.4rem;font-size:.7rem;font-weight:800;
-  letter-spacing:1.5px;text-transform:uppercase;padding:.28rem .8rem;border-radius:100px;
-  border:1.5px solid currentColor;color:var(--m-color);margin-bottom:.5rem;}
-.movie-title{font-family:'Bangers',cursive;font-size:2rem;letter-spacing:2px;
-  color:var(--text);margin-bottom:.3rem;line-height:1.1;}
-.movie-tagline{font-family:'Fredoka One',cursive;color:var(--m-color);
-  font-size:.95rem;margin-bottom:.9rem;font-style:italic;}
-.movie-desc{font-size:.92rem;color:var(--muted);line-height:1.8;margin-bottom:1.1rem;}
+.movie-main{padding:1.8rem 2rem;}
+.movie-badge{display:inline-flex;align-items:center;gap:.4rem;font-size:.68rem;font-weight:800;
+  letter-spacing:1.5px;text-transform:uppercase;padding:.25rem .75rem;border-radius:100px;
+  border:1.5px solid currentColor;color:var(--m-color);margin-bottom:.6rem;}
+.movie-title{font-family:'Bangers',cursive;font-size:2.2rem;letter-spacing:2px;
+  color:var(--text);margin-bottom:.2rem;line-height:1.1;}
+.movie-tagline{font-family:'Fredoka One',cursive;color:var(--m-color);font-size:.92rem;
+  margin-bottom:1rem;font-style:italic;}
+.movie-desc{font-size:.9rem;color:var(--muted);line-height:1.8;margin-bottom:1.2rem;}
 .movie-desc strong{color:var(--text);}
 
-.movie-tags{display:flex;gap:.4rem;flex-wrap:wrap;}
-.movie-tag{font-size:.68rem;font-weight:800;letter-spacing:.5px;text-transform:uppercase;
-  padding:.22rem .6rem;border-radius:8px;border:1.5px solid var(--m-color);color:var(--m-color);opacity:.8;}
+.movie-tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.2rem;}
+.movie-tag{font-size:.67rem;font-weight:800;letter-spacing:.5px;text-transform:uppercase;
+  padding:.2rem .6rem;border-radius:8px;border:1.5px solid var(--m-color);
+  color:var(--m-color);opacity:.75;}
 
-/* Side buttons */
-.watch-btn{display:inline-flex;align-items:center;gap:.4rem;font-family:'Fredoka One',cursive;
-  font-size:.9rem;padding:.6rem 1.3rem;border-radius:100px;text-decoration:none;
-  transition:all .25s;white-space:nowrap;border:2px solid transparent;cursor:pointer;background:none;}
-.watch-btn.primary{background:var(--yt,#ff0000);color:#fff;}
-.watch-btn.primary:hover{transform:scale(1.06);box-shadow:0 0 22px rgba(255,0,0,.4);}
-.watch-btn.secondary{border:2px solid var(--m-color);color:var(--m-color);}
+/* Chapters */
+.chapters{margin-top:.8rem;}
+.chapters-label{font-size:.68rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:.5rem;display:block;}
+.chapter-list{display:flex;flex-direction:column;gap:.3rem;}
+.chapter-item{display:flex;gap:.7rem;align-items:baseline;font-size:.8rem;}
+.chapter-time{font-family:'Fredoka One',cursive;color:var(--m-color);
+  font-size:.75rem;white-space:nowrap;min-width:42px;}
+.chapter-name{color:var(--muted);}
+
+/* Sidebar */
+.movie-sidebar{
+  padding:1.8rem 1.5rem;
+  border-left:1px solid rgba(255,255,255,.06);
+  display:flex;flex-direction:column;gap:1.2rem;
+  background:rgba(0,0,0,.15);
+}
+
+.sidebar-watch{display:flex;flex-direction:column;gap:.6rem;}
+.watch-btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;
+  font-family:'Fredoka One',cursive;font-size:.9rem;padding:.6rem 1.1rem;
+  border-radius:100px;text-decoration:none;transition:all .25s;
+  border:2px solid transparent;cursor:pointer;background:none;width:100%;}
+.watch-btn.primary{background:#ff0000;color:#fff;}
+.watch-btn.primary:hover{transform:scale(1.04);box-shadow:0 0 22px rgba(255,0,0,.4);}
+.watch-btn.secondary{border-color:var(--m-color);color:var(--m-color);}
 .watch-btn.secondary:hover{background:var(--m-color);color:#000;}
 
-/* ── TIMELINE ── */
-.timeline-section{padding:3rem 0 2rem;}
-.timeline{position:relative;padding:1rem 0;}
-.timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;
-  background:linear-gradient(to bottom,var(--mq-gold),var(--mq-orange),var(--mq-purple));
-  transform:translateX(-50%);}
+.sidebar-section{border-top:1px solid rgba(255,255,255,.06);padding-top:1rem;}
+.sidebar-heading{font-size:.65rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:.6rem;display:block;}
 
-.tl-item{display:flex;gap:2rem;align-items:flex-start;margin-bottom:2.5rem;position:relative;}
-.tl-item:nth-child(even){flex-direction:row-reverse;}
+/* Cast list */
+.cast-list{display:flex;flex-direction:column;gap:.3rem;}
+.cast-item{font-size:.8rem;color:var(--muted);display:flex;gap:.4rem;align-items:baseline;}
+.cast-item .role{color:var(--m-color);font-weight:800;font-size:.68rem;
+  letter-spacing:.5px;text-transform:uppercase;white-space:nowrap;}
 
-.tl-dot{position:absolute;left:50%;top:.4rem;width:16px;height:16px;border-radius:50%;
-  border:3px solid var(--tl-color);background:var(--bg);transform:translateX(-50%);z-index:1;
-  box-shadow:0 0 12px var(--tl-color);}
-
-.tl-content{width:calc(50% - 2.5rem);background:var(--card);border-radius:16px;
-  border:1.5px solid rgba(255,255,255,.08);padding:1.2rem 1.4rem;
-  border-left:3px solid var(--tl-color);}
-.tl-item:nth-child(even) .tl-content{border-left:none;border-right:3px solid var(--tl-color);}
-.tl-movie{font-size:.7rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
-  color:var(--tl-color);margin-bottom:.3rem;}
-.tl-event{font-weight:800;font-size:.92rem;margin-bottom:.3rem;}
-.tl-desc{font-size:.8rem;color:var(--muted);line-height:1.6;}
-
-.tl-spacer{width:calc(50% - 2.5rem);}
+/* Credits */
+.credits-list{display:flex;flex-direction:column;gap:.3rem;}
+.credit-row{font-size:.78rem;color:var(--muted);line-height:1.5;}
+.credit-row strong{color:var(--text);font-size:.75rem;}
 
 /* ── COMING NEXT ── */
-.coming-section{padding:2rem 0 4rem;}
-.coming-box{background:linear-gradient(135deg,rgba(255,107,53,.08),rgba(179,79,255,.1));
-  border:2px dashed rgba(179,79,255,.35);border-radius:24px;
-  padding:3rem 2rem;text-align:center;}
-.coming-box h3{font-family:'Bangers',cursive;font-size:2.5rem;letter-spacing:4px;
+.coming-box{background:linear-gradient(135deg,rgba(255,107,53,.07),rgba(179,79,255,.09));
+  border:2px dashed rgba(179,79,255,.3);border-radius:22px;
+  padding:3rem 2rem;text-align:center;margin:1rem 0 4rem;}
+.coming-box h3{font-family:'Bangers',cursive;font-size:2.4rem;letter-spacing:4px;
   color:var(--mq-purple);margin-bottom:.5rem;}
 .coming-box p{color:var(--muted);max-width:500px;margin:0 auto 1.8rem;line-height:1.7;}
 .coming-box p strong{color:var(--text);}
-
-.hype-wrap{max-width:360px;margin:0 auto 1rem;}
+.hype-wrap{max-width:340px;margin:0 auto 1rem;}
 .hype-label-row{display:flex;justify-content:space-between;
-  font-size:.75rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:.5rem;}
-.hype-bar{background:rgba(255,255,255,.07);border-radius:100px;height:12px;overflow:hidden;}
+  font-size:.73rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:.5rem;}
+.hype-bar{background:rgba(255,255,255,.07);border-radius:100px;height:11px;overflow:hidden;}
 .hype-fill{height:100%;border-radius:100px;width:82%;
   background:linear-gradient(90deg,var(--mq-orange),var(--mq-purple));
   animation:hglow 2s ease-in-out infinite alternate;}
 @keyframes hglow{from{box-shadow:0 0 8px rgba(255,107,53,.3);}to{box-shadow:0 0 22px rgba(179,79,255,.5);}}
-.hype-pct{font-family:'Bangers',cursive;font-size:1.2rem;color:var(--mq-gold);letter-spacing:1px;margin-top:.5rem;}
-
-.btn{display:inline-flex;align-items:center;gap:.4rem;font-family:'Fredoka One',cursive;
-  font-size:.95rem;padding:.7rem 1.6rem;border-radius:100px;text-decoration:none;transition:all .25s;}
-.btn-yt{background:#ff0000;color:#fff;}
+.hype-pct{font-family:'Bangers',cursive;font-size:1.1rem;color:var(--mq-gold);margin-top:.4rem;display:block;}
+.btn-yt{display:inline-flex;align-items:center;gap:.4rem;font-family:'Fredoka One',cursive;
+  font-size:.95rem;padding:.7rem 1.6rem;border-radius:100px;text-decoration:none;
+  background:#ff0000;color:#fff;transition:all .25s;}
 .btn-yt:hover{transform:scale(1.05);box-shadow:0 0 25px rgba(255,0,0,.4);}
 
 footer{text-align:center;padding:2.5rem 2rem;color:var(--muted);font-size:.85rem;
-  border-top:1px solid rgba(255,255,255,.05);position:relative;z-index:1;margin-top:2rem;}
+  border-top:1px solid rgba(255,255,255,.05);position:relative;z-index:1;}
 footer a{color:var(--accent1);text-decoration:none;}
 footer .heart{color:var(--accent6);}
 
-@media(max-width:900px){
-  .movie-info{grid-template-columns:1fr;}
-  .movie-info-side{align-items:flex-start;flex-direction:row;flex-wrap:wrap;}
+@media(max-width:860px){
+  .movie-body{grid-template-columns:1fr;}
+  .movie-sidebar{border-left:none;border-top:1px solid rgba(255,255,255,.06);
+    flex-direction:row;flex-wrap:wrap;gap:1.5rem;}
+  .sidebar-watch{flex-direction:row;min-width:100%;}
+  .sidebar-section{flex:1;min-width:200px;border-top:none;padding-top:0;}
 }
-@media(max-width:700px){
+@media(max-width:600px){
   .nav-links{display:none;}
-  .timeline::before{left:18px;}
-  .tl-item,.tl-item:nth-child(even){flex-direction:column;}
-  .tl-dot{left:18px;}
-  .tl-content,.tl-item:nth-child(even) .tl-content{width:100%;margin-left:36px;
-    border-left:3px solid var(--tl-color) !important;border-right:none !important;}
-  .tl-spacer{display:none;}
+  .movie-sidebar{flex-direction:column;}
+  .sidebar-watch{flex-direction:column;}
 }
 </style>
 </head>
@@ -275,261 +240,256 @@ footer .heart{color:var(--accent6);}
 <!-- HERO -->
 <div class="mq-hero">
   <div class="mushroom-parade">
-    <span>🍄</span><span>🌟</span><span>🍄</span><span>⚔️</span><span>🍄</span><span>🌌</span>
+    <span>🍄</span><span>🌟</span><span>🍄</span><span>⚔️</span><span>🍄</span><span>🌲</span>
   </div>
   <span class="mq-logo">MUSHROOM<br>QUEST</span>
-  <p class="mq-subtitle">An <span>Original</span> Z46 Exoclop Movie Series</p>
-  <p class="mq-tagline"><strong>Three epic films. One legendary universe.</strong> Rio and the Z46 Exoclop crew bring you an original action-adventure movie trilogy unlike anything else!</p>
+  <p class="mq-subtitle">An <span>Original</span> RioDada Movie Series</p>
+  <p class="mq-tagline">
+    <strong>Three epic films. One legendary universe.</strong> A RioDada original series about imagination, exploration, and everyday magic — where a walk in the woods becomes a myth, music can be made from anything, and family adventures are the greatest quests of all.
+  </p>
   <div class="badge-row">
-    <span class="badge badge-gold">⭐ 3 Films</span>
-    <span class="badge badge-orange">🎬 Original Series</span>
-    <span class="badge badge-purple">🍄 Epic Adventures</span>
+    <span class="badge badge-gold">🎬 3 Films</span>
+    <span class="badge badge-orange">🍄 Original Series</span>
+    <span class="badge badge-purple">🎵 Original Music</span>
+    <span class="badge badge-green">🌲 Pacific Northwest</span>
   </div>
   <div class="movie-nav">
     <a class="movie-nav-btn m1" href="#movie1">🍄 Movie 1</a>
     <a class="movie-nav-btn m2" href="#movie2">⚔️ Movie 2</a>
-    <a class="movie-nav-btn m3" href="#movie3">🌌 Movie 3</a>
-    <a class="movie-nav-btn" href="#timeline">📜 Timeline</a>
+    <a class="movie-nav-btn m3" href="#movie3">🌲 Movie 3</a>
   </div>
 </div>
 
 <div class="container">
-  <div class="movies-section">
-    <div class="section-label">🎬 THE TRILOGY</div>
 
-    <!-- ═══ MOVIE 1 ═══ -->
-    <div class="movie-block" id="movie1">
-      <div class="movie-header">
-        <div class="movie-number" style="color:var(--mq-gold);border-color:var(--mq-gold);background:rgba(255,225,53,.08)">1</div>
-        <div class="movie-header-text">
-          <h2 style="color:var(--mq-gold)">MUSHROOM QUEST</h2>
-          <p>Movie 1 · The Original · Where it all began</p>
-        </div>
+  <div class="section-label" style="color:var(--mq-gold)">🎬 THE TRILOGY</div>
+
+  <!-- ══════════════════════════════
+       MOVIE 1
+  ═══════════════════════════════ -->
+  <div class="movie-block" id="movie1">
+    <div class="movie-header">
+      <div class="movie-number" style="color:var(--mq-gold);">1</div>
+      <div class="movie-header-info">
+        <h2 style="color:var(--mq-gold)">MUSHROOM QUEST</h2>
+        <p>Movie 1 · Rio's directorial debut · Premiered at Dada's birthday party</p>
       </div>
-      <div class="movie-card" id="card1" style="--m-border:rgba(255,225,53,.25);--m-color:var(--mq-gold);">
-        <div class="movie-player" id="player1">
-          <!-- Replace MOVIE_1_VIDEO_ID with the actual YouTube video ID -->
-          <div class="placeholder-player" id="ph1">
-            <span class="ph-emoji">🍄</span>
-            <div class="ph-title">MUSHROOM QUEST</div>
-            <div class="ph-sub">The Original Movie</div>
-            <div class="ph-add">💡 Add video ID to show the player</div>
-          </div>
-          <div class="player-overlay" id="overlay1">
-            <div class="big-play">
-              <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-            </div>
-            <div class="overlay-title">MUSHROOM QUEST</div>
-            <div class="overlay-sub">Movie 1 · Click to Watch</div>
+    </div>
+
+    <div class="movie-card" style="--m-border:rgba(255,225,53,.25);--m-color:var(--mq-gold);">
+      <div class="movie-player">
+        <iframe src="https://www.youtube.com/embed/nPxRYAGR_OU?rel=0&modestbranding=1"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy" title="Mushroom Quest"></iframe>
+      </div>
+
+      <div class="movie-body">
+        <div class="movie-main">
+          <span class="movie-badge">🎬 Movie 1 · The Original</span>
+          <div class="movie-title">MUSHROOM QUEST</div>
+          <div class="movie-tagline">"A whimsical journey — Rio's first film, made for Dada's birthday."</div>
+          <p class="movie-desc">
+            Armed with nothing but a camera and boundless enthusiasm, Rio directed Dada on their very first family-made movie. From <strong>trampoline adventures</strong> to backyard fungi exploration, keyboard jams, gingerbread nibbling, and Koopaling battles — every moment is filled with wonder. Sushi the cat even stars as the <strong>"Guardian of the Trees."</strong> Crafted with love, laughs, and a sprinkle of Rio's imaginative flair, and premiered at Dada Jeremy's birthday bash.
+          </p>
+          <div class="movie-tags">
+            <span class="movie-tag">🎬 Directorial Debut</span>
+            <span class="movie-tag">🎂 Birthday Premiere</span>
+            <span class="movie-tag">🐱 Sushi Stars</span>
+            <span class="movie-tag">🏠 Filmed at Home</span>
+            <span class="movie-tag">🍄 Backyard Quest</span>
           </div>
         </div>
-        <div class="movie-info">
-          <div class="movie-info-main">
-            <span class="movie-badge">🎬 Movie 1 · The Original</span>
-            <div class="movie-title">MUSHROOM QUEST</div>
-            <div class="movie-tagline">"Where it all began…"</div>
-            <div class="movie-desc">
-              The film that started it all! Join the crew on their very first quest as they discover the magical world of mushrooms, face their first great challenge, and learn that <strong>teamwork makes the dream work.</strong> A legendary beginning to a legendary universe.
-            </div>
-            <div class="movie-tags">
-              <span class="movie-tag">🎬 Film 1</span>
-              <span class="movie-tag">⚡ Action</span>
-              <span class="movie-tag">🌟 Adventure</span>
-              <span class="movie-tag">🍄 Origin Story</span>
+
+        <div class="movie-sidebar">
+          <div class="sidebar-watch">
+            <a class="watch-btn primary" href="https://youtu.be/nPxRYAGR_OU" target="_blank">▶ Watch on YouTube</a>
+          </div>
+          <div class="sidebar-section">
+            <span class="sidebar-heading">Cast</span>
+            <div class="cast-list">
+              <div class="cast-item"><span class="role">Director</span> Rio</div>
+              <div class="cast-item"><span class="role">Star</span> Jeremy (Dada)</div>
+              <div class="cast-item"><span class="role">Guardian</span> Sushi the Cat</div>
             </div>
           </div>
-          <div class="movie-info-side">
-            <button class="watch-btn primary" style="--yt:#ff0000" onclick="playMovie('1','MOVIE_1_VIDEO_ID')">▶ Watch Now</button>
-            <a class="watch-btn secondary" href="https://www.youtube.com/@RioDada" target="_blank" style="--m-color:var(--mq-gold)">YouTube ↗</a>
+          <div class="sidebar-section">
+            <span class="sidebar-heading">Featured</span>
+            <div class="credits-list">
+              <div class="credit-row">🎹 Keyboard jams</div>
+              <div class="credit-row">🍪 Gingerbread nibbling</div>
+              <div class="credit-row">🎪 Trampoline adventures</div>
+              <div class="credit-row">🎮 Koopaling battles</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- ═══ MOVIE 2 ═══ -->
-    <div class="movie-block" id="movie2">
-      <div class="movie-header">
-        <div class="movie-number" style="color:var(--mq-orange);border-color:var(--mq-orange);background:rgba(255,107,53,.08)">2</div>
-        <div class="movie-header-text">
-          <h2 style="color:var(--mq-orange)">MUSHROOM QUEST II</h2>
-          <p>Movie 2 · The Sequel · The quest continues</p>
-        </div>
+  <!-- ══════════════════════════════
+       MOVIE 2
+  ═══════════════════════════════ -->
+  <div class="movie-block" id="movie2">
+    <div class="movie-header">
+      <div class="movie-number" style="color:var(--mq-orange);">2</div>
+      <div class="movie-header-info">
+        <h2 style="color:var(--mq-orange)">MUSHROOM QUEST 2</h2>
+        <p>Movie 2 · Retro gaming vibes · Friends join the quest</p>
       </div>
-      <div class="movie-card" id="card2" style="--m-border:rgba(255,107,53,.25);--m-color:var(--mq-orange);">
-        <div class="movie-player" id="player2">
-          <div class="placeholder-player" id="ph2">
-            <span class="ph-emoji">⚔️</span>
-            <div class="ph-title">MUSHROOM QUEST II</div>
-            <div class="ph-sub">The Sequel</div>
-            <div class="ph-add">💡 Add video ID to show the player</div>
-          </div>
-          <div class="player-overlay" id="overlay2">
-            <div class="big-play">
-              <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-            </div>
-            <div class="overlay-title">MUSHROOM QUEST II</div>
-            <div class="overlay-sub">Movie 2 · Click to Watch</div>
+    </div>
+
+    <div class="movie-card" style="--m-border:rgba(255,107,53,.25);--m-color:var(--mq-orange);">
+      <div class="movie-player">
+        <iframe src="https://www.youtube.com/embed/Gd_veP4q3kQ?rel=0&modestbranding=1"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy" title="Mushroom Quest 2"></iframe>
+      </div>
+
+      <div class="movie-body">
+        <div class="movie-main">
+          <span class="movie-badge" style="color:var(--mq-orange)">⚔️ Movie 2 · The Sequel</span>
+          <div class="movie-title">MUSHROOM QUEST 2</div>
+          <div class="movie-tagline" style="color:var(--mq-orange)">"Bigger crew, bigger adventures — inspired by classic retro gaming."</div>
+          <p class="movie-desc">
+            An epic day packed with adventure, laughter, and action. Trampoline sessions, a <strong>magical forest park</strong>, a pumpkin patch with corn maze, smoothies, and Sushi being extra silly. The finale goes hard — the crew links up with <strong>Dash, Nick, and Luca</strong> for high-energy scooter and skateboard racing down insane pathways. Packed with whimsical vibes and retro gaming nostalgia.
+          </p>
+          <div class="movie-tags">
+            <span class="movie-tag">🎮 Retro Gaming Vibes</span>
+            <span class="movie-tag">🎃 Pumpkin Patch</span>
+            <span class="movie-tag">🛹 Scooter & Skate</span>
+            <span class="movie-tag">🌲 Forest Park</span>
+            <span class="movie-tag">👥 Friends Join</span>
           </div>
         </div>
-        <div class="movie-info">
-          <div class="movie-info-main">
-            <span class="movie-badge" style="color:var(--mq-orange)">🎬 Movie 2 · The Sequel</span>
-            <div class="movie-title">MUSHROOM QUEST II</div>
-            <div class="movie-tagline" style="color:var(--mq-orange)">"The quest continues…"</div>
-            <div class="movie-desc">
-              The crew is back and the stakes are higher than ever! New challenges, new allies, and <strong>even more mushroom mayhem</strong> await in the sequel that fans demanded. Bigger. Bolder. Better than ever!
-            </div>
-            <div class="movie-tags" style="--m-color:var(--mq-orange)">
-              <span class="movie-tag">🎬 Film 2</span>
-              <span class="movie-tag">⚡ Action</span>
-              <span class="movie-tag">🌟 Adventure</span>
-              <span class="movie-tag">🔥 Higher Stakes</span>
+
+        <div class="movie-sidebar">
+          <div class="sidebar-watch">
+            <a class="watch-btn primary" href="https://www.youtube.com/watch?v=Gd_veP4q3kQ" target="_blank">▶ Watch on YouTube</a>
+          </div>
+          <div class="sidebar-section">
+            <span class="sidebar-heading">Cast</span>
+            <div class="cast-list">
+              <div class="cast-item"><span class="role">Stars</span> Rio & Jeremy</div>
+              <div class="cast-item"><span class="role">Crew</span> Dash Wiseman</div>
+              <div class="cast-item"><span class="role">Crew</span> Nick & Luca Ennen</div>
+              <div class="cast-item"><span class="role">Scene Stealer</span> Sushi the Cat</div>
             </div>
           </div>
-          <div class="movie-info-side">
-            <button class="watch-btn primary" style="--yt:#ff0000" onclick="playMovie('2','MOVIE_2_VIDEO_ID')">▶ Watch Now</button>
-            <a class="watch-btn secondary" href="https://www.youtube.com/@RioDada" target="_blank" style="--m-color:var(--mq-orange)">YouTube ↗</a>
+          <div class="sidebar-section">
+            <span class="sidebar-heading">Highlights</span>
+            <div class="credits-list">
+              <div class="credit-row">🌲 Magical forest park</div>
+              <div class="credit-row">🎃 Corn maze & smoothies</div>
+              <div class="credit-row">🛹 Epic skate session</div>
+              <div class="credit-row">🏆 Retro gaming vibes</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- ═══ MOVIE 3 ═══ -->
-    <div class="movie-block" id="movie3">
-      <div class="movie-header">
-        <div class="movie-number" style="color:var(--mq-purple);border-color:var(--mq-purple);background:rgba(179,79,255,.08)">3</div>
-        <div class="movie-header-text">
-          <h2 style="color:var(--mq-purple)">MUSHROOM QUEST III</h2>
-          <p>Movie 3 · The Finale · The epic conclusion</p>
-        </div>
-      </div>
-      <div class="movie-card" id="card3" style="--m-border:rgba(179,79,255,.25);--m-color:var(--mq-purple);">
-        <div class="movie-player" id="player3">
-          <div class="placeholder-player" id="ph3">
-            <span class="ph-emoji">🌌</span>
-            <div class="ph-title">MUSHROOM QUEST III</div>
-            <div class="ph-sub">The Finale</div>
-            <div class="ph-add">💡 Add video ID to show the player</div>
-          </div>
-          <div class="player-overlay" id="overlay3">
-            <div class="big-play">
-              <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-            </div>
-            <div class="overlay-title">MUSHROOM QUEST III</div>
-            <div class="overlay-sub">Movie 3 · Click to Watch</div>
-          </div>
-        </div>
-        <div class="movie-info">
-          <div class="movie-info-main">
-            <span class="movie-badge" style="color:var(--mq-purple)">🎬 Movie 3 · The Finale</span>
-            <div class="movie-title">MUSHROOM QUEST III</div>
-            <div class="movie-tagline" style="color:var(--mq-purple)">"The epic conclusion…"</div>
-            <div class="movie-desc">
-              The final chapter of the Mushroom Quest trilogy! All storylines converge, all heroes unite, and the greatest battle yet unfolds. <strong>An unforgettable finale</strong> that closes the saga — while leaving the door open for what comes next…
-            </div>
-            <div class="movie-tags" style="--m-color:var(--mq-purple)">
-              <span class="movie-tag">🎬 Film 3</span>
-              <span class="movie-tag">⚡ Action</span>
-              <span class="movie-tag">🏆 Finale</span>
-              <span class="movie-tag">🌌 Epic Conclusion</span>
-            </div>
-          </div>
-          <div class="movie-info-side">
-            <button class="watch-btn primary" style="--yt:#ff0000" onclick="playMovie('3','MOVIE_3_VIDEO_ID')">▶ Watch Now</button>
-            <a class="watch-btn secondary" href="https://www.youtube.com/@RioDada" target="_blank" style="--m-color:var(--mq-purple)">YouTube ↗</a>
-          </div>
-        </div>
+  <!-- ══════════════════════════════
+       MOVIE 3
+  ═══════════════════════════════ -->
+  <div class="movie-block" id="movie3">
+    <div class="movie-header">
+      <div class="movie-number" style="color:var(--mq-purple);">3</div>
+      <div class="movie-header-info">
+        <h2 style="color:var(--mq-purple)">MUSHROOM QUEST 3</h2>
+        <p>Movie 3 · Pacific Northwest woods · Kauai · Original music</p>
       </div>
     </div>
 
-  </div><!-- /movies-section -->
-
-  <!-- ── TIMELINE ── -->
-  <div class="timeline-section" id="timeline">
-    <div class="section-label" style="color:var(--accent2)">📜 SAGA TIMELINE</div>
-    <div class="timeline">
-
-      <div class="tl-item" style="--tl-color:var(--mq-gold)">
-        <div class="tl-spacer"></div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-movie">🍄 Movie 1</div>
-          <div class="tl-event">The Beginning — A Quest is Born</div>
-          <div class="tl-desc">Rio and the crew discover the mysterious mushroom realm for the first time. The adventure begins!</div>
-        </div>
+    <div class="movie-card" style="--m-border:rgba(179,79,255,.25);--m-color:var(--mq-purple);">
+      <div class="movie-player">
+        <iframe src="https://www.youtube.com/embed/fK2ru_62Yu8?rel=0&modestbranding=1"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy" title="Mushroom Quest 3"></iframe>
       </div>
 
-      <div class="tl-item" style="--tl-color:var(--mq-gold)">
-        <div class="tl-content">
-          <div class="tl-movie">🍄 Movie 1</div>
-          <div class="tl-event">First Challenge — The Crew Unites</div>
-          <div class="tl-desc">Facing their first great enemy together, the crew learns the meaning of teamwork.</div>
-        </div>
-        <div class="tl-dot"></div>
-        <div class="tl-spacer"></div>
-      </div>
+      <div class="movie-body">
+        <div class="movie-main">
+          <span class="movie-badge" style="color:var(--mq-purple)">🌲 Movie 3 · The Adventure Continues</span>
+          <div class="movie-title">MUSHROOM QUEST 3</div>
+          <div class="movie-tagline" style="color:var(--mq-purple)">"Into the Pacific Northwest woods, across oceans, into the music."</div>
+          <p class="movie-desc">
+            The most ambitious chapter yet. It begins deep in the <strong>Pacific Northwest woods</strong> — Rio and Jeremy hiking a mountain trail with Sunshine the dog. Then it expands: Boulevard Park in Bellingham, a <strong>Kauai, Hawaii vacation</strong> with friends, and a music video made entirely from yard-recorded sounds. Celebrating curiosity, creativity, and the joy of growing together — featuring original songs by Rio & Jeremy.
+          </p>
+          <div class="movie-tags">
+            <span class="movie-tag">🌲 PNW Woods</span>
+            <span class="movie-tag">🌴 Kauai Hawaii</span>
+            <span class="movie-tag">🎵 Original Music</span>
+            <span class="movie-tag">🐕 Sunshine Stars</span>
+            <span class="movie-tag">🌊 Bellingham WA</span>
+          </div>
 
-      <div class="tl-item" style="--tl-color:var(--mq-orange)">
-        <div class="tl-spacer"></div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-movie">⚔️ Movie 2</div>
-          <div class="tl-event">New Threats Emerge</div>
-          <div class="tl-desc">The world has changed. Darker forces are at work, and old enemies return stronger than before.</div>
+          <div class="chapters">
+            <span class="chapters-label">📍 Chapters</span>
+            <div class="chapter-list">
+              <div class="chapter-item"><span class="chapter-time">00:00</span><span class="chapter-name">Opening: Into the Woods 🌲🍄</span></div>
+              <div class="chapter-item"><span class="chapter-time">01:32</span><span class="chapter-name">Meet Sunshine 🐕 (with Red & Sushi)</span></div>
+              <div class="chapter-item"><span class="chapter-time">03:30</span><span class="chapter-name">Boulevard Park, Bellingham WA 🌊</span></div>
+              <div class="chapter-item"><span class="chapter-time">04:38</span><span class="chapter-name">Kauai, Hawaii vacation 🌴</span></div>
+              <div class="chapter-item"><span class="chapter-time">07:43</span><span class="chapter-name">Beat Battles — yard-recorded music video 🎶</span></div>
+              <div class="chapter-item"><span class="chapter-time">09:08</span><span class="chapter-name">Closing ✨</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie-sidebar">
+          <div class="sidebar-watch">
+            <a class="watch-btn primary" href="https://www.youtube.com/watch?v=fK2ru_62Yu8" target="_blank">▶ Watch on YouTube</a>
+          </div>
+          <div class="sidebar-section">
+            <span class="sidebar-heading">Cast</span>
+            <div class="cast-list">
+              <div class="cast-item"><span class="role">Stars</span> Rio & Jeremy</div>
+              <div class="cast-item"><span class="role">Dog Stars</span> Sunshine & Red</div>
+              <div class="cast-item"><span class="role">Cat</span> Sushi</div>
+              <div class="cast-item"><span class="role">Friends</span> Jayme & Dash Wiseman</div>
+              <div class="cast-item"><span class="role">Friends</span> Nick & Luca Ennen</div>
+              <div class="cast-item"><span class="role">Filming</span> Miles Tucker</div>
+            </div>
+          </div>
+          <div class="sidebar-section">
+            <span class="sidebar-heading">Original Music 🎵</span>
+            <div class="credits-list">
+              <div class="credit-row"><strong>Oooh Banana</strong> — Rio & Jeremy</div>
+              <div class="credit-row"><strong>Hope It's Not Too Late (To Eat That Bacon)</strong> — Rio & Jeremy</div>
+              <div class="credit-row"><strong>Beat Battles</strong> — Rio & Jeremy</div>
+              <div class="credit-row"><strong>Coconuts</strong> — Rex Banner</div>
+            </div>
+          </div>
+          <div class="sidebar-section">
+            <span class="sidebar-heading">Production</span>
+            <div class="credits-list">
+              <div class="credit-row">🎬 <strong>Director:</strong> Jeremy</div>
+              <div class="credit-row">✂️ <strong>Asst. Editor:</strong> Rio</div>
+              <div class="credit-row">📸 <strong>Camera:</strong> Jeremy, Rio, Melissa, Nick, Miles</div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div class="tl-item" style="--tl-color:var(--mq-orange)">
-        <div class="tl-content">
-          <div class="tl-movie">⚔️ Movie 2</div>
-          <div class="tl-event">New Allies Join the Quest</div>
-          <div class="tl-desc">The crew grows! New friends arrive to help face the growing darkness.</div>
-        </div>
-        <div class="tl-dot"></div>
-        <div class="tl-spacer"></div>
-      </div>
-
-      <div class="tl-item" style="--tl-color:var(--mq-purple)">
-        <div class="tl-spacer"></div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-movie">🌌 Movie 3</div>
-          <div class="tl-event">The Final Confrontation</div>
-          <div class="tl-desc">Everything has led to this moment. The greatest battle in Mushroom Quest history begins!</div>
-        </div>
-      </div>
-
-      <div class="tl-item" style="--tl-color:var(--mq-purple)">
-        <div class="tl-content">
-          <div class="tl-movie">🌌 Movie 3</div>
-          <div class="tl-event">The Trilogy Concludes</div>
-          <div class="tl-desc">Heroes rise, legends are made, and the Mushroom Quest universe changes forever. But is it truly over…?</div>
-        </div>
-        <div class="tl-dot"></div>
-        <div class="tl-spacer"></div>
-      </div>
-
     </div>
   </div>
 
   <!-- COMING NEXT -->
-  <div class="coming-section">
-    <div class="coming-box">
-      <h3>🔮 WHAT COMES NEXT?</h3>
-      <p>The Mushroom Quest universe is always expanding. <strong>Will there be a Movie 4? A spin-off? A whole new saga?</strong> Stay subscribed to @RioDada to find out first!</p>
-      <div class="hype-wrap">
-        <div class="hype-label-row">
-          <span>HYPE LEVEL</span>
-          <span style="color:var(--mq-gold)">82%</span>
-        </div>
-        <div class="hype-bar"><div class="hype-fill"></div></div>
+  <div class="coming-box">
+    <h3>🔮 WHAT COMES NEXT?</h3>
+    <p>The Mushroom Quest universe keeps growing. <strong>Will there be a Movie 4?</strong> Stay subscribed to @RioDada to find out first!</p>
+    <div class="hype-wrap">
+      <div class="hype-label-row">
+        <span>HYPE LEVEL</span>
+        <span style="color:var(--mq-gold)">82%</span>
       </div>
-      <br>
-      <a href="https://www.youtube.com/@RioDada" target="_blank" class="btn btn-yt">🔔 Subscribe to @RioDada</a>
+      <div class="hype-bar"><div class="hype-fill"></div></div>
     </div>
+    <br>
+    <a href="https://www.youtube.com/@RioDada" target="_blank" class="btn-yt">🔔 Subscribe to @RioDada</a>
   </div>
 
-</div><!-- /container -->
+</div>
 
 <footer>
   Made with <span class="heart">♥</span> by <a href="crew.html">Rio & Dada</a> · Z46 Exoclop ·
@@ -537,80 +497,20 @@ footer .heart{color:var(--accent6);}
 </footer>
 
 <script>
-// ══════════════════════════════════════════════════════════
-// To add your Mushroom Quest videos:
-// Replace the placeholder IDs below with real YouTube video IDs
-// (the part after ?v= in the YouTube URL)
-//
-// Also update the onclick="playMovie('1','MOVIE_1_VIDEO_ID')"
-// buttons above with your real IDs.
-// ══════════════════════════════════════════════════════════
-
-const MOVIE_IDS = {
-  '1': '',  // ← Paste Mushroom Quest 1 YouTube video ID here
-  '2': '',  // ← Paste Mushroom Quest 2 YouTube video ID here
-  '3': '',  // ← Paste Mushroom Quest 3 YouTube video ID here
-};
-
-function playMovie(num, idFromButton) {
-  const id = MOVIE_IDS[num] || idFromButton;
-  if (!id || id.includes('VIDEO_ID')) {
-    alert('🍄 Video coming soon! Find it now at youtube.com/@RioDada');
-    return;
-  }
-  const player = document.getElementById('player' + num);
-  const ph = document.getElementById('ph' + num);
-  const card = document.getElementById('card' + num);
-
-  if (ph) ph.style.display = 'none';
-
-  let iframe = player.querySelector('iframe');
-  if (!iframe) {
-    iframe = document.createElement('iframe');
-    iframe.allow = "accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture";
-    iframe.allowFullscreen = true;
-    iframe.style.cssText = "position:absolute;inset:0;width:100%;height:100%;border:none;";
-    player.appendChild(iframe);
-  }
-  iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
-  card.classList.add('playing');
-}
-
-// Smooth scroll for movie nav links
-document.querySelectorAll('.movie-nav-btn[href^="#"]').forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    const target = document.querySelector(link.getAttribute('href'));
-    if (target) target.scrollIntoView({behavior:'smooth',block:'start'});
-  });
-});
-
-// Overlay click → play
-[1,2,3].forEach(n => {
-  const overlay = document.getElementById('overlay' + n);
-  if (overlay) {
-    overlay.addEventListener('click', () => playMovie(String(n), ''));
-  }
-});
-
 // Highlight nav button as you scroll
-const movieBlocks = [
+const blocks = [
   {el: document.getElementById('movie1'), btn: document.querySelector('.movie-nav-btn.m1')},
   {el: document.getElementById('movie2'), btn: document.querySelector('.movie-nav-btn.m2')},
   {el: document.getElementById('movie3'), btn: document.querySelector('.movie-nav-btn.m3')},
 ];
 window.addEventListener('scroll', () => {
-  const scrollY = window.scrollY + 140;
-  movieBlocks.forEach(({el, btn}) => {
+  const y = window.scrollY + 140;
+  blocks.forEach(({el, btn}) => {
     if (!el || !btn) return;
-    const top = el.offsetTop;
-    const bottom = top + el.offsetHeight;
-    if (scrollY >= top && scrollY < bottom) {
-      movieBlocks.forEach(m => m.btn && m.btn.classList.remove('active'));
-      btn.classList.add('active');
-    }
+    const active = y >= el.offsetTop && y < el.offsetTop + el.offsetHeight;
+    btn.classList.toggle('active', active);
   });
-},{passive:true});
+}, {passive: true});
 </script>
 </body>
 </html>
