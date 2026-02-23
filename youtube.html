@@ -6,25 +6,32 @@
 <title>Z46 Exoclop — YouTube</title>
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#080816;--card:#11112a;--border:rgba(255,255,255,0.07);
+:root{
+  --bg:#080816;--card:#11112a;--border:rgba(255,255,255,0.07);
   --accent1:#ff6b35;--accent2:#00e5ff;--accent3:#ffe135;--accent4:#b34fff;
-  --accent5:#00ff88;--accent6:#ff4fcb;--text:#f0f0ff;--muted:#7777aa;--yt:#ff0000;}
+  --accent5:#00ff88;--accent6:#ff4fcb;--text:#f0f0ff;--muted:#7777aa;--yt:#ff0000;
+}
 *{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;overflow-x:hidden;}
+
 .stars{position:fixed;inset:0;pointer-events:none;z-index:0;}
 .stars::before,.stars::after{content:'';position:absolute;inset:0;}
 .stars::before{background-image:
-  radial-gradient(1px 1px at 8% 12%,rgba(255,255,255,.9),transparent),
-  radial-gradient(1px 1px at 22% 68%,rgba(255,255,255,.7),transparent),
-  radial-gradient(1.5px 1.5px at 48% 28%,rgba(0,229,255,.7),transparent),
-  radial-gradient(1px 1px at 73% 58%,rgba(255,255,255,.8),transparent),
-  radial-gradient(2px 2px at 58% 82%,rgba(179,79,255,.6),transparent),
-  radial-gradient(1px 1px at 14% 42%,rgba(255,255,255,.5),transparent),
-  radial-gradient(1px 1px at 44% 5%,rgba(255,255,255,.8),transparent),
-  radial-gradient(1px 1px at 66% 72%,rgba(255,79,203,.5),transparent);}
+  radial-gradient(1px 1px at 8% 12%,rgba(255,255,255,.8),transparent),
+  radial-gradient(1px 1px at 22% 68%,rgba(255,255,255,.6),transparent),
+  radial-gradient(1.5px 1.5px at 48% 28%,rgba(0,229,255,.5),transparent),
+  radial-gradient(1px 1px at 73% 58%,rgba(255,255,255,.7),transparent),
+  radial-gradient(1px 1px at 91% 8%,rgba(255,107,53,.5),transparent),
+  radial-gradient(2px 2px at 58% 82%,rgba(179,79,255,.5),transparent),
+  radial-gradient(1px 1px at 14% 42%,rgba(255,255,255,.4),transparent),
+  radial-gradient(1px 1px at 44% 5%,rgba(255,255,255,.7),transparent),
+  radial-gradient(1px 1px at 66% 72%,rgba(255,79,203,.4),transparent),
+  radial-gradient(1px 1px at 88% 88%,rgba(255,255,255,.5),transparent);}
+
 nav{display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;
-  background:rgba(8,8,22,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,229,255,.15);
-  position:sticky;top:0;z-index:1000;gap:1rem;}
+  background:rgba(8,8,22,.94);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(0,229,255,.15);position:sticky;top:0;z-index:1000;gap:1rem;}
 .nav-logo{font-family:'Bangers',cursive;font-size:1.8rem;letter-spacing:3px;
   background:linear-gradient(135deg,#00e5ff,#b34fff);-webkit-background-clip:text;background-clip:text;
   -webkit-text-fill-color:transparent;color:transparent;text-decoration:none;white-space:nowrap;}
@@ -32,96 +39,174 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 2rem
 .nav-links a{color:var(--muted);text-decoration:none;font-weight:700;font-size:.78rem;
   letter-spacing:.5px;text-transform:uppercase;padding:.4rem .6rem;border-radius:8px;transition:all .2s;}
 .nav-links a:hover{color:var(--text);background:rgba(255,255,255,.07);}
-.nav-links a.active{color:var(--accent2);background:rgba(0,229,255,.1);}
+.nav-links a.active{color:var(--yt);background:rgba(255,0,0,.1);}
 
-.page-header{text-align:center;padding:4rem 2rem 2rem;position:relative;z-index:1;}
+.page-header{position:relative;z-index:1;text-align:center;padding:3.5rem 2rem 2rem;}
 .page-tag{display:inline-block;background:linear-gradient(135deg,var(--yt),#ff6600);
   color:#fff;font-family:'Bangers',cursive;font-size:.95rem;letter-spacing:3px;
-  padding:.3rem 1.2rem;border-radius:100px;margin-bottom:1.2rem;
+  padding:.3rem 1.3rem;border-radius:100px;margin-bottom:1rem;
   animation:tagpulse 2s ease-in-out infinite;}
 @keyframes tagpulse{0%,100%{transform:scale(1);}50%{transform:scale(1.04);}}
-.page-header h1{font-family:'Bangers',cursive;font-size:clamp(3rem,8vw,6rem);
-  letter-spacing:4px;line-height:1;margin-bottom:1rem;
+.page-header h1{font-family:'Bangers',cursive;font-size:clamp(2.8rem,8vw,5rem);
+  letter-spacing:4px;line-height:1;margin-bottom:.8rem;
   background:linear-gradient(135deg,var(--yt),var(--accent1),var(--accent3));
-  background-size:200% auto;animation:shimmer 5s linear infinite;
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
+  background-size:200% auto;-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;animation:shimmer 5s linear infinite;}
 @keyframes shimmer{0%{background-position:0% center;}100%{background-position:200% center;}}
-.page-header p{font-size:1.1rem;color:var(--muted);max-width:620px;margin:0 auto;line-height:1.7;}
+.page-header p{font-size:1rem;color:var(--muted);max-width:560px;margin:0 auto;line-height:1.7;}
+.page-header p strong{color:var(--text);}
 
-.container{max-width:1200px;margin:0 auto;padding:0 2rem;position:relative;z-index:1;}
+.container{max-width:1260px;margin:0 auto;padding:0 2rem;position:relative;z-index:1;}
 
-/* Channel Hero */
-.channel-hero{background:linear-gradient(135deg,rgba(255,0,0,.12),rgba(255,107,53,.08));
-  border:2px solid rgba(255,0,0,.25);border-radius:24px;padding:3rem;
-  display:flex;gap:3rem;align-items:center;margin:2rem 0;flex-wrap:wrap;}
-.channel-logo{font-size:6rem;animation:float 3s ease-in-out infinite;flex-shrink:0;}
-@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
-.channel-info h2{font-family:'Bangers',cursive;font-size:2.5rem;letter-spacing:3px;
-  color:var(--yt);margin-bottom:.5rem;}
-.channel-handle{font-family:'Fredoka One',cursive;font-size:1.2rem;color:var(--muted);margin-bottom:1rem;}
-.channel-handle span{color:var(--accent2);}
-.channel-stats{display:flex;gap:2rem;margin:1rem 0;flex-wrap:wrap;}
-.channel-stat{text-align:center;}
-.channel-stat-num{font-family:'Bangers',cursive;font-size:2rem;display:block;}
-.channel-stat-label{font-size:.75rem;text-transform:uppercase;letter-spacing:2px;color:var(--muted);font-weight:700;}
-.channel-desc{color:var(--muted);line-height:1.7;max-width:500px;margin-bottom:1.5rem;}
-.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:'Fredoka One',cursive;
-  font-size:1rem;padding:.75rem 1.8rem;border-radius:100px;text-decoration:none;transition:all .25s;}
+/* CHANNEL BANNER */
+.channel-banner{
+  background:linear-gradient(135deg,rgba(255,0,0,.1),rgba(255,107,53,.06),rgba(179,79,255,.06));
+  border:2px solid rgba(255,0,0,.2);border-radius:24px;padding:1.8rem 2.2rem;
+  display:flex;align-items:center;gap:2rem;margin:1.5rem 0 2rem;flex-wrap:wrap;}
+.ch-avatar{width:72px;height:72px;border-radius:50%;
+  background:linear-gradient(135deg,var(--yt),#ff6600);
+  display:flex;align-items:center;justify-content:center;font-size:2.2rem;flex-shrink:0;
+  animation:float 3s ease-in-out infinite;box-shadow:0 0 30px rgba(255,0,0,.3);}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+.ch-info{flex:1;min-width:180px;}
+.ch-info h2{font-family:'Bangers',cursive;font-size:1.7rem;letter-spacing:2px;color:var(--yt);}
+.ch-handle{color:var(--muted);font-size:.85rem;font-weight:700;margin:.2rem 0 .8rem;}
+.ch-handle a{color:var(--accent2);text-decoration:none;}
+.ch-stats{display:flex;gap:1.5rem;flex-wrap:wrap;}
+.ch-stat{text-align:center;}
+.ch-stat-num{font-family:'Bangers',cursive;font-size:1.7rem;display:block;line-height:1;}
+.ch-stat-label{font-size:.65rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);font-weight:700;}
+.ch-actions{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;margin-left:auto;}
+.btn{display:inline-flex;align-items:center;gap:.4rem;font-family:'Fredoka One',cursive;
+  font-size:.92rem;padding:.6rem 1.4rem;border-radius:100px;text-decoration:none;
+  transition:all .25s;white-space:nowrap;border:2px solid transparent;}
 .btn-yt{background:var(--yt);color:#fff;}
-.btn-yt:hover{transform:scale(1.05);box-shadow:0 0 25px rgba(255,0,0,.4);}
+.btn-yt:hover{transform:scale(1.06);box-shadow:0 0 25px rgba(255,0,0,.4);}
+.btn-ghost{background:transparent;color:var(--text);border-color:var(--border);}
+.btn-ghost:hover{border-color:var(--accent2);color:var(--accent2);}
 
-/* Series sections */
-.section-title{font-family:'Bangers',cursive;font-size:2rem;letter-spacing:3px;margin:3rem 0 1.5rem;
-  display:flex;align-items:center;gap:.8rem;}
+/* FILTER TABS */
+.filter-wrap{margin:0 0 .8rem;}
+.filter-row{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;}
+.filter-label{font-size:.72rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  color:var(--muted);margin-right:.4rem;white-space:nowrap;}
+.filter-btn{font-family:'Fredoka One',cursive;font-size:.85rem;padding:.42rem 1rem;
+  border-radius:100px;cursor:pointer;transition:all .2s;border:2px solid var(--border);
+  background:transparent;color:var(--muted);}
+.filter-btn:hover{color:var(--text);border-color:rgba(255,255,255,.2);}
+.filter-btn.active{border-color:transparent;color:#000;}
+.filter-btn[data-cat="all"].active{background:linear-gradient(135deg,var(--accent2),var(--accent4));color:#000;}
+.filter-btn[data-cat="gaming"].active{background:linear-gradient(135deg,#00c8ff,#0060cc);color:#fff;}
+.filter-btn[data-cat="mushroom"].active{background:linear-gradient(135deg,var(--accent1),#cc0044);color:#fff;}
+.filter-btn[data-cat="cooking"].active{background:linear-gradient(135deg,var(--accent3),#ff9500);color:#000;}
+.filter-btn[data-cat="misc"].active{background:linear-gradient(135deg,var(--accent4),#5500cc);color:#fff;}
 
-.series-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;margin-bottom:2rem;}
+.video-count{font-size:.82rem;color:var(--muted);margin:.8rem 0 1.2rem;font-weight:700;}
+.video-count span{color:var(--text);}
 
-.series-card{background:var(--card);border-radius:20px;border:1.5px solid var(--border);
-  overflow:hidden;transition:all .25s;text-decoration:none;color:var(--text);display:block;}
-.series-card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(0,0,0,.4);border-color:var(--s-color);}
+/* VIDEO GRID */
+.videos-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(275px,1fr));
+  gap:1.3rem;
+  margin-bottom:1.5rem;
+}
 
-.series-thumb{height:160px;display:flex;align-items:center;justify-content:center;
-  font-size:4rem;position:relative;overflow:hidden;}
-.series-thumb::after{content:'▶';position:absolute;width:50px;height:50px;background:rgba(255,255,255,.15);
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:1.2rem;opacity:0;transition:opacity .2s;padding-left:4px;}
-.series-card:hover .series-thumb::after{opacity:1;}
+.video-card{
+  background:var(--card);border-radius:16px;border:1.5px solid var(--border);
+  overflow:hidden;transition:all .25s;position:relative;
+}
+.video-card:hover{transform:translateY(-5px);box-shadow:0 16px 45px rgba(0,0,0,.5);border-color:rgba(255,0,0,.3);}
 
-.series-body{padding:1.2rem;}
-.series-tag{font-size:.7rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
-  color:var(--s-color);margin-bottom:.4rem;display:block;}
-.series-title{font-family:'Fredoka One',cursive;font-size:1.2rem;margin-bottom:.4rem;}
-.series-desc{font-size:.88rem;color:var(--muted);line-height:1.6;}
-.series-count{display:inline-block;margin-top:.8rem;font-size:.75rem;font-weight:800;
-  letter-spacing:1px;padding:.2rem .6rem;border-radius:100px;border:1.5px solid var(--s-color);
-  color:var(--s-color);}
+/* Thumbnail */
+.thumb-wrap{position:relative;padding-top:56.25%;background:#08081a;overflow:hidden;}
+.thumb-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none;pointer-events:none;}
+.video-card.playing .thumb-wrap iframe{pointer-events:all;}
 
-/* Latest videos grid */
-.videos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2rem;}
-.video-card{background:var(--card);border-radius:16px;border:1.5px solid var(--border);
-  overflow:hidden;transition:all .25s;}
-.video-card:hover{transform:translateY(-4px);border-color:rgba(255,0,0,.4);}
-.video-thumb{height:130px;background:rgba(255,0,0,.08);display:flex;align-items:center;
-  justify-content:center;font-size:3rem;position:relative;}
-.video-thumb .play-btn{position:absolute;width:44px;height:44px;background:rgba(255,0,0,.8);
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:1rem;padding-left:3px;opacity:0;transition:opacity .2s;}
-.video-card:hover .play-btn{opacity:1;}
-.video-body{padding:1rem;}
-.video-title{font-weight:800;font-size:.92rem;margin-bottom:.3rem;line-height:1.4;}
-.video-meta{font-size:.75rem;color:var(--muted);}
+.thumb-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:rgba(0,0,0,.2);transition:opacity .25s;z-index:2;cursor:pointer;}
+.video-card.playing .thumb-overlay{opacity:0;pointer-events:none;}
+.play-circle{width:50px;height:50px;background:rgba(255,0,0,.88);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .2s,box-shadow .2s;padding-left:4px;
+  box-shadow:0 4px 20px rgba(255,0,0,.4);}
+.video-card:hover .play-circle{transform:scale(1.15);box-shadow:0 6px 28px rgba(255,0,0,.6);}
+.play-circle svg{width:18px;height:18px;fill:#fff;}
 
-/* Subscribe CTA */
-.sub-cta{text-align:center;padding:3rem;background:linear-gradient(135deg,rgba(255,0,0,.1),rgba(255,107,53,.05));
-  border:1.5px solid rgba(255,0,0,.2);border-radius:24px;margin:3rem 0 1rem;}
-.sub-cta h3{font-family:'Bangers',cursive;font-size:2.5rem;letter-spacing:3px;margin-bottom:.5rem;color:var(--yt);}
-.sub-cta p{color:var(--muted);margin-bottom:1.5rem;}
+.placeholder-thumb{position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:.5rem;
+  background:linear-gradient(135deg,rgba(20,10,40,1),rgba(8,8,22,1));}
+.placeholder-thumb .big-emoji{font-size:2.8rem;}
+.placeholder-thumb .label{font-size:.7rem;color:var(--muted);letter-spacing:1.5px;
+  font-weight:800;text-transform:uppercase;}
+
+.cat-pill{position:absolute;top:9px;left:9px;z-index:3;font-size:.63rem;font-weight:800;
+  letter-spacing:1px;text-transform:uppercase;padding:.22rem .6rem;border-radius:100px;
+  backdrop-filter:blur(8px);}
+.cat-gaming{background:rgba(0,180,255,.85);color:#000;}
+.cat-mushroom{background:rgba(255,90,20,.9);color:#fff;}
+.cat-cooking{background:rgba(255,205,0,.9);color:#000;}
+.cat-misc{background:rgba(150,50,255,.88);color:#fff;}
+
+.duration-pill{position:absolute;bottom:8px;right:8px;z-index:3;font-size:.62rem;font-weight:800;
+  padding:.18rem .5rem;border-radius:6px;background:rgba(0,0,0,.75);color:#fff;letter-spacing:.5px;}
+
+/* Video Info */
+.video-info{padding:.95rem 1.05rem 1.1rem;}
+.video-series{font-size:.66rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+  margin-bottom:.3rem;display:block;}
+.s-gaming{color:var(--accent2);}
+.s-mushroom{color:var(--accent1);}
+.s-cooking{color:var(--accent3);}
+.s-misc{color:var(--accent4);}
+.video-title{font-weight:800;font-size:.93rem;line-height:1.4;color:var(--text);margin-bottom:.35rem;}
+.video-desc{font-size:.76rem;color:var(--muted);line-height:1.55;margin-bottom:.65rem;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.video-meta{display:flex;gap:.5rem;align-items:center;}
+.ep-badge{font-size:.65rem;font-weight:800;letter-spacing:.5px;text-transform:uppercase;
+  padding:.18rem .5rem;border-radius:6px;background:rgba(255,255,255,.06);color:var(--muted);}
+.yt-link{margin-left:auto;font-size:.72rem;font-weight:800;color:var(--yt);
+  text-decoration:none;opacity:.8;transition:opacity .2s;}
+.yt-link:hover{opacity:1;}
+
+/* LOAD MORE */
+.load-more-wrap{text-align:center;padding:0 0 .5rem;}
+#loadMoreBtn{font-family:'Fredoka One',cursive;font-size:.95rem;padding:.65rem 2rem;
+  border-radius:100px;border:2px solid var(--border);background:transparent;
+  color:var(--text);cursor:pointer;transition:all .25s;}
+#loadMoreBtn:hover{border-color:var(--yt);color:var(--yt);}
+
+/* HOW TO ADD VIDEOS banner */
+.add-tip{background:rgba(0,229,255,.04);border:1.5px dashed rgba(0,229,255,.2);
+  border-radius:16px;padding:1.2rem 1.5rem;margin:2rem 0;
+  display:flex;align-items:flex-start;gap:1rem;}
+.add-tip .icon{font-size:1.8rem;flex-shrink:0;margin-top:.1rem;}
+.add-tip h4{font-family:'Fredoka One',cursive;font-size:1rem;color:var(--accent2);margin-bottom:.3rem;}
+.add-tip p{font-size:.82rem;color:var(--muted);line-height:1.6;}
+.add-tip code{background:rgba(0,0,0,.3);padding:.1rem .4rem;border-radius:4px;
+  color:var(--accent3);font-size:.78rem;}
+
+/* SUB BANNER */
+.sub-banner{background:linear-gradient(135deg,rgba(255,0,0,.12),rgba(255,107,53,.07));
+  border:2px solid rgba(255,0,0,.2);border-radius:22px;padding:2.5rem;
+  text-align:center;margin:2rem 0 4rem;}
+.sub-banner h3{font-family:'Bangers',cursive;font-size:2.2rem;letter-spacing:3px;
+  color:var(--yt);margin-bottom:.5rem;}
+.sub-banner p{color:var(--muted);margin-bottom:1.4rem;}
 
 footer{text-align:center;padding:2.5rem 2rem;color:var(--muted);font-size:.85rem;
   border-top:1px solid rgba(255,255,255,.05);position:relative;z-index:1;}
 footer a{color:var(--accent1);text-decoration:none;}
 footer .heart{color:var(--accent6);}
-@media(max-width:768px){.nav-links{display:none;}.channel-hero{flex-direction:column;text-align:center;}.channel-stats{justify-content:center;}}
+
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .channel-banner{flex-direction:column;}
+  .ch-actions{margin-left:0;}
+}
+@media(max-width:500px){
+  .videos-grid{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
@@ -144,86 +229,78 @@ footer .heart{color:var(--accent6);}
 <div class="page-header">
   <div class="page-tag">▶️ WATCH WITH US</div>
   <h1>OUR YOUTUBE<br>CHANNEL</h1>
-  <p>Game playthroughs, original movies, cooking adventures, and more. <strong>120+ videos</strong> and counting!</p>
+  <p>Game playthroughs, original movies, cooking adventures and more.<br><strong>120+ videos</strong> on @RioDada!</p>
 </div>
 
 <div class="container">
 
-  <!-- Channel card -->
-  <div class="channel-hero">
-    <div class="channel-logo">📺</div>
-    <div class="channel-info">
+  <!-- Channel Banner -->
+  <div class="channel-banner">
+    <div class="ch-avatar">📺</div>
+    <div class="ch-info">
       <h2>RIODADA</h2>
-      <p class="channel-handle">YouTube: <span>@RioDada</span></p>
-      <div class="channel-stats">
-        <div class="channel-stat">
-          <span class="channel-stat-num" style="color:var(--yt)">188</span>
-          <span class="channel-stat-label">Subscribers</span>
+      <p class="ch-handle">YouTube: <a href="https://www.youtube.com/@RioDada" target="_blank">@RioDada</a></p>
+      <div class="ch-stats">
+        <div class="ch-stat">
+          <span class="ch-stat-num" style="color:var(--yt)">188</span>
+          <span class="ch-stat-label">Subscribers</span>
         </div>
-        <div class="channel-stat">
-          <span class="channel-stat-num" style="color:var(--accent1)">120+</span>
-          <span class="channel-stat-label">Videos</span>
+        <div class="ch-stat">
+          <span class="ch-stat-num" style="color:var(--accent1)">120+</span>
+          <span class="ch-stat-label">Videos</span>
         </div>
-        <div class="channel-stat">
-          <span class="channel-stat-num" style="color:var(--accent3)">3</span>
-          <span class="channel-stat-label">Movies</span>
+        <div class="ch-stat">
+          <span class="ch-stat-num" style="color:var(--accent3)">3</span>
+          <span class="ch-stat-label">Movies</span>
+        </div>
+        <div class="ch-stat">
+          <span class="ch-stat-num" style="color:var(--accent5)">4</span>
+          <span class="ch-stat-label">Series</span>
         </div>
       </div>
-      <p class="channel-desc">Adventures with Rio & Dada: Gaming, Fun, and Creative Play! Join 6-year-old Rio and his dad on playthroughs, cooking adventures, and original movie series!</p>
-      <a href="https://www.youtube.com/@RioDada" target="_blank" class="btn btn-yt">▶️ Visit Our Channel</a>
+    </div>
+    <div class="ch-actions">
+      <a href="https://www.youtube.com/@RioDada" target="_blank" class="btn btn-yt">🔔 Subscribe</a>
+      <a href="https://www.youtube.com/@RioDada/videos" target="_blank" class="btn btn-ghost">All Videos →</a>
     </div>
   </div>
 
-  <!-- Series -->
-  <div class="section-title" style="color:var(--accent2)">🎬 OUR SERIES</div>
-  <div class="series-grid">
-
-    <a href="mushroom-quest.html" class="series-card" style="--s-color:var(--accent1)">
-      <div class="series-thumb" style="background:linear-gradient(135deg,rgba(255,107,53,.2),rgba(179,79,255,.2))">🍄</div>
-      <div class="series-body">
-        <span class="series-tag">🎬 Original Movie Series</span>
-        <div class="series-title">Mushroom Quest</div>
-        <div class="series-desc">Our epic original movie trilogy! Action, adventure, and mushroom mayhem in three incredible films.</div>
-        <span class="series-count">3 MOVIES</span>
-      </div>
-    </a>
-
-    <a href="games.html" class="series-card" style="--s-color:var(--accent2)">
-      <div class="series-thumb" style="background:linear-gradient(135deg,rgba(0,229,255,.15),rgba(0,100,200,.15))">🎮</div>
-      <div class="series-body">
-        <span class="series-tag">🕹️ Gaming Playthroughs</span>
-        <div class="series-title">Game Adventures</div>
-        <div class="series-desc">Rio and Dada play through Nintendo games! From Mario to Zelda to Pokémon and everything in between.</div>
-        <span class="series-count">50+ VIDEOS</span>
-      </div>
-    </a>
-
-    <a href="cooking.html" class="series-card" style="--s-color:var(--accent3)">
-      <div class="series-thumb" style="background:linear-gradient(135deg,rgba(255,225,53,.15),rgba(255,150,0,.15))">🍳</div>
-      <div class="series-body">
-        <span class="series-tag">👨‍🍳 Cooking Series</span>
-        <div class="series-title">Kitchen Adventures</div>
-        <div class="series-desc">Rio and Dada cook up real recipes in the kitchen! Sometimes delicious, always entertaining.</div>
-        <span class="series-count">20+ VIDEOS</span>
-      </div>
-    </a>
-
-    <a href="rio-reads.html" class="series-card" style="--s-color:var(--accent5)">
-      <div class="series-thumb" style="background:linear-gradient(135deg,rgba(0,255,136,.12),rgba(0,150,80,.12))">📚</div>
-      <div class="series-body">
-        <span class="series-tag">📖 Read-Alouds</span>
-        <div class="series-title">Rio Reads</div>
-        <div class="series-desc">Rio records himself reading books aloud! A growing library of read-alouds for kids everywhere.</div>
-        <span class="series-count">🔜 COMING SOON</span>
-      </div>
-    </a>
-
+  <!-- How to add tip -->
+  <div class="add-tip">
+    <div class="icon">💡</div>
+    <div>
+      <h4>How to add your videos</h4>
+      <p>Find the <code>VIDEOS</code> array in the page source. For each video, replace the <code>id</code> field with the YouTube video ID
+      (the part after <code>?v=</code> in the YouTube URL, e.g. <code>dQw4w9WgXcQ</code>).
+      Set <code>cat</code> to <code>"gaming"</code>, <code>"mushroom"</code>, <code>"cooking"</code>, or <code>"misc"</code>.
+      The video will automatically appear in the grid and the right filter!</p>
+    </div>
   </div>
 
-  <!-- Subscribe CTA -->
-  <div class="sub-cta">
-    <h3>🔔 SUBSCRIBE!</h3>
-    <p>Hit subscribe and the bell so you never miss a new video. We post new adventures all the time!</p>
+  <!-- Filter -->
+  <div class="filter-wrap">
+    <div class="filter-row">
+      <span class="filter-label">Filter by:</span>
+      <button class="filter-btn active" data-cat="all">🎬 All</button>
+      <button class="filter-btn" data-cat="gaming">🎮 Gaming</button>
+      <button class="filter-btn" data-cat="mushroom">🍄 Mushroom Quest</button>
+      <button class="filter-btn" data-cat="cooking">🍳 Cooking</button>
+      <button class="filter-btn" data-cat="misc">⭐ Other</button>
+    </div>
+  </div>
+
+  <div class="video-count">Showing <span id="countDisplay">—</span></div>
+
+  <div class="videos-grid" id="videoGrid"></div>
+
+  <div class="load-more-wrap">
+    <button id="loadMoreBtn" style="display:none">Load More ↓</button>
+  </div>
+
+  <!-- Subscribe -->
+  <div class="sub-banner">
+    <h3>🔔 NEVER MISS A VIDEO!</h3>
+    <p>Subscribe and hit the bell — new adventures drop all the time!</p>
     <a href="https://www.youtube.com/@RioDada" target="_blank" class="btn btn-yt">Subscribe to @RioDada</a>
   </div>
 
@@ -233,5 +310,256 @@ footer .heart{color:var(--accent6);}
   Made with <span class="heart">♥</span> by <a href="crew.html">Rio & Dada</a> · Z46 Exoclop ·
   <a href="https://www.youtube.com/@RioDada" target="_blank">@RioDada on YouTube</a>
 </footer>
+
+<script>
+// ══════════════════════════════════════════════════════════
+//  VIDEO DATABASE — Add your videos here!
+//
+//  id:    YouTube video ID — the part after ?v= in the URL
+//         Example: https://youtube.com/watch?v=dQw4w9WgXcQ
+//                  ID = dQw4w9WgXcQ
+//
+//  cat:   "gaming" | "mushroom" | "cooking" | "misc"
+//  ep:    Episode label shown on the card (e.g. "Part 1", "Movie 1")
+// ══════════════════════════════════════════════════════════
+const VIDEOS = [
+
+  // ─── MUSHROOM QUEST ───────────────────────────────────
+  {
+    id: "",   // ← Paste Mushroom Quest 1 video ID here
+    title: "Mushroom Quest — The Original Movie",
+    desc: "The film that started it all! The crew's first epic quest.",
+    series: "🍄 Mushroom Quest", seriesClass: "s-mushroom",
+    cat: "mushroom", catLabel: "Mushroom Quest", catClass: "cat-mushroom",
+    ep: "Movie 1", emoji: "🍄"
+  },
+  {
+    id: "",   // ← Paste Mushroom Quest 2 video ID here
+    title: "Mushroom Quest II — The Sequel",
+    desc: "Bigger, bolder, and even more mushroom mayhem in the second film!",
+    series: "🍄 Mushroom Quest", seriesClass: "s-mushroom",
+    cat: "mushroom", catLabel: "Mushroom Quest", catClass: "cat-mushroom",
+    ep: "Movie 2", emoji: "⚔️"
+  },
+  {
+    id: "",   // ← Paste Mushroom Quest 3 video ID here
+    title: "Mushroom Quest III — The Finale",
+    desc: "The epic trilogy conclusion — all heroes unite for the final battle!",
+    series: "🍄 Mushroom Quest", seriesClass: "s-mushroom",
+    cat: "mushroom", catLabel: "Mushroom Quest", catClass: "cat-mushroom",
+    ep: "Movie 3", emoji: "🌌"
+  },
+
+  // ─── GAMING ───────────────────────────────────────────
+  {
+    id: "",   // ← Paste video ID here
+    title: "Super Mario Odyssey — Playthrough Part 1",
+    desc: "Rio and Dada take on Mario Odyssey! Collecting Moons across the globe.",
+    series: "🎮 Gaming", seriesClass: "s-gaming",
+    cat: "gaming", catLabel: "Gaming", catClass: "cat-gaming",
+    ep: "Part 1", emoji: "🍄"
+  },
+  {
+    id: "",
+    title: "Zelda: Breath of the Wild Adventures",
+    desc: "Exploring Hyrule — climbing mountains, gliding, and fighting Bokoblins!",
+    series: "🎮 Gaming", seriesClass: "s-gaming",
+    cat: "gaming", catLabel: "Gaming", catClass: "cat-gaming",
+    ep: "Episode", emoji: "⚔️"
+  },
+  {
+    id: "",
+    title: "Mario Kart 8 — Rio vs Dada Race Battle!",
+    desc: "Who is fastest? Head to head on Rainbow Road — winner takes all!",
+    series: "🎮 Gaming", seriesClass: "s-gaming",
+    cat: "gaming", catLabel: "Gaming", catClass: "cat-gaming",
+    ep: "Race Special", emoji: "🏎️"
+  },
+  {
+    id: "",
+    title: "Super Mario Bros. Wonder — World 1",
+    desc: "The most creative Mario yet — Wonder Flowers change everything!",
+    series: "🎮 Gaming", seriesClass: "s-gaming",
+    cat: "gaming", catLabel: "Gaming", catClass: "cat-gaming",
+    ep: "World 1", emoji: "🌺"
+  },
+  {
+    id: "",
+    title: "Pokémon Scarlet — Starter Picks & First Gym",
+    desc: "Which starter did Rio choose? Watch to find out!",
+    series: "🎮 Gaming", seriesClass: "s-gaming",
+    cat: "gaming", catLabel: "Gaming", catClass: "cat-gaming",
+    ep: "Ep 1", emoji: "🐉"
+  },
+  {
+    id: "",
+    title: "Zelda: Tears of the Kingdom — Building Machines",
+    desc: "Rio builds the wildest contraptions using Ultrahand. Engineering genius!",
+    series: "🎮 Gaming", seriesClass: "s-gaming",
+    cat: "gaming", catLabel: "Gaming", catClass: "cat-gaming",
+    ep: "Episode", emoji: "🔧"
+  },
+  {
+    id: "",
+    title: "Animal Crossing — Island Tour",
+    desc: "Welcome to our island! See everything Rio has built and planted.",
+    series: "🎮 Gaming", seriesClass: "s-gaming",
+    cat: "gaming", catLabel: "Gaming", catClass: "cat-gaming",
+    ep: "Island Tour", emoji: "🌺"
+  },
+
+  // ─── COOKING ──────────────────────────────────────────
+  {
+    id: "",
+    title: "Homemade Pizza Night!",
+    desc: "Rio and Dada make pizza from scratch — dough and all the crazy toppings!",
+    series: "🍳 Cooking", seriesClass: "s-cooking",
+    cat: "cooking", catLabel: "Cooking", catClass: "cat-cooking",
+    ep: "Ep 1", emoji: "🍕"
+  },
+  {
+    id: "",
+    title: "Epic Pancake Stack Battle",
+    desc: "Who builds the tallest pancake stack? Rio vs Dada — maple syrup everywhere!",
+    series: "🍳 Cooking", seriesClass: "s-cooking",
+    cat: "cooking", catLabel: "Cooking", catClass: "cat-cooking",
+    ep: "Ep 2", emoji: "🥞"
+  },
+  {
+    id: "",
+    title: "Taco Fiesta Night!",
+    desc: "Homemade tacos from scratch. Rio makes the salsa — watch out, it's spicy!",
+    series: "🍳 Cooking", seriesClass: "s-cooking",
+    cat: "cooking", catLabel: "Cooking", catClass: "cat-cooking",
+    ep: "Ep 3", emoji: "🌮"
+  },
+  {
+    id: "",
+    title: "Birthday Cake Spectacular",
+    desc: "Rio designs and decorates his own birthday cake! Three layers, rainbow frosting!",
+    series: "🍳 Cooking", seriesClass: "s-cooking",
+    cat: "cooking", catLabel: "Cooking", catClass: "cat-cooking",
+    ep: "Ep 4", emoji: "🎂"
+  },
+
+  // ─── MISC / OTHER ─────────────────────────────────────
+  {
+    id: "",
+    title: "Welcome to Z46 Exoclop!",
+    desc: "Rio introduces the channel and the Z46 Exoclop universe. This is where it all started!",
+    series: "⭐ Z46 Exoclop", seriesClass: "s-misc",
+    cat: "misc", catLabel: "Other", catClass: "cat-misc",
+    ep: "Channel Intro", emoji: "🚀"
+  },
+
+];
+
+// ══════════════════════════════════════════════════════════
+// RENDER ENGINE
+// ══════════════════════════════════════════════════════════
+const PAGE_SIZE = 12;
+let currentCat = "all";
+let visibleCount = PAGE_SIZE;
+
+function filtered() {
+  return currentCat === "all" ? VIDEOS : VIDEOS.filter(v => v.cat === currentCat);
+}
+
+function renderGrid() {
+  const list = filtered();
+  const grid = document.getElementById("videoGrid");
+  const countEl = document.getElementById("countDisplay");
+  const loadBtn = document.getElementById("loadMoreBtn");
+
+  grid.innerHTML = "";
+
+  if (list.length === 0) {
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:4rem 2rem;color:var(--muted)">
+      <div style="font-size:4rem;margin-bottom:1rem">🎬</div>
+      <p>No videos in this category yet — check back soon!</p>
+    </div>`;
+    countEl.textContent = "0 videos";
+    loadBtn.style.display = "none";
+    return;
+  }
+
+  const toShow = list.slice(0, visibleCount);
+  const catName = currentCat === "all" ? "all videos" : currentCat + " videos";
+  countEl.textContent = `${toShow.length} of ${list.length} ${catName}`;
+
+  toShow.forEach(v => {
+    const hasId = v.id && v.id.trim() !== "";
+    const card = document.createElement("div");
+    card.className = "video-card";
+    card.dataset.cat = v.cat;
+
+    card.innerHTML = `
+      <div class="thumb-wrap">
+        ${hasId
+          ? `<iframe src="https://www.youtube.com/embed/${v.id}?rel=0&modestbranding=1"
+               allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture"
+               allowfullscreen loading="lazy" title="${v.title}"></iframe>`
+          : `<div class="placeholder-thumb">
+               <span class="big-emoji">${v.emoji || "🎬"}</span>
+               <span class="label">Video Coming Soon</span>
+             </div>`
+        }
+        ${hasId ? `<div class="thumb-overlay">
+          <div class="play-circle">
+            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>` : ""}
+        <span class="cat-pill ${v.catClass}">${v.catLabel}</span>
+      </div>
+      <div class="video-info">
+        <span class="video-series ${v.seriesClass}">${v.series}</span>
+        <div class="video-title">${v.title}</div>
+        <div class="video-desc">${v.desc}</div>
+        <div class="video-meta">
+          <span class="ep-badge">${v.ep}</span>
+          ${hasId ? `<a class="yt-link" href="https://youtube.com/watch?v=${v.id}" target="_blank">YouTube ↗</a>` : ""}
+        </div>
+      </div>`;
+
+    // Click overlay → play inline
+    if (hasId) {
+      card.querySelector(".thumb-overlay").addEventListener("click", () => {
+        card.classList.add("playing");
+        const ifr = card.querySelector("iframe");
+        if (ifr) ifr.src = ifr.src.replace("?rel=0", "?autoplay=1&rel=0");
+      });
+    }
+
+    grid.appendChild(card);
+  });
+
+  // Load more
+  if (list.length > visibleCount) {
+    loadBtn.style.display = "inline-block";
+    loadBtn.textContent = `Load More (${list.length - visibleCount} remaining) ↓`;
+  } else {
+    loadBtn.style.display = "none";
+  }
+}
+
+// Filter clicks
+document.querySelectorAll(".filter-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    currentCat = btn.dataset.cat;
+    visibleCount = PAGE_SIZE;
+    renderGrid();
+    document.querySelector(".filter-wrap").scrollIntoView({behavior:"smooth",block:"nearest"});
+  });
+});
+
+document.getElementById("loadMoreBtn").addEventListener("click", () => {
+  visibleCount += PAGE_SIZE;
+  renderGrid();
+});
+
+renderGrid();
+</script>
 </body>
 </html>
