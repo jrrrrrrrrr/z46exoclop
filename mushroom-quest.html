@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Z46 Exoclop — Mushroom Quest</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080816;--card:#11112a;--border:rgba(255,255,255,0.07);
+  --accent1:#ff6b35;--accent2:#00e5ff;--accent3:#ffe135;--accent4:#b34fff;
+  --accent5:#00ff88;--accent6:#ff4fcb;--text:#f0f0ff;--muted:#7777aa;
+  --mq:#ff6b35;--mq2:#b34fff;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#06080f;color:var(--text);font-family:'Nunito',sans-serif;overflow-x:hidden;}
+
+/* Forest bg */
+.bg-forest{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse at 50% 100%,rgba(0,80,30,.4) 0%,transparent 60%),
+             radial-gradient(ellipse at 20% 80%,rgba(50,30,0,.3) 0%,transparent 40%),
+             radial-gradient(ellipse at 80% 90%,rgba(30,0,50,.3) 0%,transparent 40%);}
+.stars{position:fixed;inset:0;pointer-events:none;z-index:0;}
+.stars::before{content:'';position:absolute;inset:0;background-image:
+  radial-gradient(1px 1px at 8% 12%,rgba(255,255,255,.9),transparent),
+  radial-gradient(1px 1px at 22% 68%,rgba(255,255,255,.7),transparent),
+  radial-gradient(1.5px 1.5px at 48% 28%,rgba(0,229,255,.5),transparent),
+  radial-gradient(1px 1px at 73% 58%,rgba(255,255,255,.8),transparent),
+  radial-gradient(2px 2px at 58% 82%,rgba(179,79,255,.4),transparent),
+  radial-gradient(1px 1px at 14% 42%,rgba(255,255,255,.5),transparent),
+  radial-gradient(1px 1px at 44% 5%,rgba(255,255,255,.8),transparent),
+  radial-gradient(1px 1px at 88% 88%,rgba(255,255,255,.6),transparent);}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;
+  background:rgba(6,8,15,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,229,255,.15);
+  position:sticky;top:0;z-index:1000;gap:1rem;}
+.nav-logo{font-family:'Bangers',cursive;font-size:1.8rem;letter-spacing:3px;
+  background:linear-gradient(135deg,#00e5ff,#b34fff);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;text-decoration:none;white-space:nowrap;}
+.nav-links{display:flex;gap:.2rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{color:var(--muted);text-decoration:none;font-weight:700;font-size:.78rem;
+  letter-spacing:.5px;text-transform:uppercase;padding:.4rem .6rem;border-radius:8px;transition:all .2s;}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.07);}
+.nav-links a.active{color:var(--accent2);background:rgba(0,229,255,.1);}
+
+/* HERO */
+.mq-hero{position:relative;z-index:1;text-align:center;padding:5rem 2rem 3rem;
+  border-bottom:1px solid rgba(255,107,53,.15);}
+.mq-hero .mushroom-row{font-size:3rem;margin-bottom:1.5rem;display:flex;gap:1rem;
+  justify-content:center;flex-wrap:wrap;}
+.mushroom{animation:float 2.5s ease-in-out infinite;}
+.mushroom:nth-child(1){animation-delay:0s;}
+.mushroom:nth-child(2){animation-delay:.3s;}
+.mushroom:nth-child(3){animation-delay:.6s;}
+.mushroom:nth-child(4){animation-delay:.9s;}
+.mushroom:nth-child(5){animation-delay:1.2s;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-15px);}}
+
+.mq-logo{font-family:'Bangers',cursive;font-size:clamp(3.5rem,10vw,8rem);
+  letter-spacing:5px;line-height:.9;
+  background:linear-gradient(135deg,var(--accent3),var(--mq),var(--mq2));
+  background-size:200% auto;animation:shimmer 4s linear infinite;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin-bottom:.5rem;}
+@keyframes shimmer{0%{background-position:0% center;}100%{background-position:200% center;}}
+
+.mq-tagline{font-family:'Fredoka One',cursive;font-size:1.5rem;color:var(--accent3);
+  margin-bottom:1rem;letter-spacing:2px;}
+.mq-desc{color:var(--muted);font-size:1.05rem;max-width:600px;margin:0 auto 2rem;line-height:1.8;}
+.mq-desc strong{color:var(--text);}
+.badge-row{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;}
+.badge{font-family:'Fredoka One',cursive;font-size:.9rem;padding:.4rem 1.1rem;
+  border-radius:100px;letter-spacing:1px;}
+.badge-gold{background:linear-gradient(135deg,var(--accent3),#ff9500);color:#000;}
+.badge-orange{background:linear-gradient(135deg,var(--mq),#ff0066);color:#fff;}
+.badge-purple{background:linear-gradient(135deg,var(--mq2),#6600ff);color:#fff;}
+
+.container{max-width:1100px;margin:0 auto;padding:0 2rem;position:relative;z-index:1;}
+
+/* Movie cards */
+.movies-section{padding:4rem 0;}
+.movies-section h2{font-family:'Bangers',cursive;font-size:2.5rem;letter-spacing:4px;
+  text-align:center;margin-bottom:3rem;color:var(--accent3);}
+
+.movie-card{display:flex;gap:3rem;align-items:stretch;background:var(--card);
+  border-radius:24px;border:2px solid rgba(255,107,53,.2);padding:2.5rem;
+  margin-bottom:2.5rem;transition:all .3s;position:relative;overflow:hidden;}
+.movie-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:4px;
+  background:var(--m-color);border-radius:4px 0 0 4px;}
+.movie-card:hover{transform:translateX(6px);box-shadow:0 20px 60px rgba(0,0,0,.5);
+  border-color:var(--m-color);}
+
+.movie-poster{flex-shrink:0;width:140px;height:180px;border-radius:16px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-size:4rem;background:var(--m-bg);border:2px solid var(--m-color);position:relative;}
+.movie-num{position:absolute;top:-12px;right:-12px;width:36px;height:36px;
+  background:var(--m-color);border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-family:'Bangers',cursive;font-size:1.1rem;color:#000;}
+.movie-poster-emoji{animation:float 3s ease-in-out infinite;}
+
+.movie-info{flex:1;}
+.movie-label{font-size:.75rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  color:var(--m-color);margin-bottom:.4rem;display:block;}
+.movie-title{font-family:'Bangers',cursive;font-size:2.2rem;letter-spacing:2px;
+  margin-bottom:.4rem;color:var(--text);}
+.movie-subtitle{font-family:'Fredoka One',cursive;font-size:1rem;color:var(--muted);
+  margin-bottom:1rem;font-style:italic;}
+.movie-desc{color:var(--muted);line-height:1.8;margin-bottom:1.2rem;font-size:.95rem;}
+.movie-desc strong{color:var(--text);}
+.movie-tags{display:flex;gap:.5rem;flex-wrap:wrap;}
+.movie-tag{font-size:.72rem;font-weight:800;letter-spacing:.5px;text-transform:uppercase;
+  padding:.25rem .7rem;border-radius:100px;border:1.5px solid var(--m-color);color:var(--m-color);}
+
+/* Coming next */
+.coming-next{background:linear-gradient(135deg,rgba(255,107,53,.08),rgba(179,79,255,.08));
+  border:2px dashed rgba(255,107,53,.3);border-radius:24px;padding:3rem;
+  text-align:center;margin-top:2rem;}
+.coming-next h3{font-family:'Bangers',cursive;font-size:2rem;letter-spacing:3px;
+  color:var(--mq2);margin-bottom:.5rem;}
+.coming-next p{color:var(--muted);margin-bottom:1rem;}
+.hype-meter{background:rgba(0,0,0,.3);border-radius:100px;height:12px;max-width:300px;
+  margin:1rem auto;overflow:hidden;}
+.hype-fill{height:100%;background:linear-gradient(90deg,var(--mq),var(--mq2));
+  border-radius:100px;width:85%;animation:hype 2s ease-in-out infinite alternate;}
+@keyframes hype{from{opacity:.7;}to{opacity:1;}}
+.hype-label{font-size:.8rem;color:var(--accent3);font-weight:800;letter-spacing:1px;}
+
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:'Fredoka One',cursive;
+  font-size:1rem;padding:.7rem 1.6rem;border-radius:100px;text-decoration:none;transition:all .25s;}
+.btn-yt{background:#ff0000;color:#fff;}
+.btn-yt:hover{transform:scale(1.05);box-shadow:0 0 25px rgba(255,0,0,.4);}
+
+footer{text-align:center;padding:2.5rem 2rem;color:var(--muted);font-size:.85rem;
+  border-top:1px solid rgba(255,255,255,.05);position:relative;z-index:1;margin-top:3rem;}
+footer a{color:var(--accent1);text-decoration:none;}
+footer .heart{color:var(--accent6);}
+@media(max-width:768px){.nav-links{display:none;}.movie-card{flex-direction:column;}.movie-poster{width:100%;height:120px;}.movie-card::before{top:0;left:0;right:0;bottom:auto;width:auto;height:4px;}}
+</style>
+</head>
+<body>
+<div class="bg-forest"></div>
+<div class="stars"></div>
+
+<nav>
+  <a class="nav-logo" href="index.html">Z46 EXOCLOP</a>
+  <ul class="nav-links">
+    <li><a href="index.html">🏠 Home</a></li>
+    <li><a href="crew.html">👥 The Crew</a></li>
+    <li><a href="games.html">🎮 Games</a></li>
+    <li><a href="youtube.html">▶️ YouTube</a></li>
+    <li><a href="mushroom-quest.html" class="active">🍄 Mushroom Quest</a></li>
+    <li><a href="cooking.html">🍳 Cooking</a></li>
+    <li><a href="rio-reads.html">📚 Rio Reads</a></li>
+    <li><a href="numbers.html">🔢 Numbers</a></li>
+  </ul>
+</nav>
+
+<div class="mq-hero">
+  <div class="mushroom-row">
+    <span class="mushroom">🍄</span>
+    <span class="mushroom">🌟</span>
+    <span class="mushroom">🍄</span>
+    <span class="mushroom">⚔️</span>
+    <span class="mushroom">🍄</span>
+  </div>
+  <div class="mq-logo">MUSHROOM<br>QUEST</div>
+  <div class="mq-tagline">An Original Z46 Exoclop Movie Series</div>
+  <p class="mq-desc">Three epic films. Countless adventures. One legendary quest. <strong>Rio and the Z46 Exoclop crew</strong> bring you an original action-adventure movie series unlike anything else!</p>
+  <div class="badge-row">
+    <span class="badge badge-gold">⭐ 3 Films</span>
+    <span class="badge badge-orange">🎬 Original Series</span>
+    <span class="badge badge-purple">🍄 Epic Adventures</span>
+  </div>
+</div>
+
+<div class="container">
+  <div class="movies-section">
+    <h2>🎬 THE FILMS</h2>
+
+    <!-- Movie 1 -->
+    <div class="movie-card" style="--m-color:var(--accent3);--m-bg:rgba(255,225,53,.08);">
+      <div class="movie-poster">
+        <div class="movie-num">1</div>
+        <span class="movie-poster-emoji">🍄</span>
+      </div>
+      <div class="movie-info">
+        <span class="movie-label">🎬 Movie 1 · The Original</span>
+        <div class="movie-title">MUSHROOM QUEST</div>
+        <div class="movie-subtitle">Where it all began...</div>
+        <p class="movie-desc">The film that started it all! Join the crew on their very first quest as they discover the magical world of mushrooms, face their first great challenge, and learn that <strong>teamwork makes the dream work.</strong> A legendary beginning to a legendary series.</p>
+        <div class="movie-tags">
+          <span class="movie-tag">🎬 Film 1</span>
+          <span class="movie-tag">⚡ Action</span>
+          <span class="movie-tag">🌟 Adventure</span>
+          <span class="movie-tag">✅ Available Now</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Movie 2 -->
+    <div class="movie-card" style="--m-color:var(--accent1);--m-bg:rgba(255,107,53,.08);">
+      <div class="movie-poster">
+        <div class="movie-num" style="color:#fff;">2</div>
+        <span class="movie-poster-emoji">⚔️</span>
+      </div>
+      <div class="movie-info">
+        <span class="movie-label">🎬 Movie 2 · The Sequel</span>
+        <div class="movie-title">MUSHROOM QUEST II</div>
+        <div class="movie-subtitle">The quest continues...</div>
+        <p class="movie-desc">The crew is back and the stakes are higher than ever! New challenges, new allies, and <strong>even more mushroom mayhem</strong> await. The sequel that fans demanded — and it delivers everything and more. Bigger. Bolder. Better!</p>
+        <div class="movie-tags">
+          <span class="movie-tag">🎬 Film 2</span>
+          <span class="movie-tag">⚡ Action</span>
+          <span class="movie-tag">🌟 Adventure</span>
+          <span class="movie-tag">✅ Available Now</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Movie 3 -->
+    <div class="movie-card" style="--m-color:var(--accent4);--m-bg:rgba(179,79,255,.08);">
+      <div class="movie-poster">
+        <div class="movie-num" style="color:#fff;">3</div>
+        <span class="movie-poster-emoji">🌌</span>
+      </div>
+      <div class="movie-info">
+        <span class="movie-label">🎬 Movie 3 · The Trilogy Finale</span>
+        <div class="movie-title">MUSHROOM QUEST III</div>
+        <div class="movie-subtitle">The epic conclusion...</div>
+        <p class="movie-desc">The final chapter of the Mushroom Quest trilogy! All the storylines converge, all the heroes unite, and the greatest battle yet unfolds. <strong>An unforgettable finale</strong> that wraps up the saga while leaving the door open for… what comes next?</p>
+        <div class="movie-tags">
+          <span class="movie-tag">🎬 Film 3</span>
+          <span class="movie-tag">⚡ Action</span>
+          <span class="movie-tag">🏆 Finale</span>
+          <span class="movie-tag">✅ Available Now</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coming Next -->
+    <div class="coming-next">
+      <h3>🔮 WHAT'S NEXT?</h3>
+      <p>The Mushroom Quest universe is always expanding. Will there be a Movie 4? A spin-off? A whole new series? Stay tuned to <strong>@RioDada</strong> to find out first!</p>
+      <div class="hype-meter"><div class="hype-fill"></div></div>
+      <p class="hype-label">HYPE LEVEL: 85%</p>
+      <br>
+      <a href="https://www.youtube.com/@RioDada" target="_blank" class="btn btn-yt">▶️ Watch on @RioDada</a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  Made with <span class="heart">♥</span> by <a href="crew.html">Rio & Dada</a> · Z46 Exoclop ·
+  <a href="https://www.youtube.com/@RioDada" target="_blank">@RioDada on YouTube</a>
+</footer>
+</body>
+</html>

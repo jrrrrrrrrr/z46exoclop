@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Z46 Exoclop — Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#080816; --bg2:#0d0d22; --card:#11112a; --border:rgba(255,255,255,0.07);
+  --accent1:#ff6b35; --accent2:#00e5ff; --accent3:#ffe135; --accent4:#b34fff;
+  --accent5:#00ff88; --accent6:#ff4fcb; --text:#f0f0ff; --muted:#7777aa;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;overflow-x:hidden;}
+
+/* Stars */
+.stars{position:fixed;inset:0;pointer-events:none;z-index:0;}
+.stars::before,.stars::after{content:'';position:absolute;inset:0;}
+.stars::before{background-image:
+  radial-gradient(1px 1px at 8% 12%,rgba(255,255,255,.9),transparent),
+  radial-gradient(1px 1px at 22% 68%,rgba(255,255,255,.7),transparent),
+  radial-gradient(1.5px 1.5px at 48% 28%,rgba(0,229,255,.7),transparent),
+  radial-gradient(1px 1px at 73% 58%,rgba(255,255,255,.8),transparent),
+  radial-gradient(1px 1px at 91% 8%,rgba(255,107,53,.6),transparent),
+  radial-gradient(1px 1px at 33% 88%,rgba(255,255,255,.6),transparent),
+  radial-gradient(2px 2px at 58% 82%,rgba(179,79,255,.6),transparent),
+  radial-gradient(1px 1px at 14% 42%,rgba(255,255,255,.5),transparent),
+  radial-gradient(1px 1px at 79% 32%,rgba(0,255,136,.5),transparent),
+  radial-gradient(1px 1px at 5% 55%,rgba(255,225,53,.4),transparent),
+  radial-gradient(1.5px 1.5px at 44% 5%,rgba(255,255,255,.8),transparent),
+  radial-gradient(1px 1px at 66% 72%,rgba(255,79,203,.5),transparent),
+  radial-gradient(1px 1px at 88% 88%,rgba(255,255,255,.6),transparent),
+  radial-gradient(1px 1px at 55% 45%,rgba(255,255,255,.4),transparent);}
+.stars::after{background-image:
+  radial-gradient(1px 1px at 18% 25%,rgba(255,255,255,.5),transparent),
+  radial-gradient(1px 1px at 40% 78%,rgba(0,229,255,.4),transparent),
+  radial-gradient(1px 1px at 62% 15%,rgba(255,255,255,.7),transparent),
+  radial-gradient(1.5px 1.5px at 85% 52%,rgba(179,79,255,.5),transparent),
+  radial-gradient(1px 1px at 95% 70%,rgba(255,107,53,.5),transparent),
+  radial-gradient(1px 1px at 2% 80%,rgba(255,255,255,.5),transparent),
+  radial-gradient(1px 1px at 50% 95%,rgba(0,255,136,.4),transparent),
+  radial-gradient(1px 1px at 27% 35%,rgba(255,225,53,.3),transparent),
+  radial-gradient(2px 2px at 72% 5%,rgba(255,255,255,.6),transparent);}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;
+  background:rgba(8,8,22,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,229,255,.15);
+  position:sticky;top:0;z-index:1000;gap:1rem;}
+.nav-logo{font-family:'Bangers',cursive;font-size:1.8rem;letter-spacing:3px;
+  background:linear-gradient(135deg,var(--accent2),var(--accent4));-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;text-decoration:none;white-space:nowrap;}
+.nav-links{display:flex;gap:.2rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{color:var(--muted);text-decoration:none;font-weight:700;font-size:.78rem;
+  letter-spacing:.5px;text-transform:uppercase;padding:.4rem .6rem;border-radius:8px;transition:all .2s;}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.07);}
+.nav-links a.active{color:var(--accent2);background:rgba(0,229,255,.1);}
+
+/* HERO */
+.hero{position:relative;z-index:1;text-align:center;padding:5rem 2rem 3rem;min-height:calc(100vh - 64px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;}
+
+.hero-badge{display:inline-block;background:linear-gradient(135deg,var(--accent3),var(--accent1));
+  color:#000;font-family:'Bangers',cursive;font-size:1rem;letter-spacing:4px;
+  padding:.35rem 1.4rem;border-radius:100px;margin-bottom:2rem;
+  animation:pulse 2.5s ease-in-out infinite;}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
+
+.hero h1{font-family:'Bangers',cursive;font-size:clamp(3.5rem,11vw,9rem);
+  letter-spacing:6px;line-height:.95;margin-bottom:1rem;
+  background:linear-gradient(135deg,var(--accent2) 0%,var(--accent4) 40%,var(--accent1) 70%,var(--accent3) 100%);
+  background-size:300% auto;animation:shimmer 6s linear infinite;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
+@keyframes shimmer{0%{background-position:0% center;}100%{background-position:300% center;}}
+
+.hero-sub{font-family:'Fredoka One',cursive;font-size:clamp(1.2rem,3vw,2rem);
+  color:var(--muted);margin-bottom:2rem;letter-spacing:2px;}
+.hero-sub span{color:var(--accent3);}
+
+.hero-desc{max-width:600px;font-size:1.1rem;color:var(--muted);line-height:1.8;margin-bottom:3rem;}
+.hero-desc strong{color:var(--text);}
+
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:'Fredoka One',cursive;
+  font-size:1rem;letter-spacing:1px;padding:.8rem 1.8rem;border-radius:100px;
+  text-decoration:none;transition:all .25s;border:none;cursor:pointer;}
+.btn-primary{background:linear-gradient(135deg,var(--accent2),var(--accent4));color:#000;font-weight:900;}
+.btn-primary:hover{transform:scale(1.06);box-shadow:0 0 30px rgba(0,229,255,.4);}
+.btn-secondary{background:transparent;color:var(--text);border:2px solid var(--border);}
+.btn-secondary:hover{border-color:var(--accent1);color:var(--accent1);}
+
+/* Floating emoji row */
+.floaties{display:flex;gap:2rem;justify-content:center;margin-top:3rem;font-size:2.5rem;flex-wrap:wrap;}
+.floaty{animation:float 3s ease-in-out infinite;}
+.floaty:nth-child(1){animation-delay:0s;}
+.floaty:nth-child(2){animation-delay:.4s;}
+.floaty:nth-child(3){animation-delay:.8s;}
+.floaty:nth-child(4){animation-delay:1.2s;}
+.floaty:nth-child(5){animation-delay:1.6s;}
+.floaty:nth-child(6){animation-delay:2s;}
+.floaty:nth-child(7){animation-delay:2.4s;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-15px);}}
+
+/* SECTIONS */
+.container{max-width:1200px;margin:0 auto;padding:0 2rem;position:relative;z-index:1;}
+section{padding:4rem 0;}
+
+.section-header{text-align:center;margin-bottom:3rem;}
+.section-header h2{font-family:'Bangers',cursive;font-size:2.8rem;letter-spacing:4px;margin-bottom:.5rem;}
+.section-header p{color:var(--muted);font-size:1rem;}
+
+/* Feature cards */
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
+.feature-card{background:var(--card);border-radius:20px;border:1.5px solid var(--border);
+  padding:2rem;transition:all .25s;text-decoration:none;color:var(--text);display:block;}
+.feature-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.4);border-color:var(--hover-color);}
+.feature-card .icon{font-size:3rem;margin-bottom:1rem;display:block;animation:float 3s ease-in-out infinite;}
+.feature-card h3{font-family:'Fredoka One',cursive;font-size:1.5rem;margin-bottom:.6rem;color:var(--hover-color);}
+.feature-card p{font-size:.95rem;color:var(--muted);line-height:1.7;}
+.feature-card .arrow{display:inline-block;margin-top:1rem;font-size:.9rem;font-weight:800;
+  color:var(--hover-color);opacity:.7;transition:all .2s;}
+.feature-card:hover .arrow{opacity:1;transform:translateX(4px);}
+
+/* Stats bar */
+.stats{background:var(--card);border-radius:20px;border:1.5px solid var(--border);
+  padding:2rem;display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:1rem;}
+.stat{text-align:center;padding:1rem 2rem;}
+.stat-num{font-family:'Bangers',cursive;font-size:3rem;letter-spacing:2px;display:block;}
+.stat-label{font-size:.8rem;text-transform:uppercase;letter-spacing:2px;color:var(--muted);font-weight:700;}
+
+/* YouTube embed teaser */
+.yt-banner{background:linear-gradient(135deg,rgba(255,107,53,.15),rgba(179,79,255,.15));
+  border:1.5px solid rgba(255,107,53,.3);border-radius:20px;padding:2.5rem;text-align:center;}
+.yt-banner h3{font-family:'Bangers',cursive;font-size:2rem;letter-spacing:3px;color:var(--accent1);margin-bottom:.5rem;}
+.yt-banner p{color:var(--muted);margin-bottom:1.5rem;}
+
+footer{text-align:center;padding:2.5rem 2rem;color:var(--muted);font-size:.85rem;
+  border-top:1px solid rgba(255,255,255,.05);position:relative;z-index:1;}
+footer a{color:var(--accent1);text-decoration:none;}
+footer .heart{color:var(--accent6);}
+
+@media(max-width:768px){.nav-links{display:none;}.floaties{gap:1rem;font-size:2rem;}}
+</style>
+</head>
+<body>
+<div class="stars"></div>
+
+<nav>
+  <a class="nav-logo" href="index.html">Z46 EXOCLOP</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">🏠 Home</a></li>
+    <li><a href="crew.html">👥 The Crew</a></li>
+    <li><a href="games.html">🎮 Games</a></li>
+    <li><a href="youtube.html">▶️ YouTube</a></li>
+    <li><a href="mushroom-quest.html">🍄 Mushroom Quest</a></li>
+    <li><a href="cooking.html">🍳 Cooking</a></li>
+    <li><a href="rio-reads.html">📚 Rio Reads</a></li>
+    <li><a href="numbers.html">🔢 Numbers</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">🚀 WELCOME TO THE UNIVERSE</div>
+  <h1>Z46<br>EXOCLOP</h1>
+  <p class="hero-sub">Adventures with <span>Rio & Dada</span></p>
+  <p class="hero-desc">Gaming, fun, creative play, mind-blowing numbers, cooking adventures, epic movies, and more. <strong>This is our world — come explore it!</strong></p>
+  <div class="hero-btns">
+    <a href="youtube.html" class="btn btn-primary">▶️ Watch Our Videos</a>
+    <a href="crew.html" class="btn btn-secondary">👥 Meet The Crew</a>
+  </div>
+  <div class="floaties">
+    <span class="floaty">🎮</span>
+    <span class="floaty">🍄</span>
+    <span class="floaty">🍳</span>
+    <span class="floaty">📚</span>
+    <span class="floaty">🔢</span>
+    <span class="floaty">🎬</span>
+    <span class="floaty">🐱</span>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-num" style="color:var(--accent2)">188</span>
+      <span class="stat-label">Subscribers</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num" style="color:var(--accent1)">120+</span>
+      <span class="stat-label">Videos</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num" style="color:var(--accent3)">3</span>
+      <span class="stat-label">Mushroom Quest Movies</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num" style="color:var(--accent4)">∞</span>
+      <span class="stat-label">Fun Had</span>
+    </div>
+  </div>
+
+  <!-- What we do -->
+  <section>
+    <div class="section-header">
+      <h2 style="background:linear-gradient(135deg,var(--accent2),var(--accent5));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;">WHAT WE'RE ABOUT</h2>
+      <p>Everything Z46 Exoclop has to offer</p>
+    </div>
+    <div class="feature-grid">
+      <a href="crew.html" class="feature-card" style="--hover-color:var(--accent4)">
+        <span class="icon">👥</span>
+        <h3>The Crew</h3>
+        <p>Meet all the friends and family who make up the Z46 Exoclop universe. From Rio to Dada and everyone in between!</p>
+        <span class="arrow">Meet everyone →</span>
+      </a>
+      <a href="games.html" class="feature-card" style="--hover-color:var(--accent2)">
+        <span class="icon">🎮</span>
+        <h3>Nintendo Games</h3>
+        <p>Every Switch and Switch 2 game we've played, with our thoughts. An ever-growing library of gaming adventures!</p>
+        <span class="arrow">See all games →</span>
+      </a>
+      <a href="mushroom-quest.html" class="feature-card" style="--hover-color:var(--accent1)">
+        <span class="icon">🍄</span>
+        <h3>Mushroom Quest</h3>
+        <p>Our epic original movie series! Three films and counting, full of adventure, laughs, and mushroom mayhem.</p>
+        <span class="arrow">Watch the movies →</span>
+      </a>
+      <a href="cooking.html" class="feature-card" style="--hover-color:var(--accent3)">
+        <span class="icon">🍳</span>
+        <h3>Cooking Series</h3>
+        <p>Rio and Dada hit the kitchen! Real recipes, real fun, and sometimes real disasters. Delicious either way.</p>
+        <span class="arrow">Into the kitchen →</span>
+      </a>
+      <a href="rio-reads.html" class="feature-card" style="--hover-color:var(--accent5)">
+        <span class="icon">📚</span>
+        <h3>Rio Reads</h3>
+        <p>Rio records himself reading books aloud. A growing library of read-alouds for everyone. Coming soon!</p>
+        <span class="arrow">See what's coming →</span>
+      </a>
+      <a href="numbers.html" class="feature-card" style="--hover-color:var(--accent6)">
+        <span class="icon">🔢</span>
+        <h3>Mind-Blowing Numbers</h3>
+        <p>TREE(3), Graham's Number, Pi, Planck Time, black holes… Rio's favorite universe-breaking numbers!</p>
+        <span class="arrow">Blow your mind →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- YouTube CTA -->
+  <section>
+    <div class="yt-banner">
+      <h3>🎬 FIND US ON YOUTUBE</h3>
+      <p>Game playthroughs, Mushroom Quest movies, cooking adventures, and more — all on our channel!</p>
+      <a href="https://www.youtube.com/@RioDada" target="_blank" class="btn btn-primary">▶️ Visit @RioDada</a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  Made with <span class="heart">♥</span> by <a href="crew.html">Rio & Dada</a> · Z46 Exoclop ·
+  <a href="https://www.youtube.com/@RioDada" target="_blank">@RioDada on YouTube</a>
+</footer>
+</body>
+</html>

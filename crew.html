@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Z46 Exoclop — The Crew</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080816;--card:#11112a;--border:rgba(255,255,255,0.07);
+  --accent1:#ff6b35;--accent2:#00e5ff;--accent3:#ffe135;--accent4:#b34fff;
+  --accent5:#00ff88;--accent6:#ff4fcb;--text:#f0f0ff;--muted:#7777aa;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;overflow-x:hidden;}
+.stars{position:fixed;inset:0;pointer-events:none;z-index:0;}
+.stars::before,.stars::after{content:'';position:absolute;inset:0;}
+.stars::before{background-image:
+  radial-gradient(1px 1px at 8% 12%,rgba(255,255,255,.9),transparent),
+  radial-gradient(1px 1px at 22% 68%,rgba(255,255,255,.7),transparent),
+  radial-gradient(1.5px 1.5px at 48% 28%,rgba(0,229,255,.7),transparent),
+  radial-gradient(1px 1px at 73% 58%,rgba(255,255,255,.8),transparent),
+  radial-gradient(1px 1px at 91% 8%,rgba(255,107,53,.6),transparent),
+  radial-gradient(2px 2px at 58% 82%,rgba(179,79,255,.6),transparent),
+  radial-gradient(1px 1px at 14% 42%,rgba(255,255,255,.5),transparent),
+  radial-gradient(1px 1px at 79% 32%,rgba(0,255,136,.5),transparent),
+  radial-gradient(1px 1px at 44% 5%,rgba(255,255,255,.8),transparent),
+  radial-gradient(1px 1px at 66% 72%,rgba(255,79,203,.5),transparent);}
+nav{display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;
+  background:rgba(8,8,22,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,229,255,.15);
+  position:sticky;top:0;z-index:1000;gap:1rem;}
+.nav-logo{font-family:'Bangers',cursive;font-size:1.8rem;letter-spacing:3px;
+  background:linear-gradient(135deg,#00e5ff,#b34fff);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;text-decoration:none;white-space:nowrap;}
+.nav-links{display:flex;gap:.2rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{color:var(--muted);text-decoration:none;font-weight:700;font-size:.78rem;
+  letter-spacing:.5px;text-transform:uppercase;padding:.4rem .6rem;border-radius:8px;transition:all .2s;}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.07);}
+.nav-links a.active{color:var(--accent2);background:rgba(0,229,255,.1);}
+
+/* HEADER */
+.page-header{text-align:center;padding:4rem 2rem 2rem;position:relative;z-index:1;}
+.page-tag{display:inline-block;background:linear-gradient(135deg,var(--accent4),var(--accent6));
+  color:#fff;font-family:'Bangers',cursive;font-size:.95rem;letter-spacing:3px;
+  padding:.3rem 1.2rem;border-radius:100px;margin-bottom:1.2rem;
+  animation:tagpulse 2s ease-in-out infinite;}
+@keyframes tagpulse{0%,100%{transform:scale(1);}50%{transform:scale(1.04);}}
+.page-header h1{font-family:'Bangers',cursive;font-size:clamp(3rem,8vw,6rem);
+  letter-spacing:4px;line-height:1;margin-bottom:1rem;
+  background:linear-gradient(135deg,var(--accent4),var(--accent6),var(--accent2));
+  background-size:200% auto;animation:shimmer 5s linear infinite;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
+@keyframes shimmer{0%{background-position:0% center;}100%{background-position:200% center;}}
+.page-header p{font-size:1.1rem;color:var(--muted);max-width:620px;margin:0 auto;line-height:1.7;}
+.page-header p strong{color:var(--text);}
+
+.container{max-width:1200px;margin:0 auto;padding:0 2rem;position:relative;z-index:1;}
+
+/* CREW CARDS */
+.crew-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2rem;
+  padding:2rem 0 4rem;}
+
+.crew-card{background:var(--card);border-radius:24px;border:2px solid var(--border);
+  padding:2rem;transition:all .3s;position:relative;overflow:hidden;}
+.crew-card::after{content:'';position:absolute;inset:0;border-radius:24px;opacity:0;
+  background:var(--glow);transition:opacity .3s;pointer-events:none;}
+.crew-card:hover{transform:translateY(-8px);border-color:var(--accent-color);
+  box-shadow:0 20px 60px rgba(0,0,0,.5);}
+
+.crew-avatar{font-size:5rem;text-align:center;margin-bottom:1rem;display:block;
+  animation:float 3s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+
+.crew-card:nth-child(1) .crew-avatar{animation-delay:0s;}
+.crew-card:nth-child(2) .crew-avatar{animation-delay:.5s;}
+.crew-card:nth-child(3) .crew-avatar{animation-delay:1s;}
+.crew-card:nth-child(4) .crew-avatar{animation-delay:1.5s;}
+.crew-card:nth-child(5) .crew-avatar{animation-delay:2s;}
+.crew-card:nth-child(6) .crew-avatar{animation-delay:2.5s;}
+
+.crew-name{font-family:'Bangers',cursive;font-size:2rem;letter-spacing:2px;
+  text-align:center;margin-bottom:.3rem;color:var(--accent-color);}
+.crew-title{text-align:center;font-size:.8rem;text-transform:uppercase;letter-spacing:2px;
+  color:var(--muted);font-weight:700;margin-bottom:1.2rem;}
+
+.crew-tags{display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin-bottom:1.2rem;}
+.crew-tag{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  border-radius:100px;padding:.25rem .75rem;font-size:.75rem;font-weight:700;
+  letter-spacing:.5px;color:var(--accent-color);}
+
+.crew-bio{font-size:.92rem;color:var(--muted);line-height:1.75;text-align:center;}
+.crew-bio strong{color:var(--text);}
+
+/* Special hero card for Rio */
+.crew-card.hero-card{grid-column:1/-1;display:flex;gap:2rem;align-items:center;
+  background:linear-gradient(135deg,rgba(0,229,255,.08),rgba(179,79,255,.08));
+  border-color:rgba(0,229,255,.3);}
+.crew-card.hero-card .crew-avatar{font-size:7rem;flex-shrink:0;animation:float 3s ease-in-out infinite;}
+.crew-card.hero-card .crew-content{flex:1;}
+.crew-card.hero-card .crew-name{text-align:left;font-size:3rem;}
+.crew-card.hero-card .crew-title{text-align:left;}
+.crew-card.hero-card .crew-tags{justify-content:flex-start;}
+.crew-card.hero-card .crew-bio{text-align:left;}
+
+/* Add your own crew CTA */
+.crew-add{background:rgba(255,255,255,.03);border:2px dashed rgba(255,255,255,.1);
+  border-radius:24px;padding:2rem;text-align:center;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:1rem;min-height:250px;}
+.crew-add .plus{font-size:4rem;opacity:.3;}
+.crew-add p{color:var(--muted);font-size:.9rem;}
+
+footer{text-align:center;padding:2.5rem 2rem;color:var(--muted);font-size:.85rem;
+  border-top:1px solid rgba(255,255,255,.05);position:relative;z-index:1;}
+footer a{color:var(--accent1);text-decoration:none;}
+footer .heart{color:var(--accent6);}
+@media(max-width:768px){.nav-links{display:none;}.crew-card.hero-card{flex-direction:column;}.crew-card.hero-card .crew-name,.crew-card.hero-card .crew-title,.crew-card.hero-card .crew-tags{text-align:center;justify-content:center;}.crew-card.hero-card .crew-bio{text-align:center;}}
+</style>
+</head>
+<body>
+<div class="stars"></div>
+
+<nav>
+  <a class="nav-logo" href="index.html">Z46 EXOCLOP</a>
+  <ul class="nav-links">
+    <li><a href="index.html">🏠 Home</a></li>
+    <li><a href="crew.html" class="active">👥 The Crew</a></li>
+    <li><a href="games.html">🎮 Games</a></li>
+    <li><a href="youtube.html">▶️ YouTube</a></li>
+    <li><a href="mushroom-quest.html">🍄 Mushroom Quest</a></li>
+    <li><a href="cooking.html">🍳 Cooking</a></li>
+    <li><a href="rio-reads.html">📚 Rio Reads</a></li>
+    <li><a href="numbers.html">🔢 Numbers</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-tag">👥 MEET THE SQUAD</div>
+  <h1>THE CREW</h1>
+  <p>The friends and family who make up the <strong>Z46 Exoclop</strong> universe. Every adventure is better together!</p>
+</div>
+
+<div class="container">
+  <div class="crew-grid">
+
+    <!-- RIO — Hero Card -->
+    <div class="crew-card hero-card" style="--accent-color:var(--accent2);--glow:linear-gradient(135deg,rgba(0,229,255,.05),transparent);">
+      <span class="crew-avatar">🧒</span>
+      <div class="crew-content">
+        <div class="crew-name">RIO</div>
+        <div class="crew-title">⭐ Founder & Chief Adventure Officer</div>
+        <div class="crew-tags">
+          <span class="crew-tag">🎮 Gamer</span>
+          <span class="crew-tag">🎬 Director</span>
+          <span class="crew-tag">📚 Reader</span>
+          <span class="crew-tag">🔢 Math Lover</span>
+          <span class="crew-tag">🍳 Chef in Training</span>
+          <span class="crew-tag">🐱 Cat Dad</span>
+        </div>
+        <p class="crew-bio">
+          Rio is the creative genius behind Z46 Exoclop. At just <strong>6 years old</strong>, he's already a gamer, filmmaker, mathematician, chef, and storyteller. He loves Nintendo games, mind-blowing numbers like TREE(3), cooking wild recipes, recording himself reading, and directing the Mushroom Quest movie series. The Z46 Exoclop universe exists because of Rio's imagination!
+        </p>
+      </div>
+    </div>
+
+    <!-- DADA -->
+    <div class="crew-card" style="--accent-color:var(--accent1);--glow:linear-gradient(135deg,rgba(255,107,53,.05),transparent);">
+      <span class="crew-avatar">👨</span>
+      <div class="crew-name">DADA</div>
+      <div class="crew-title">🎬 Co-Pilot & Camera Person</div>
+      <div class="crew-tags">
+        <span class="crew-tag">🎮 Gamer</span>
+        <span class="crew-tag">📹 Producer</span>
+        <span class="crew-tag">🍳 Cook</span>
+      </div>
+      <p class="crew-bio">Rio's dad and partner in all adventures. Dada handles the camera, plays co-op games, cooks alongside Rio, and makes sure the Z46 Exoclop mission keeps moving forward. The original dynamic duo!</p>
+    </div>
+
+    <!-- BLACK CAT -->
+    <div class="crew-card" style="--accent-color:var(--accent4);--glow:linear-gradient(135deg,rgba(179,79,255,.05),transparent);">
+      <span class="crew-avatar">🐱</span>
+      <div class="crew-name">THE CAT</div>
+      <div class="crew-title">😼 Chief Mischief Officer</div>
+      <div class="crew-tags">
+        <span class="crew-tag">😺 Fluffy</span>
+        <span class="crew-tag">🕶️ Cool</span>
+        <span class="crew-tag">🎮 Supervisor</span>
+      </div>
+      <p class="crew-bio">The legendary black cat of Z46 Exoclop. Often seen supervising gaming sessions, walking across keyboards at critical moments, and stealing the spotlight. An essential crew member with attitude to spare!</p>
+    </div>
+
+    <!-- PLACEHOLDER CREW MEMBERS — Rio can fill these in! -->
+    <div class="crew-card" style="--accent-color:var(--accent3);--glow:linear-gradient(135deg,rgba(255,225,53,.05),transparent);">
+      <span class="crew-avatar">🧑</span>
+      <div class="crew-name">CREW MEMBER</div>
+      <div class="crew-title">🌟 Add Your Name Here!</div>
+      <div class="crew-tags">
+        <span class="crew-tag">👋 Friend</span>
+        <span class="crew-tag">⭐ Z46 Member</span>
+      </div>
+      <p class="crew-bio">This spot is reserved for a special member of the Z46 Exoclop crew. Add your friends and family here to show the world who's on the team!</p>
+    </div>
+
+    <div class="crew-card" style="--accent-color:var(--accent5);--glow:linear-gradient(135deg,rgba(0,255,136,.05),transparent);">
+      <span class="crew-avatar">🧑</span>
+      <div class="crew-name">CREW MEMBER</div>
+      <div class="crew-title">🌟 Add Your Name Here!</div>
+      <div class="crew-tags">
+        <span class="crew-tag">👋 Friend</span>
+        <span class="crew-tag">⭐ Z46 Member</span>
+      </div>
+      <p class="crew-bio">Another amazing member of the Z46 crew! Every great adventure needs a great team. Who will fill this spot?</p>
+    </div>
+
+    <div class="crew-card" style="--accent-color:var(--accent6);--glow:linear-gradient(135deg,rgba(255,79,203,.05),transparent);">
+      <span class="crew-avatar">🧑</span>
+      <div class="crew-name">CREW MEMBER</div>
+      <div class="crew-title">🌟 Add Your Name Here!</div>
+      <div class="crew-tags">
+        <span class="crew-tag">👋 Friend</span>
+        <span class="crew-tag">⭐ Z46 Member</span>
+      </div>
+      <p class="crew-bio">The Z46 Exoclop crew keeps growing! This card is ready for the next legendary member of the squad. Could it be you?</p>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  Made with <span class="heart">♥</span> by <a href="crew.html">Rio & Dada</a> · Z46 Exoclop ·
+  <a href="https://www.youtube.com/@RioDada" target="_blank">@RioDada on YouTube</a>
+</footer>
+</body>
+</html>

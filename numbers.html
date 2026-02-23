@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Z46 Exoclop — Mind-Blowing Numbers</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080816;--card:#11112a;--border:rgba(255,255,255,0.07);
+  --accent1:#ff6b35;--accent2:#00e5ff;--accent3:#ffe135;--accent4:#b34fff;
+  --accent5:#00ff88;--accent6:#ff4fcb;--text:#f0f0ff;--muted:#7777aa;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;overflow-x:hidden;}
+.stars{position:fixed;inset:0;pointer-events:none;z-index:0;}
+.stars::before,.stars::after{content:'';position:absolute;inset:0;}
+.stars::before{background-image:
+  radial-gradient(1px 1px at 8% 12%,rgba(255,255,255,.9),transparent),
+  radial-gradient(1px 1px at 22% 68%,rgba(255,255,255,.7),transparent),
+  radial-gradient(1.5px 1.5px at 48% 28%,rgba(0,229,255,.7),transparent),
+  radial-gradient(1px 1px at 73% 58%,rgba(255,255,255,.8),transparent),
+  radial-gradient(1px 1px at 91% 8%,rgba(255,107,53,.6),transparent),
+  radial-gradient(1px 1px at 33% 88%,rgba(255,255,255,.6),transparent),
+  radial-gradient(2px 2px at 58% 82%,rgba(179,79,255,.6),transparent),
+  radial-gradient(1px 1px at 14% 42%,rgba(255,255,255,.5),transparent),
+  radial-gradient(1px 1px at 79% 32%,rgba(0,255,136,.5),transparent),
+  radial-gradient(1px 1px at 5% 55%,rgba(255,225,53,.4),transparent),
+  radial-gradient(1.5px 1.5px at 44% 5%,rgba(255,255,255,.8),transparent),
+  radial-gradient(1px 1px at 66% 72%,rgba(255,79,203,.5),transparent),
+  radial-gradient(1px 1px at 88% 88%,rgba(255,255,255,.6),transparent);}
+.stars::after{background-image:
+  radial-gradient(1px 1px at 18% 25%,rgba(255,255,255,.5),transparent),
+  radial-gradient(1px 1px at 40% 78%,rgba(0,229,255,.4),transparent),
+  radial-gradient(1px 1px at 62% 15%,rgba(255,255,255,.7),transparent),
+  radial-gradient(1.5px 1.5px at 85% 52%,rgba(179,79,255,.5),transparent),
+  radial-gradient(1px 1px at 50% 95%,rgba(0,255,136,.4),transparent),
+  radial-gradient(2px 2px at 72% 5%,rgba(255,255,255,.6),transparent);}
+
+.bg-number{position:fixed;bottom:-2rem;right:-2rem;font-family:'Bangers',cursive;
+  font-size:20vw;color:rgba(255,255,255,.015);pointer-events:none;z-index:0;letter-spacing:-5px;}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;
+  background:rgba(8,8,22,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,229,255,.15);
+  position:sticky;top:0;z-index:1000;gap:1rem;}
+.nav-logo{font-family:'Bangers',cursive;font-size:1.8rem;letter-spacing:3px;
+  background:linear-gradient(135deg,#00e5ff,#b34fff);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;text-decoration:none;white-space:nowrap;}
+.nav-links{display:flex;gap:.2rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{color:var(--muted);text-decoration:none;font-weight:700;font-size:.78rem;
+  letter-spacing:.5px;text-transform:uppercase;padding:.4rem .6rem;border-radius:8px;transition:all .2s;}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.07);}
+.nav-links a.active{color:var(--accent2);background:rgba(0,229,255,.1);}
+
+.page-header{text-align:center;padding:4rem 2rem 2rem;position:relative;z-index:1;}
+.page-tag{display:inline-block;background:linear-gradient(135deg,var(--accent2),var(--accent4));
+  color:#000;font-family:'Bangers',cursive;font-size:.95rem;letter-spacing:3px;
+  padding:.3rem 1.2rem;border-radius:100px;margin-bottom:1.2rem;
+  animation:tagpulse 2s ease-in-out infinite;}
+@keyframes tagpulse{0%,100%{transform:scale(1);}50%{transform:scale(1.04);}}
+.page-header h1{font-family:'Bangers',cursive;font-size:clamp(3rem,8vw,6rem);
+  letter-spacing:4px;line-height:1;margin-bottom:1rem;
+  background:linear-gradient(135deg,var(--accent2),var(--accent4),var(--accent1));
+  background-size:200% auto;animation:shimmer 5s linear infinite;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
+@keyframes shimmer{0%{background-position:0% center;}100%{background-position:200% center;}}
+.page-header p{font-size:1.1rem;color:var(--muted);max-width:620px;margin:0 auto;line-height:1.7;}
+.page-header p span{color:var(--accent3);font-weight:800;}
+
+.container{max-width:1200px;margin:0 auto;padding:0 2rem;position:relative;z-index:1;}
+
+/* NUMBER CARDS */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.8rem;padding:2rem 0 3rem;}
+
+.ncard{background:var(--card);border-radius:22px;padding:2rem;border:2px solid transparent;
+  position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;cursor:default;}
+.ncard::before{content:'';position:absolute;inset:0;border-radius:22px;padding:2px;
+  background:var(--ng);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;opacity:.5;transition:opacity .3s;}
+.ncard:hover{transform:translateY(-7px) scale(1.01);box-shadow:0 22px 65px rgba(0,0,0,.5);}
+.ncard:hover::before{opacity:1;}
+
+.ncard.cyan{--ng:linear-gradient(135deg,#00e5ff,#0080ff);}
+.ncard.orange{--ng:linear-gradient(135deg,#ff6b35,#ff0066);}
+.ncard.yellow{--ng:linear-gradient(135deg,#ffe135,#ff9500);}
+.ncard.purple{--ng:linear-gradient(135deg,#b34fff,#6600ff);}
+.ncard.green{--ng:linear-gradient(135deg,#00ff88,#00cc55);}
+.ncard.pink{--ng:linear-gradient(135deg,#ff4fcb,#ff0099);}
+.ncard.red{--ng:linear-gradient(135deg,#ff3333,#ff6600);}
+.ncard.blue{--ng:linear-gradient(135deg,#3388ff,#0044cc);}
+
+.n-emoji{font-size:3rem;margin-bottom:.8rem;display:block;animation:float 3s ease-in-out infinite;}
+.ncard:nth-child(2) .n-emoji{animation-delay:.4s;}
+.ncard:nth-child(3) .n-emoji{animation-delay:.8s;}
+.ncard:nth-child(4) .n-emoji{animation-delay:1.2s;}
+.ncard:nth-child(5) .n-emoji{animation-delay:1.6s;}
+.ncard:nth-child(6) .n-emoji{animation-delay:2s;}
+.ncard:nth-child(7) .n-emoji{animation-delay:2.4s;}
+.ncard:nth-child(8) .n-emoji{animation-delay:2.8s;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+
+.big-num{font-family:'Bangers',cursive;font-size:2.8rem;letter-spacing:2px;line-height:1;margin-bottom:.5rem;word-break:break-all;}
+.ncard.cyan .big-num{color:var(--accent2);}
+.ncard.orange .big-num{color:var(--accent1);}
+.ncard.yellow .big-num{color:var(--accent3);}
+.ncard.purple .big-num{color:var(--accent4);}
+.ncard.green .big-num{color:var(--accent5);}
+.ncard.pink .big-num{color:#ff4fcb;}
+.ncard.red .big-num{color:#ff5555;}
+.ncard.blue .big-num{color:#66aaff;}
+
+.n-title{font-family:'Fredoka One',cursive;font-size:1.4rem;margin-bottom:.8rem;color:var(--text);}
+.n-desc{font-size:.93rem;color:var(--muted);line-height:1.75;}
+.n-desc strong{color:var(--text);}
+.n-badge{display:inline-block;margin-top:1rem;background:rgba(255,255,255,.06);
+  border-radius:100px;padding:.3rem .9rem;font-size:.75rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;}
+.ncard.cyan .n-badge{color:var(--accent2);border:1px solid rgba(0,229,255,.25);}
+.ncard.orange .n-badge{color:var(--accent1);border:1px solid rgba(255,107,53,.25);}
+.ncard.yellow .n-badge{color:var(--accent3);border:1px solid rgba(255,225,53,.25);}
+.ncard.purple .n-badge{color:var(--accent4);border:1px solid rgba(179,79,255,.25);}
+.ncard.green .n-badge{color:var(--accent5);border:1px solid rgba(0,255,136,.25);}
+.ncard.pink .n-badge{color:#ff4fcb;border:1px solid rgba(255,79,203,.25);}
+.ncard.red .n-badge{color:#ff5555;border:1px solid rgba(255,85,85,.25);}
+.ncard.blue .n-badge{color:#66aaff;border:1px solid rgba(102,170,255,.25);}
+
+/* Pi ticker */
+.pi-ticker{background:rgba(0,0,0,.4);border-radius:8px;padding:.6rem .8rem;font-family:monospace;
+  font-size:.8rem;color:var(--accent3);margin-top:.8rem;overflow:hidden;white-space:nowrap;letter-spacing:2px;}
+
+/* Brain blasts */
+.brain-blasts{padding:1rem 0 4rem;}
+.brain-blasts h2{font-family:'Bangers',cursive;font-size:2.5rem;letter-spacing:4px;
+  text-align:center;color:var(--accent3);margin-bottom:1.5rem;}
+.pills{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;}
+.pill{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.09);
+  border-radius:100px;padding:.6rem 1.4rem;font-size:.88rem;font-weight:600;
+  color:var(--text);transition:all .2s;cursor:default;}
+.pill:hover{background:rgba(0,229,255,.08);border-color:var(--accent2);color:var(--accent2);transform:scale(1.05);}
+
+footer{text-align:center;padding:2.5rem 2rem;color:var(--muted);font-size:.85rem;
+  border-top:1px solid rgba(255,255,255,.05);position:relative;z-index:1;}
+footer a{color:var(--accent1);text-decoration:none;}
+footer .heart{color:var(--accent6);}
+@media(max-width:768px){.nav-links{display:none;}.grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="stars"></div>
+<div class="bg-number">∞</div>
+
+<nav>
+  <a class="nav-logo" href="index.html">Z46 EXOCLOP</a>
+  <ul class="nav-links">
+    <li><a href="index.html">🏠 Home</a></li>
+    <li><a href="crew.html">👥 The Crew</a></li>
+    <li><a href="games.html">🎮 Games</a></li>
+    <li><a href="youtube.html">▶️ YouTube</a></li>
+    <li><a href="mushroom-quest.html">🍄 Mushroom Quest</a></li>
+    <li><a href="cooking.html">🍳 Cooking</a></li>
+    <li><a href="rio-reads.html">📚 Rio Reads</a></li>
+    <li><a href="numbers.html" class="active">🔢 Numbers</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-tag">🔢 RIO'S BRAIN-BREAKERS</div>
+  <h1>MIND-BLOWING<br>NUMBERS</h1>
+  <p>Some numbers are so <span>ENORMOUS</span>, so <span>TINY</span>, or so <span>WEIRD</span> that your brain can't even picture them. These are Rio's favorites! 🚀</p>
+</div>
+
+<div class="container">
+<div class="grid">
+
+  <!-- TREE(3) -->
+  <div class="ncard purple">
+    <span class="n-emoji">🌳</span>
+    <div class="big-num">TREE(3)</div>
+    <div class="n-title">The Number That Breaks Math</div>
+    <div class="n-desc">TREE(3) is so unimaginably large that <strong>Graham's Number feels tiny next to it</strong>. The TREE sequence comes from a game with colored trees — TREE(1)=1, TREE(2)=3, but TREE(3)… nobody has ever written it down. It has more digits than there are <strong>atoms in the universe</strong> — by an incomprehensible amount.</div>
+    <span class="n-badge">⚡ Biggest "Named" Number</span>
+  </div>
+
+  <!-- Pi -->
+  <div class="ncard yellow">
+    <span class="n-emoji">🥧</span>
+    <div class="big-num">π</div>
+    <div class="n-title">Pi — It Never Ends!</div>
+    <div class="n-desc">Pi = 3.14159… but it keeps going <strong>forever with no repeating pattern</strong>. Every sequence of digits — your birthday, your phone number, "12345678" — probably appears somewhere in Pi. Mathematicians have calculated <strong>over 100 TRILLION digits</strong> and it still never stops.</div>
+    <div class="pi-ticker">3 . 1 4 1 5 9 2 6 5 3 5 8 9 7 9 3 2 3 8 4 6 2 6 4 3 3 8 3 2 7 9 5 0 2 8 8 ...</div>
+    <span class="n-badge">♾️ Infinite Digits</span>
+  </div>
+
+  <!-- Graham's Number -->
+  <div class="ncard orange">
+    <span class="n-emoji">💥</span>
+    <div class="big-num">G64</div>
+    <div class="n-title">Graham's Number</div>
+    <div class="n-desc">So big that <strong>if you tried to write it, the digits wouldn't fit in the observable universe</strong>. It uses "up-arrow notation" — 3↑↑↑3 is already mind-bendingly huge, but Graham's Number stacks that operation <strong>64 times</strong>. Weirdly, we know the last digits end in …2464195387.</div>
+    <span class="n-badge">🤯 Too Big to Imagine</span>
+  </div>
+
+  <!-- Planck Time -->
+  <div class="ncard cyan">
+    <span class="n-emoji">⏱️</span>
+    <div class="big-num">5.39×10⁻⁴⁴s</div>
+    <div class="n-title">Planck Time — The Shortest Moment</div>
+    <div class="n-desc">The smallest meaningful unit of time — 0.0000…0000539 seconds (43 zeros!). Time literally cannot be divided smaller than this. One second contains <strong>1.855 × 10⁴³ Planck times</strong>. Nothing in physics can happen faster than one Planck time.</div>
+    <span class="n-badge">🔬 Smallest Time Unit</span>
+  </div>
+
+  <!-- Black Hole -->
+  <div class="ncard red">
+    <span class="n-emoji">🕳️</span>
+    <div class="big-num">TON 618</div>
+    <div class="n-title">The Biggest Black Hole We Know</div>
+    <div class="n-desc">TON 618 is an ultra-massive black hole with a mass of <strong>66 BILLION suns</strong>. Its event horizon is larger than our entire solar system. Light cannot escape it. If our sun were replaced by it, its outer edge would extend <strong>past Pluto</strong>. The universe has ~40 quintillion black holes.</div>
+    <span class="n-badge">🌌 66 Billion Solar Masses</span>
+  </div>
+
+  <!-- Googolplex -->
+  <div class="ncard green">
+    <span class="n-emoji">🔢</span>
+    <div class="big-num">10^10^100</div>
+    <div class="n-title">Googolplex — Bigger than the Universe</div>
+    <div class="n-desc">A Googol is 10¹⁰⁰ — a 1 followed by 100 zeros. But a <strong>Googolplex</strong> is 10 to the power of a Googol. You literally <strong>cannot write it down</strong> — even if every atom in the universe were a digit, there aren't enough. Google the company is named after Googol!</div>
+    <span class="n-badge">🌎 More than Atoms in Universe</span>
+  </div>
+
+  <!-- One Million Letters -->
+  <div class="ncard blue">
+    <span class="n-emoji">📚</span>
+    <div class="big-num">1,000,000</div>
+    <div class="n-title">One Million Letters</div>
+    <div class="n-desc">Can you picture a million of anything? A million letters would fill about <strong>500 books</strong>. If you read one letter per second non-stop, it would take over <strong>11 days</strong> to read them all. The longest novel ever written has about 9.6 million characters!</div>
+    <span class="n-badge">📖 11 Days of Reading</span>
+  </div>
+
+  <!-- Avogadro's Number -->
+  <div class="ncard pink">
+    <span class="n-emoji">⚗️</span>
+    <div class="big-num">6.022×10²³</div>
+    <div class="n-title">Avogadro's Number — Atoms in a Mole</div>
+    <div class="n-desc">One "mole" of anything has <strong>602,200,000,000,000,000,000,000</strong> of it. That's how many atoms are in just 12 grams of carbon. If you had a mole of grains of sand, they would fill the <strong>entire volume of Earth</strong>. Chemistry runs on this number every day!</div>
+    <span class="n-badge">🔭 602 Sextillion</span>
+  </div>
+
+</div>
+
+<!-- Brain Blasts -->
+<div class="brain-blasts">
+  <h2>🎲 QUICK BRAIN BLASTS</h2>
+  <div class="pills">
+    <div class="pill">🌌 Observable universe: ~10⁸⁰ atoms</div>
+    <div class="pill">⚡ Lightning lasts ~0.2 seconds</div>
+    <div class="pill">🎂 Your birthday is probably in Pi</div>
+    <div class="pill">🧠 Brain has ~86 billion neurons</div>
+    <div class="pill">🕰️ 1 billion seconds = 31.7 years</div>
+    <div class="pill">🌍 Earth is ~4.5 billion years old</div>
+    <div class="pill">✨ More stars than grains of sand</div>
+    <div class="pill">🎯 The number 0 was invented around 500 AD!</div>
+    <div class="pill">💎 TREE(3) makes Graham's Number look tiny</div>
+    <div class="pill">📡 Light travels 186,000 miles per second</div>
+    <div class="pill">⏱️ 1 Planck second: the shortest time</div>
+    <div class="pill">🔢 Infinity comes in different sizes!</div>
+  </div>
+</div>
+</div>
+
+<footer>
+  Made with <span class="heart">♥</span> by <a href="crew.html">Rio & Dada</a> · Z46 Exoclop ·
+  <a href="https://www.youtube.com/@RioDada" target="_blank">@RioDada on YouTube</a>
+</footer>
+</body>
+</html>

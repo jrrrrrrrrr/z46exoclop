@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Z46 Exoclop — Nintendo Games</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080816;--card:#11112a;--border:rgba(255,255,255,0.07);
+  --accent1:#ff6b35;--accent2:#00e5ff;--accent3:#ffe135;--accent4:#b34fff;
+  --accent5:#00ff88;--accent6:#ff4fcb;--text:#f0f0ff;--muted:#7777aa;
+  --switch-red:#e4000f;--switch2-gold:#d4af37;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;overflow-x:hidden;}
+.stars{position:fixed;inset:0;pointer-events:none;z-index:0;}
+.stars::before,.stars::after{content:'';position:absolute;inset:0;}
+.stars::before{background-image:
+  radial-gradient(1px 1px at 8% 12%,rgba(255,255,255,.9),transparent),
+  radial-gradient(1px 1px at 22% 68%,rgba(255,255,255,.7),transparent),
+  radial-gradient(1.5px 1.5px at 48% 28%,rgba(0,229,255,.7),transparent),
+  radial-gradient(1px 1px at 73% 58%,rgba(255,255,255,.8),transparent),
+  radial-gradient(2px 2px at 58% 82%,rgba(179,79,255,.6),transparent),
+  radial-gradient(1px 1px at 14% 42%,rgba(255,255,255,.5),transparent),
+  radial-gradient(1px 1px at 44% 5%,rgba(255,255,255,.8),transparent),
+  radial-gradient(1px 1px at 66% 72%,rgba(255,79,203,.5),transparent),
+  radial-gradient(1px 1px at 88% 88%,rgba(255,255,255,.6),transparent);}
+nav{display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;
+  background:rgba(8,8,22,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,229,255,.15);
+  position:sticky;top:0;z-index:1000;gap:1rem;}
+.nav-logo{font-family:'Bangers',cursive;font-size:1.8rem;letter-spacing:3px;
+  background:linear-gradient(135deg,#00e5ff,#b34fff);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;text-decoration:none;white-space:nowrap;}
+.nav-links{display:flex;gap:.2rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{color:var(--muted);text-decoration:none;font-weight:700;font-size:.78rem;
+  letter-spacing:.5px;text-transform:uppercase;padding:.4rem .6rem;border-radius:8px;transition:all .2s;}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.07);}
+.nav-links a.active{color:var(--accent2);background:rgba(0,229,255,.1);}
+
+.page-header{text-align:center;padding:4rem 2rem 2rem;position:relative;z-index:1;}
+.page-tag{display:inline-block;background:linear-gradient(135deg,var(--switch-red),var(--accent1));
+  color:#fff;font-family:'Bangers',cursive;font-size:.95rem;letter-spacing:3px;
+  padding:.3rem 1.2rem;border-radius:100px;margin-bottom:1.2rem;
+  animation:tagpulse 2s ease-in-out infinite;}
+@keyframes tagpulse{0%,100%{transform:scale(1);}50%{transform:scale(1.04);}}
+.page-header h1{font-family:'Bangers',cursive;font-size:clamp(3rem,8vw,6rem);
+  letter-spacing:4px;line-height:1;margin-bottom:1rem;
+  background:linear-gradient(135deg,var(--switch-red),var(--accent1),var(--accent3));
+  background-size:200% auto;animation:shimmer 5s linear infinite;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
+@keyframes shimmer{0%{background-position:0% center;}100%{background-position:200% center;}}
+.page-header p{font-size:1.1rem;color:var(--muted);max-width:620px;margin:0 auto;line-height:1.7;}
+
+.container{max-width:1200px;margin:0 auto;padding:0 2rem;position:relative;z-index:1;}
+
+/* Platform tabs */
+.platform-tabs{display:flex;gap:1rem;margin:2rem 0;flex-wrap:wrap;}
+.platform-tab{font-family:'Fredoka One',cursive;font-size:1rem;letter-spacing:1px;
+  padding:.6rem 1.5rem;border-radius:100px;cursor:pointer;transition:all .2s;
+  border:2px solid var(--border);background:transparent;color:var(--muted);}
+.platform-tab.active,.platform-tab:hover{color:#fff;}
+.platform-tab.switch.active,.platform-tab.switch:hover{
+  background:linear-gradient(135deg,var(--switch-red),#ff4444);border-color:var(--switch-red);}
+.platform-tab.switch2.active,.platform-tab.switch2:hover{
+  background:linear-gradient(135deg,var(--switch2-gold),#c8960c);border-color:var(--switch2-gold);color:#000;}
+.platform-tab.all.active,.platform-tab.all:hover{
+  background:linear-gradient(135deg,var(--accent2),var(--accent4));border-color:var(--accent2);}
+
+/* Section labels */
+.section-label{display:flex;align-items:center;gap:1rem;margin:2.5rem 0 1.5rem;}
+.section-label h2{font-family:'Bangers',cursive;font-size:2rem;letter-spacing:3px;}
+.section-label .platform-badge{font-family:'Fredoka One',cursive;font-size:.85rem;
+  padding:.3rem 1rem;border-radius:100px;letter-spacing:1px;}
+.switch-badge{background:var(--switch-red);color:#fff;}
+.switch2-badge{background:var(--switch2-gold);color:#000;}
+
+/* Game cards */
+.games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.2rem;margin-bottom:3rem;}
+
+.game-card{background:var(--card);border-radius:16px;border:1.5px solid var(--border);
+  padding:1.4rem 1.2rem;transition:all .25s;cursor:default;position:relative;overflow:hidden;}
+.game-card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(0,0,0,.4);border-color:var(--g-color);}
+.game-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--g-color);opacity:0;transition:opacity .25s;}
+.game-card:hover::before{opacity:1;}
+
+.game-emoji{font-size:2.5rem;margin-bottom:.8rem;display:block;transition:transform .2s;}
+.game-card:hover .game-emoji{transform:scale(1.15);}
+.game-title{font-family:'Fredoka One',cursive;font-size:1rem;color:var(--text);margin-bottom:.4rem;line-height:1.3;}
+.game-desc{font-size:.78rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem;}
+
+.game-rating{display:flex;gap:.15rem;margin-bottom:.5rem;}
+.star{color:var(--accent3);font-size:.9rem;}
+.star.empty{color:var(--border);filter:brightness(3);}
+
+.game-tags{display:flex;gap:.3rem;flex-wrap:wrap;}
+.game-tag{font-size:.65rem;font-weight:800;letter-spacing:.5px;text-transform:uppercase;
+  padding:.2rem .5rem;border-radius:100px;border:1px solid currentColor;opacity:.8;}
+
+footer{text-align:center;padding:2.5rem 2rem;color:var(--muted);font-size:.85rem;
+  border-top:1px solid rgba(255,255,255,.05);position:relative;z-index:1;margin-top:2rem;}
+footer a{color:var(--accent1);text-decoration:none;}
+footer .heart{color:var(--accent6);}
+@media(max-width:768px){.nav-links{display:none;}.games-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));}}
+</style>
+</head>
+<body>
+<div class="stars"></div>
+
+<nav>
+  <a class="nav-logo" href="index.html">Z46 EXOCLOP</a>
+  <ul class="nav-links">
+    <li><a href="index.html">🏠 Home</a></li>
+    <li><a href="crew.html">👥 The Crew</a></li>
+    <li><a href="games.html" class="active">🎮 Games</a></li>
+    <li><a href="youtube.html">▶️ YouTube</a></li>
+    <li><a href="mushroom-quest.html">🍄 Mushroom Quest</a></li>
+    <li><a href="cooking.html">🍳 Cooking</a></li>
+    <li><a href="rio-reads.html">📚 Rio Reads</a></li>
+    <li><a href="numbers.html">🔢 Numbers</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-tag">🎮 OUR GAME LIBRARY</div>
+  <h1>NINTENDO<br>GAMES</h1>
+  <p>Every game Rio and the crew have played on <strong>Nintendo Switch</strong> and <strong>Switch 2</strong>. Our honest ratings and thoughts!</p>
+</div>
+
+<div class="container">
+
+  <!-- Switch Section -->
+  <div class="section-label">
+    <h2 style="color:#e4000f;">NINTENDO SWITCH</h2>
+    <span class="platform-badge switch-badge">SWITCH</span>
+  </div>
+
+  <div class="games-grid">
+
+    <div class="game-card" style="--g-color:#e60012;">
+      <span class="game-emoji">🍄</span>
+      <div class="game-title">Super Mario Odyssey</div>
+      <div class="game-desc">Travel the world collecting Moons with Mario and Cappy!</div>
+      <div class="game-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <div class="game-tags"><span class="game-tag" style="color:var(--accent1)">🎮 Platformer</span><span class="game-tag" style="color:var(--accent5)">✅ Played</span></div>
+    </div>
+
+    <div class="game-card" style="--g-color:#00b900;">
+      <span class="game-emoji">⚔️</span>
+      <div class="game-title">Zelda: Breath of the Wild</div>
+      <div class="game-desc">Open world adventure in Hyrule. Climb anything, go anywhere!</div>
+      <div class="game-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <div class="game-tags"><span class="game-tag" style="color:var(--accent5)">🗺️ Adventure</span><span class="game-tag" style="color:var(--accent5)">✅ Played</span></div>
+    </div>
+
+    <div class="game-card" style="--g-color:#ff6b35;">
+      <span class="game-emoji">🦊</span>
+      <div class="game-title">Super Mario Bros. Wonder</div>
+      <div class="game-desc">The most creative 2D Mario ever! Flower Power changes everything!</div>
+      <div class="game-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <div class="game-tags"><span class="game-tag" style="color:var(--accent1)">🎮 Platformer</span><span class="game-tag" style="color:var(--accent5)">✅ Played</span></div>
+    </div>
+
+    <div class="game-card" style="--g-color:#4fc3f7;">
+      <span class="game-emoji">🏎️</span>
+      <div class="game-title">Mario Kart 8 Deluxe</div>
+      <div class="game-desc">The ultimate racing game. 96 tracks of pure chaos and fun!</div>
+      <div class="game-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <div class="game-tags"><span class="game-tag" style="color:var(--accent2)">🏁 Racing</span><span class="game-tag" style="color:var(--accent5)">✅ Played</span></div>
+    </div>
+
+    <div class="game-card" style="--g-color:#ff4fcb;">
+      <span class="game-emoji">🌺</span>
+      <div class="game-title">Animal Crossing: New Horizons</div>
+      <div class="game-desc">Build your dream island! Fish, catch bugs, and make friends.</div>
+      <div class="game-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <div class="game-tags"><span class="game-tag" style="color:var(--accent6)">🏝️ Life Sim</span><span class="game-tag" style="color:var(--accent5)">✅ Played</span></div>
+    </div>
+
+    <div class="game-card" style="--g-color:#b34fff;">
+      <span class="game-emoji">🥊</span>
+      <div class="game-title">Super Smash Bros. Ultimate</div>
+      <div class="game-desc">Everyone is here! 80+ fighters, epic battles.</div>
+      <div class="game-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <div class="game-tags"><span class="game-tag" style="color:var(--accent4)">⚔️ Fighter</span><span class="game-tag" style="color:var(--accent5)">✅ Played</span></div>
+    </div>
+
+    <div class="game-card" style="--g-color:#00ff88;">
+      <span class="game-emoji">🦕</span>
+      <div class="game-title">Zelda: Tears of the Kingdom</div>
+      <div class="game-desc">Build ANYTHING and explore the sky, surface, and depths of Hyrule!</div>
+      <div class="game-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <div class="game-tags"><span class="game-tag" style="color:var(--accent5)">🗺️ Adventure</span><span class="game-tag" style="color:var(--accent5)">✅ Played</span></div>
+    </div>
+
+    <div class="game-card" style="--g-color:#ffe135;">
+      <span class="game-emoji">🎪</span>
+      <div class="game-title">Kirby and the Forgotten Land</div>
+      <div class="game-desc">Kirby goes 3D in an abandoned city! Mouthful Mode is wild.</div>
+      <div class="game-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span></div>
+      <div class="game-tags"><span class="game-tag" style="color:var(--accent3)">🎀 Action</span><span class="game-tag" style="color:var(--accent5)">✅ Played</span></div>
+    </div>
+
+    <div class="game-card" style="--g-color:#ff6b35;">
+      <span class="game-emoji">🐉</span>
+      <div class="game-title">Pokémon Scarlet/Violet</div>
+      <div class="game-desc">Open world Pokémon adventures in Paldea! Gotta catch 'em all!</div>
+      <div class="game-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span></div>
+      <div class="game-tags"><span class="game-tag" style="color:var(--accent1)">⚡ RPG</span><span class="game-tag" style="color:var(--accent5)">✅ Played</span></div>
+    </div>
+
+    <div class="game-card" style="--g-color:#00e5ff;">
+      <span class="game-emoji">🌟</span>
+      <div class="game-title">Splatoon 3</div>
+      <div class="game-desc">Ink-based battles! Squids, octopi, and tons of paint everywhere.</div>
+      <div class="game-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span></div>
+      <div class="game-tags"><span class="game-tag" style="color:var(--accent2)">🎨 Shooter</span><span class="game-tag" style="color:var(--accent5)">✅ Played</span></div>
+    </div>
+
+    <div class="game-card" style="--g-color:#ff4fcb;">
+      <span class="game-emoji">🏄</span>
+      <div class="game-title">Sonic Frontiers</div>
+      <div class="game-desc">Sonic goes open world! Speed through the Starfall Islands!</div>
+      <div class="game-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span><span class="star empty">★</span></div>
+      <div class="game-tags"><span class="game-tag" style="color:var(--accent6)">💨 Action</span><span class="game-tag" style="color:var(--accent5)">✅ Played</span></div>
+    </div>
+
+    <div class="game-card" style="--g-color:#b34fff;">
+      <span class="game-emoji">🗡️</span>
+      <div class="game-title">Luigi's Mansion 3</div>
+      <div class="game-desc">Luigi busts ghosts in a haunted hotel. Gooigi is hilarious!</div>
+      <div class="game-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <div class="game-tags"><span class="game-tag" style="color:var(--accent4)">👻 Adventure</span><span class="game-tag" style="color:var(--accent5)">✅ Played</span></div>
+    </div>
+
+  </div>
+
+  <!-- Switch 2 Section -->
+  <div class="section-label">
+    <h2 style="color:var(--switch2-gold);">NINTENDO SWITCH 2</h2>
+    <span class="platform-badge switch2-badge">SWITCH 2</span>
+  </div>
+
+  <div class="games-grid">
+
+    <div class="game-card" style="--g-color:#d4af37;">
+      <span class="game-emoji">🏎️</span>
+      <div class="game-title">Mario Kart World</div>
+      <div class="game-desc">The biggest Mario Kart ever! Drive anywhere, anytime. Open world racing!</div>
+      <div class="game-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <div class="game-tags"><span class="game-tag" style="color:var(--switch2-gold)">🆕 Switch 2</span><span class="game-tag" style="color:var(--accent5)">✅ Played</span></div>
+    </div>
+
+    <div class="game-card" style="--g-color:#d4af37;border-style:dashed;">
+      <span class="game-emoji">🌌</span>
+      <div class="game-title">Add More Games!</div>
+      <div class="game-desc">More Switch 2 adventures coming soon as we play them!</div>
+      <div class="game-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <div class="game-tags"><span class="game-tag" style="color:var(--switch2-gold)">🔜 Coming Soon</span></div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  Made with <span class="heart">♥</span> by <a href="crew.html">Rio & Dada</a> · Z46 Exoclop ·
+  <a href="https://www.youtube.com/@RioDada" target="_blank">@RioDada on YouTube</a>
+</footer>
+</body>
+</html>

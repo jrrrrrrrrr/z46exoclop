@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Z46 Exoclop — Cooking Series</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080816;--card:#11112a;--border:rgba(255,255,255,0.07);
+  --accent1:#ff6b35;--accent2:#00e5ff;--accent3:#ffe135;--accent4:#b34fff;
+  --accent5:#00ff88;--accent6:#ff4fcb;--text:#f0f0ff;--muted:#7777aa;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;overflow-x:hidden;}
+.stars{position:fixed;inset:0;pointer-events:none;z-index:0;}
+.stars::before{content:'';position:absolute;inset:0;background-image:
+  radial-gradient(1px 1px at 8% 12%,rgba(255,255,255,.9),transparent),
+  radial-gradient(1px 1px at 22% 68%,rgba(255,255,255,.7),transparent),
+  radial-gradient(1.5px 1.5px at 48% 28%,rgba(0,229,255,.5),transparent),
+  radial-gradient(1px 1px at 73% 58%,rgba(255,255,255,.8),transparent),
+  radial-gradient(2px 2px at 58% 82%,rgba(179,79,255,.4),transparent),
+  radial-gradient(1px 1px at 14% 42%,rgba(255,255,255,.5),transparent),
+  radial-gradient(1px 1px at 44% 5%,rgba(255,255,255,.8),transparent);}
+nav{display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;
+  background:rgba(8,8,22,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,229,255,.15);
+  position:sticky;top:0;z-index:1000;gap:1rem;}
+.nav-logo{font-family:'Bangers',cursive;font-size:1.8rem;letter-spacing:3px;
+  background:linear-gradient(135deg,#00e5ff,#b34fff);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;text-decoration:none;white-space:nowrap;}
+.nav-links{display:flex;gap:.2rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{color:var(--muted);text-decoration:none;font-weight:700;font-size:.78rem;
+  letter-spacing:.5px;text-transform:uppercase;padding:.4rem .6rem;border-radius:8px;transition:all .2s;}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.07);}
+.nav-links a.active{color:var(--accent2);background:rgba(0,229,255,.1);}
+
+.page-header{text-align:center;padding:4rem 2rem 2rem;position:relative;z-index:1;}
+.page-tag{display:inline-block;background:linear-gradient(135deg,var(--accent3),var(--accent1));
+  color:#000;font-family:'Bangers',cursive;font-size:.95rem;letter-spacing:3px;
+  padding:.3rem 1.2rem;border-radius:100px;margin-bottom:1.2rem;
+  animation:tagpulse 2s ease-in-out infinite;}
+@keyframes tagpulse{0%,100%{transform:scale(1);}50%{transform:scale(1.04);}}
+.page-header h1{font-family:'Bangers',cursive;font-size:clamp(3rem,8vw,6rem);
+  letter-spacing:4px;line-height:1;margin-bottom:1rem;
+  background:linear-gradient(135deg,var(--accent3),var(--accent1),#ff0066);
+  background-size:200% auto;animation:shimmer 5s linear infinite;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
+@keyframes shimmer{0%{background-position:0% center;}100%{background-position:200% center;}}
+.page-header p{font-size:1.1rem;color:var(--muted);max-width:620px;margin:0 auto;line-height:1.7;}
+.page-header p strong{color:var(--text);}
+
+.container{max-width:1200px;margin:0 auto;padding:0 2rem;position:relative;z-index:1;}
+
+/* Kitchen hero */
+.kitchen-hero{background:linear-gradient(135deg,rgba(255,225,53,.1),rgba(255,107,53,.08));
+  border:2px solid rgba(255,225,53,.2);border-radius:24px;padding:3rem;
+  display:flex;gap:2rem;align-items:center;margin:2rem 0;flex-wrap:wrap;}
+.kitchen-emoji-stack{font-size:4rem;display:flex;flex-direction:column;gap:.5rem;flex-shrink:0;}
+.kitchen-emoji-stack span{animation:float 2.5s ease-in-out infinite;}
+.kitchen-emoji-stack span:nth-child(2){animation-delay:.4s;}
+.kitchen-emoji-stack span:nth-child(3){animation-delay:.8s;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+.kitchen-text h2{font-family:'Bangers',cursive;font-size:2.2rem;letter-spacing:3px;
+  color:var(--accent3);margin-bottom:.6rem;}
+.kitchen-text p{color:var(--muted);line-height:1.8;margin-bottom:1rem;}
+.kitchen-text p strong{color:var(--text);}
+.rule-box{background:rgba(0,0,0,.3);border-radius:12px;padding:1rem 1.2rem;
+  border-left:4px solid var(--accent1);}
+.rule-box p{color:var(--muted);font-size:.9rem;font-style:italic;}
+
+/* Section title */
+.section-title{font-family:'Bangers',cursive;font-size:2rem;letter-spacing:3px;
+  margin:3rem 0 1.5rem;color:var(--accent3);}
+
+/* Recipe episode cards */
+.episodes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;margin-bottom:3rem;}
+.episode-card{background:var(--card);border-radius:20px;border:1.5px solid var(--border);
+  overflow:hidden;transition:all .25s;}
+.episode-card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(0,0,0,.4);
+  border-color:var(--e-color);}
+
+.episode-thumb{height:140px;display:flex;align-items:center;justify-content:center;
+  font-size:4rem;position:relative;overflow:hidden;}
+.episode-ep-num{position:absolute;top:10px;left:12px;background:rgba(0,0,0,.7);
+  font-family:'Bangers',cursive;font-size:1rem;letter-spacing:1px;
+  padding:.2rem .6rem;border-radius:8px;color:var(--e-color);}
+.episode-rating{position:absolute;top:10px;right:12px;background:rgba(0,0,0,.7);
+  font-size:.85rem;padding:.2rem .5rem;border-radius:8px;}
+
+.episode-body{padding:1.3rem;}
+.episode-category{font-size:.7rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--e-color);margin-bottom:.3rem;display:block;}
+.episode-title{font-family:'Fredoka One',cursive;font-size:1.2rem;margin-bottom:.5rem;}
+.episode-desc{font-size:.85rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem;}
+.episode-tags{display:flex;gap:.4rem;flex-wrap:wrap;}
+.episode-tag{font-size:.67rem;font-weight:800;letter-spacing:.5px;text-transform:uppercase;
+  padding:.2rem .55rem;border-radius:100px;border:1.5px solid var(--e-color);color:var(--e-color);}
+
+/* Kitchen rules */
+.kitchen-rules{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:1rem;margin:2rem 0 3rem;}
+.rule-card{background:rgba(255,225,53,.05);border:1.5px solid rgba(255,225,53,.15);
+  border-radius:16px;padding:1.3rem;text-align:center;transition:all .2s;}
+.rule-card:hover{border-color:rgba(255,225,53,.4);transform:scale(1.03);}
+.rule-icon{font-size:2.2rem;margin-bottom:.6rem;display:block;}
+.rule-text{font-size:.9rem;color:var(--muted);line-height:1.6;}
+.rule-text strong{color:var(--accent3);display:block;font-family:'Fredoka One',cursive;
+  font-size:1rem;margin-bottom:.2rem;}
+
+/* YT CTA */
+.yt-cta{background:linear-gradient(135deg,rgba(255,225,53,.08),rgba(255,107,53,.08));
+  border:1.5px solid rgba(255,225,53,.2);border-radius:20px;padding:2.5rem;
+  text-align:center;margin:1rem 0 3rem;}
+.yt-cta h3{font-family:'Bangers',cursive;font-size:2rem;letter-spacing:3px;color:var(--accent3);margin-bottom:.5rem;}
+.yt-cta p{color:var(--muted);margin-bottom:1.2rem;}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:'Fredoka One',cursive;
+  font-size:1rem;padding:.7rem 1.6rem;border-radius:100px;text-decoration:none;transition:all .25s;}
+.btn-yt{background:#ff0000;color:#fff;}
+.btn-yt:hover{transform:scale(1.05);box-shadow:0 0 25px rgba(255,0,0,.4);}
+
+footer{text-align:center;padding:2.5rem 2rem;color:var(--muted);font-size:.85rem;
+  border-top:1px solid rgba(255,255,255,.05);position:relative;z-index:1;}
+footer a{color:var(--accent1);text-decoration:none;}
+footer .heart{color:var(--accent6);}
+@media(max-width:768px){.nav-links{display:none;}.kitchen-hero{flex-direction:column;}}
+</style>
+</head>
+<body>
+<div class="stars"></div>
+
+<nav>
+  <a class="nav-logo" href="index.html">Z46 EXOCLOP</a>
+  <ul class="nav-links">
+    <li><a href="index.html">🏠 Home</a></li>
+    <li><a href="crew.html">👥 The Crew</a></li>
+    <li><a href="games.html">🎮 Games</a></li>
+    <li><a href="youtube.html">▶️ YouTube</a></li>
+    <li><a href="mushroom-quest.html">🍄 Mushroom Quest</a></li>
+    <li><a href="cooking.html" class="active">🍳 Cooking</a></li>
+    <li><a href="rio-reads.html">📚 Rio Reads</a></li>
+    <li><a href="numbers.html">🔢 Numbers</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-tag">🍳 Z46 KITCHEN</div>
+  <h1>COOKING<br>ADVENTURES</h1>
+  <p>Rio and Dada hit the kitchen! <strong>Real recipes, real fun</strong>, and sometimes real disasters. Watch us cook up something amazing (or at least try to)!</p>
+</div>
+
+<div class="container">
+
+  <div class="kitchen-hero">
+    <div class="kitchen-emoji-stack">
+      <span>👨‍🍳</span>
+      <span>🍳</span>
+      <span>🔥</span>
+    </div>
+    <div class="kitchen-text">
+      <h2>WELCOME TO THE Z46 KITCHEN!</h2>
+      <p>Every episode, Rio and Dada tackle a new recipe together. Sometimes it's <strong>a total masterpiece</strong>, sometimes the smoke alarm goes off — either way it's always entertaining! We document every step so you can try cooking too!</p>
+      <div class="rule-box">
+        <p>"The secret ingredient is always fun. And probably too much cheese."<br><strong>— Rio</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">🍽️ EPISODES</div>
+  <div class="episodes-grid">
+
+    <div class="episode-card" style="--e-color:var(--accent1)">
+      <div class="episode-thumb" style="background:linear-gradient(135deg,rgba(255,107,53,.2),rgba(255,0,0,.1))">
+        🍕
+        <span class="episode-ep-num">EP 01</span>
+        <span class="episode-rating">⭐⭐⭐⭐⭐</span>
+      </div>
+      <div class="episode-body">
+        <span class="episode-category">🍕 Italian Night</span>
+        <div class="episode-title">Homemade Pizza!</div>
+        <div class="episode-desc">We make pizza from scratch — dough and all! Rio designs his own crazy toppings. The result? Actually amazing!</div>
+        <div class="episode-tags"><span class="episode-tag">🏠 Homemade</span><span class="episode-tag">👍 Success!</span></div>
+      </div>
+    </div>
+
+    <div class="episode-card" style="--e-color:var(--accent3)">
+      <div class="episode-thumb" style="background:linear-gradient(135deg,rgba(255,225,53,.2),rgba(255,150,0,.1))">
+        🥞
+        <span class="episode-ep-num">EP 02</span>
+        <span class="episode-rating">⭐⭐⭐⭐⭐</span>
+      </div>
+      <div class="episode-body">
+        <span class="episode-category">🌅 Breakfast Special</span>
+        <div class="episode-title">Epic Pancake Stack!</div>
+        <div class="episode-desc">Who can make the tallest pancake stack? Rio vs Dada in the ultimate breakfast battle. Maple syrup everywhere!</div>
+        <div class="episode-tags"><span class="episode-tag">🍳 Breakfast</span><span class="episode-tag">🏆 Epic</span></div>
+      </div>
+    </div>
+
+    <div class="episode-card" style="--e-color:var(--accent2)">
+      <div class="episode-thumb" style="background:linear-gradient(135deg,rgba(0,229,255,.15),rgba(0,100,200,.1))">
+        🍜
+        <span class="episode-ep-num">EP 03</span>
+        <span class="episode-rating">⭐⭐⭐⭐</span>
+      </div>
+      <div class="episode-body">
+        <span class="episode-category">🥢 Asian Cuisine</span>
+        <div class="episode-title">Ramen from Scratch</div>
+        <div class="episode-desc">We try to make proper ramen from scratch. The broth takes 3 hours! Was it worth it? Watch to find out!</div>
+        <div class="episode-tags"><span class="episode-tag">⏱️ 3 Hours</span><span class="episode-tag">💪 Challenged</span></div>
+      </div>
+    </div>
+
+    <div class="episode-card" style="--e-color:var(--accent6)">
+      <div class="episode-thumb" style="background:linear-gradient(135deg,rgba(255,79,203,.15),rgba(255,0,100,.1))">
+        🎂
+        <span class="episode-ep-num">EP 04</span>
+        <span class="episode-rating">⭐⭐⭐⭐⭐</span>
+      </div>
+      <div class="episode-body">
+        <span class="episode-category">🎉 Baking Special</span>
+        <div class="episode-title">Birthday Cake Spectacular</div>
+        <div class="episode-desc">Rio designs and decorates his own birthday cake! Three layers, rainbow frosting, and way too many sprinkles.</div>
+        <div class="episode-tags"><span class="episode-tag">🎂 Baking</span><span class="episode-tag">🌈 Colorful</span></div>
+      </div>
+    </div>
+
+    <div class="episode-card" style="--e-color:var(--accent5)">
+      <div class="episode-thumb" style="background:linear-gradient(135deg,rgba(0,255,136,.12),rgba(0,150,80,.1))">
+        🥗
+        <span class="episode-ep-num">EP 05</span>
+        <span class="episode-rating">⭐⭐⭐</span>
+      </div>
+      <div class="episode-body">
+        <span class="episode-category">🥬 Healthy Eats</span>
+        <div class="episode-title">The Green Challenge</div>
+        <div class="episode-desc">Rio tries to make a healthy meal with only green ingredients! Harder than it sounds. Results were… interesting.</div>
+        <div class="episode-tags"><span class="episode-tag">🥦 Veggies</span><span class="episode-tag">😅 Attempted</span></div>
+      </div>
+    </div>
+
+    <div class="episode-card" style="--e-color:var(--accent4)">
+      <div class="episode-thumb" style="background:linear-gradient(135deg,rgba(179,79,255,.15),rgba(100,0,200,.1))">
+        🌮
+        <span class="episode-ep-num">EP 06</span>
+        <span class="episode-rating">⭐⭐⭐⭐⭐</span>
+      </div>
+      <div class="episode-body">
+        <span class="episode-category">🎸 Taco Tuesday</span>
+        <div class="episode-title">Taco Fiesta Night!</div>
+        <div class="episode-desc">Homemade taco night! Rio makes the salsa, Dada cooks the meat. A family favorite and fan-requested episode!</div>
+        <div class="episode-tags"><span class="episode-tag">🌮 Mexican</span><span class="episode-tag">🔥 Spicy</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Kitchen Rules -->
+  <div class="section-title">📋 RIO'S KITCHEN RULES</div>
+  <div class="kitchen-rules">
+    <div class="rule-card">
+      <span class="rule-icon">👨‍🍳</span>
+      <div class="rule-text"><strong>Always Wear an Apron</strong>If you don't wear an apron, your shirt becomes the apron.</div>
+    </div>
+    <div class="rule-card">
+      <span class="rule-icon">🧂</span>
+      <div class="rule-text"><strong>Taste as You Go</strong>How do you know if it's good? You taste it! Quality control is important.</div>
+    </div>
+    <div class="rule-card">
+      <span class="rule-icon">🧹</span>
+      <div class="rule-text"><strong>Clean as You Cook</strong>A messy kitchen is a slower kitchen. (We try our best.)</div>
+    </div>
+    <div class="rule-card">
+      <span class="rule-icon">🤝</span>
+      <div class="rule-text"><strong>Cooking is Teamwork</strong>Dada cooks, Rio seasons, everyone eats. That's how Z46 does it!</div>
+    </div>
+    <div class="rule-card">
+      <span class="rule-icon">😄</span>
+      <div class="rule-text"><strong>Have Fun Always</strong>Even if it doesn't turn out perfect, the fun is in the making!</div>
+    </div>
+  </div>
+
+  <!-- YT CTA -->
+  <div class="yt-cta">
+    <h3>🍳 WATCH US COOK!</h3>
+    <p>All our cooking episodes are on YouTube! New recipes drop whenever inspiration strikes.</p>
+    <a href="https://www.youtube.com/@RioDada" target="_blank" class="btn btn-yt">▶️ Watch on @RioDada</a>
+  </div>
+
+</div>
+
+<footer>
+  Made with <span class="heart">♥</span> by <a href="crew.html">Rio & Dada</a> · Z46 Exoclop ·
+  <a href="https://www.youtube.com/@RioDada" target="_blank">@RioDada on YouTube</a>
+</footer>
+</body>
+</html>

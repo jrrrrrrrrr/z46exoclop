@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Z46 Exoclop — Rio Reads</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#06080f;--card:#0e1020;--border:rgba(255,255,255,0.07);
+  --accent1:#ff6b35;--accent2:#00e5ff;--accent3:#ffe135;--accent4:#b34fff;
+  --accent5:#00ff88;--accent6:#ff4fcb;--text:#f0f0ff;--muted:#7777aa;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;overflow-x:hidden;}
+
+/* Cosmic library bg */
+.bg-glow{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse at 50% 40%,rgba(0,255,136,.06) 0%,transparent 55%),
+             radial-gradient(ellipse at 20% 70%,rgba(179,79,255,.05) 0%,transparent 40%),
+             radial-gradient(ellipse at 80% 20%,rgba(0,229,255,.04) 0%,transparent 40%);}
+.stars{position:fixed;inset:0;pointer-events:none;z-index:0;}
+.stars::before{content:'';position:absolute;inset:0;background-image:
+  radial-gradient(1px 1px at 8% 12%,rgba(255,255,255,.9),transparent),
+  radial-gradient(1px 1px at 22% 68%,rgba(255,255,255,.7),transparent),
+  radial-gradient(1.5px 1.5px at 48% 28%,rgba(0,229,255,.7),transparent),
+  radial-gradient(1px 1px at 73% 58%,rgba(255,255,255,.8),transparent),
+  radial-gradient(2px 2px at 58% 82%,rgba(179,79,255,.6),transparent),
+  radial-gradient(1px 1px at 14% 42%,rgba(255,255,255,.5),transparent),
+  radial-gradient(1.5px 1.5px at 90% 15%,rgba(0,255,136,.5),transparent),
+  radial-gradient(1px 1px at 35% 90%,rgba(255,225,53,.4),transparent);}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;
+  background:rgba(6,8,15,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,229,255,.15);
+  position:sticky;top:0;z-index:1000;gap:1rem;}
+.nav-logo{font-family:'Bangers',cursive;font-size:1.8rem;letter-spacing:3px;
+  background:linear-gradient(135deg,#00e5ff,#b34fff);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;text-decoration:none;white-space:nowrap;}
+.nav-links{display:flex;gap:.2rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{color:var(--muted);text-decoration:none;font-weight:700;font-size:.78rem;
+  letter-spacing:.5px;text-transform:uppercase;padding:.4rem .6rem;border-radius:8px;transition:all .2s;}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.07);}
+.nav-links a.active{color:var(--accent5);background:rgba(0,255,136,.1);}
+
+/* COMING SOON HERO */
+.cs-hero{position:relative;z-index:1;text-align:center;padding:6rem 2rem 4rem;
+  min-height:calc(100vh - 64px);display:flex;flex-direction:column;align-items:center;justify-content:center;}
+
+.cs-tag{display:inline-block;background:linear-gradient(135deg,var(--accent5),var(--accent2));
+  color:#000;font-family:'Bangers',cursive;font-size:1rem;letter-spacing:4px;
+  padding:.35rem 1.5rem;border-radius:100px;margin-bottom:2rem;
+  animation:tagpulse 2s ease-in-out infinite;}
+@keyframes tagpulse{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
+
+/* Floating book */
+.big-book{font-size:8rem;margin-bottom:1.5rem;animation:bookfloat 3s ease-in-out infinite;display:block;}
+@keyframes bookfloat{
+  0%{transform:translateY(0) rotate(-3deg);}
+  50%{transform:translateY(-20px) rotate(3deg);}
+  100%{transform:translateY(0) rotate(-3deg);}}
+
+.cs-hero h1{font-family:'Bangers',cursive;font-size:clamp(3rem,10vw,7rem);
+  letter-spacing:5px;line-height:.95;margin-bottom:.8rem;
+  background:linear-gradient(135deg,var(--accent5),var(--accent2),var(--accent4));
+  background-size:200% auto;animation:shimmer 5s linear infinite;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
+@keyframes shimmer{0%{background-position:0% center;}100%{background-position:200% center;}}
+
+.cs-subtitle{font-family:'Fredoka One',cursive;font-size:1.6rem;color:var(--accent5);
+  margin-bottom:1.5rem;letter-spacing:2px;}
+
+.cs-desc{max-width:600px;font-size:1.1rem;color:var(--muted);line-height:1.9;
+  margin:0 auto 3rem;}
+.cs-desc strong{color:var(--text);}
+
+/* Progress bar */
+.progress-section{margin-bottom:3rem;width:100%;max-width:500px;}
+.progress-label{display:flex;justify-content:space-between;margin-bottom:.6rem;}
+.progress-label span{font-size:.85rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.progress-label .pct{color:var(--accent5);}
+.progress-bar{background:rgba(255,255,255,.08);border-radius:100px;height:14px;overflow:hidden;}
+.progress-fill{height:100%;border-radius:100px;
+  background:linear-gradient(90deg,var(--accent5),var(--accent2));
+  width:65%;animation:progressglow 2s ease-in-out infinite alternate;}
+@keyframes progressglow{from{box-shadow:0 0 10px rgba(0,255,136,.3);}to{box-shadow:0 0 25px rgba(0,255,136,.6);}}
+
+/* What to expect */
+.expect-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:1rem;max-width:800px;margin:0 auto 3rem;}
+.expect-card{background:rgba(0,255,136,.04);border:1.5px solid rgba(0,255,136,.1);
+  border-radius:16px;padding:1.5rem;text-align:center;transition:all .2s;}
+.expect-card:hover{border-color:rgba(0,255,136,.3);transform:translateY(-4px);}
+.expect-icon{font-size:2.5rem;margin-bottom:.7rem;display:block;animation:float 3s ease-in-out infinite;}
+.expect-card:nth-child(2) .expect-icon{animation-delay:.4s;}
+.expect-card:nth-child(3) .expect-icon{animation-delay:.8s;}
+.expect-card:nth-child(4) .expect-icon{animation-delay:1.2s;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+.expect-title{font-family:'Fredoka One',cursive;font-size:1rem;color:var(--accent5);margin-bottom:.4rem;}
+.expect-desc{font-size:.83rem;color:var(--muted);line-height:1.6;}
+
+/* Notify / yt button */
+.notify-section{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:'Fredoka One',cursive;
+  font-size:1rem;padding:.8rem 1.8rem;border-radius:100px;text-decoration:none;
+  transition:all .25s;border:2px solid transparent;}
+.btn-green{background:linear-gradient(135deg,var(--accent5),var(--accent2));color:#000;font-weight:900;}
+.btn-green:hover{transform:scale(1.06);box-shadow:0 0 30px rgba(0,255,136,.4);}
+.btn-outline{background:transparent;color:var(--text);border-color:var(--border);}
+.btn-outline:hover{border-color:var(--accent5);color:var(--accent5);}
+
+/* Floating pages decoration */
+.container{max-width:900px;margin:0 auto;padding:0 2rem;position:relative;z-index:1;}
+
+/* Book wishlist section */
+.books-section{padding:4rem 0 2rem;text-align:center;}
+.books-section h2{font-family:'Bangers',cursive;font-size:2.5rem;letter-spacing:4px;
+  color:var(--accent5);margin-bottom:.5rem;}
+.books-section p{color:var(--muted);margin-bottom:2rem;}
+
+.books-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:1rem;text-align:left;}
+.book-card{background:var(--card);border:1.5px solid var(--border);border-radius:16px;
+  padding:1.2rem;transition:all .2s;}
+.book-card:hover{border-color:rgba(0,255,136,.3);transform:translateY(-3px);}
+.book-emoji{font-size:2rem;margin-bottom:.5rem;display:block;}
+.book-title{font-weight:800;font-size:.9rem;margin-bottom:.2rem;line-height:1.3;}
+.book-status{font-size:.7rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;
+  color:var(--accent5);}
+.book-status.recorded{color:var(--accent3);}
+
+footer{text-align:center;padding:2.5rem 2rem;color:var(--muted);font-size:.85rem;
+  border-top:1px solid rgba(255,255,255,.05);position:relative;z-index:1;}
+footer a{color:var(--accent1);text-decoration:none;}
+footer .heart{color:var(--accent6);}
+@media(max-width:768px){.nav-links{display:none;}.big-book{font-size:5rem;}.cs-hero{padding:4rem 1.5rem 3rem;}}
+</style>
+</head>
+<body>
+<div class="bg-glow"></div>
+<div class="stars"></div>
+
+<nav>
+  <a class="nav-logo" href="index.html">Z46 EXOCLOP</a>
+  <ul class="nav-links">
+    <li><a href="index.html">🏠 Home</a></li>
+    <li><a href="crew.html">👥 The Crew</a></li>
+    <li><a href="games.html">🎮 Games</a></li>
+    <li><a href="youtube.html">▶️ YouTube</a></li>
+    <li><a href="mushroom-quest.html">🍄 Mushroom Quest</a></li>
+    <li><a href="cooking.html">🍳 Cooking</a></li>
+    <li><a href="rio-reads.html" class="active">📚 Rio Reads</a></li>
+    <li><a href="numbers.html">🔢 Numbers</a></li>
+  </ul>
+</nav>
+
+<div class="cs-hero">
+  <div class="cs-tag">📚 SOMETHING AMAZING IS COMING</div>
+  <span class="big-book">📖</span>
+  <h1>RIO<br>READS</h1>
+  <p class="cs-subtitle">Rio's Read-Aloud Library</p>
+  <p class="cs-desc">
+    <strong>Rio loves to read</strong> — and soon he's going to share that love with the whole world! 
+    Rio will record himself reading his favorite books aloud, creating a library of 
+    read-alouds for kids everywhere. Stay tuned to <strong>@RioDada</strong> for the launch!
+  </p>
+
+  <div class="progress-section">
+    <div class="progress-label">
+      <span>Recording in Progress...</span>
+      <span class="pct">65%</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill"></div>
+    </div>
+  </div>
+
+  <div class="expect-grid">
+    <div class="expect-card">
+      <span class="expect-icon">📚</span>
+      <div class="expect-title">Chapter Books</div>
+      <div class="expect-desc">Full chapter book recordings from start to finish!</div>
+    </div>
+    <div class="expect-card">
+      <span class="expect-icon">🌟</span>
+      <div class="expect-title">Picture Books</div>
+      <div class="expect-desc">Classic picture book read-alouds with all the voices!</div>
+    </div>
+    <div class="expect-card">
+      <span class="expect-icon">🎭</span>
+      <div class="expect-title">Character Voices</div>
+      <div class="expect-desc">Rio does special voices for each character!</div>
+    </div>
+    <div class="expect-card">
+      <span class="expect-icon">🆓</span>
+      <div class="expect-title">Free for Everyone</div>
+      <div class="expect-desc">All read-alouds will be free on YouTube!</div>
+    </div>
+  </div>
+
+  <div class="notify-section">
+    <a href="https://www.youtube.com/@RioDada" target="_blank" class="btn btn-green">🔔 Subscribe to @RioDada</a>
+    <a href="youtube.html" class="btn btn-outline">📺 Our Other Videos</a>
+  </div>
+</div>
+
+<div class="container">
+  <div class="books-section">
+    <h2>📚 BOOKS RIO LOVES</h2>
+    <p>These are some books on Rio's reading list — some might be coming to Rio Reads!</p>
+
+    <div class="books-grid">
+      <div class="book-card">
+        <span class="book-emoji">🔍</span>
+        <div class="book-title">Where the Wild Things Are</div>
+        <div class="book-status">📋 On the List</div>
+      </div>
+      <div class="book-card">
+        <span class="book-emoji">🐛</span>
+        <div class="book-title">The Very Hungry Caterpillar</div>
+        <div class="book-status">📋 On the List</div>
+      </div>
+      <div class="book-card">
+        <span class="book-emoji">🌙</span>
+        <div class="book-title">Goodnight Moon</div>
+        <div class="book-status">📋 On the List</div>
+      </div>
+      <div class="book-card">
+        <span class="book-emoji">🐟</span>
+        <div class="book-title">One Fish Two Fish Red Fish Blue Fish</div>
+        <div class="book-status">📋 On the List</div>
+      </div>
+      <div class="book-card">
+        <span class="book-emoji">🎩</span>
+        <div class="book-title">The Cat in the Hat</div>
+        <div class="book-status">📋 On the List</div>
+      </div>
+      <div class="book-card">
+        <span class="book-emoji">🦁</span>
+        <div class="book-title">The Lion, the Witch & the Wardrobe</div>
+        <div class="book-status">📋 On the List</div>
+      </div>
+      <div class="book-card">
+        <span class="book-emoji">🧙</span>
+        <div class="book-title">The Hobbit</div>
+        <div class="book-status">📋 On the List</div>
+      </div>
+      <div class="book-card">
+        <span class="book-emoji">⭐</span>
+        <div class="book-title">Add Your Request Here!</div>
+        <div class="book-status">💬 Comment on YouTube</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Made with <span class="heart">♥</span> by <a href="crew.html">Rio & Dada</a> · Z46 Exoclop ·
+  <a href="https://www.youtube.com/@RioDada" target="_blank">@RioDada on YouTube</a>
+</footer>
+</body>
+</html>
