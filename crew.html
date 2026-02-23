@@ -148,18 +148,6 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 2rem
 .pet-card .avatar-wrap{border-style:dashed;}
 .pet-card .crew-name{font-size:2rem;}
 
-/* Photo instructions card */
-.photo-tip{
-  background:rgba(0,229,255,.04);border:2px dashed rgba(0,229,255,.2);
-  border-radius:20px;padding:1.5rem 1.8rem;
-  display:flex;gap:1rem;align-items:flex-start;
-  margin:0 0 2rem;
-}
-.photo-tip .tip-icon{font-size:1.8rem;flex-shrink:0;}
-.photo-tip h4{font-family:'Fredoka One',cursive;font-size:1rem;color:var(--accent2);margin-bottom:.35rem;}
-.photo-tip p{font-size:.82rem;color:var(--muted);line-height:1.65;}
-.photo-tip code{background:rgba(0,0,0,.3);padding:.1rem .4rem;border-radius:4px;
-  color:var(--accent3);font-size:.78rem;}
 
 @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
 
@@ -205,19 +193,6 @@ footer .heart{color:var(--accent6);}
 
 <div class="container">
 
-  <!-- Photo tip -->
-  <div class="photo-tip">
-    <div class="tip-icon">📸</div>
-    <div>
-      <h4>Adding Photos</h4>
-      <p>Create an <code>images/</code> folder next to your HTML files. Add a square photo
-      (600×600px, .jpg or .webp, under 200KB — compress free at squoosh.app).
-      Then replace the emoji inside any <code>.avatar-wrap</code> with:<br>
-      <code>&lt;img src="images/rio.jpg" alt="Rio"&gt;</code><br>
-      The CSS will crop it automatically into a perfect circle.</p>
-    </div>
-  </div>
-
   <!-- ════════════════════════════════════
        SECTION 1: THE FAMILY
   ═════════════════════════════════════ -->
@@ -230,8 +205,7 @@ footer .heart{color:var(--accent6);}
     <!-- RIO — Hero card -->
     <div class="crew-card hero-card" style="--ac:var(--accent2);">
       <div class="avatar-wrap">
-        <!-- Replace with: <img src="images/rio.jpg" alt="Rio"> -->
-        <span class="emoji-avatar">🧒</span>
+        <img src="images/rio.jpg" alt="Rio">
       </div>
       <div class="crew-body">
         <div class="crew-name">RIO</div>
@@ -253,8 +227,7 @@ footer .heart{color:var(--accent6);}
     <!-- DADA -->
     <div class="crew-card" style="--ac:var(--accent1);">
       <div class="avatar-wrap">
-        <!-- Replace with: <img src="images/dada.jpg" alt="Dada"> -->
-        <span class="emoji-avatar">👨</span>
+        <img src="images/dada.jpg" alt="Dada">
       </div>
       <div class="crew-name">DADA</div>
       <div class="crew-title">🎬 Co-Pilot, Camera Operator & Sous Chef</div>
@@ -271,8 +244,7 @@ footer .heart{color:var(--accent6);}
     <!-- MELISSA -->
     <div class="crew-card" style="--ac:var(--accent6);">
       <div class="avatar-wrap">
-        <!-- Replace with: <img src="images/melissa.jpg" alt="Melissa"> -->
-        <span class="emoji-avatar">👩</span>
+        <img src="images/melissa.jpg" alt="Melissa">
       </div>
       <div class="crew-name">MELISSA</div>
       <div class="crew-title">💛 Rio's Mom · Mission Support</div>
@@ -298,8 +270,7 @@ footer .heart{color:var(--accent6);}
     <!-- SUNSHINE -->
     <div class="crew-card pet-card" style="--ac:#f5c842;">
       <div class="avatar-wrap">
-        <!-- Replace with: <img src="images/sunshine.jpg" alt="Sunshine"> -->
-        <span class="emoji-avatar">🐕</span>
+        <img src="images/sunshine.jpg" alt="Sunshine">
       </div>
       <div class="crew-name">SUNSHINE</div>
       <div class="crew-title">🌟 Newest Family Member · Yellow Lab · Chief Chaos Officer</div>
@@ -335,8 +306,7 @@ footer .heart{color:var(--accent6);}
     <!-- SUSHI -->
     <div class="crew-card pet-card" style="--ac:var(--accent4);">
       <div class="avatar-wrap">
-        <!-- Replace with: <img src="images/sushi.jpg" alt="Sushi"> -->
-        <span class="emoji-avatar">🐱</span>
+        <img src="images/sushi.jpg" alt="Sushi">
       </div>
       <div class="crew-name">SUSHI</div>
       <div class="crew-title">😼 Polydactyl Cat · Smooth Operator · Toilet Connoisseur</div>
@@ -383,8 +353,7 @@ footer .heart{color:var(--accent6);}
     <!-- NICK -->
     <div class="crew-card" style="--ac:var(--accent5);">
       <div class="avatar-wrap">
-        <!-- Replace with: <img src="images/nick.jpg" alt="Nick"> -->
-        <span class="emoji-avatar">🧗</span>
+        <img src="images/nick.jpg" alt="Nick">
       </div>
       <div class="crew-name">NICK</div>
       <div class="crew-title">🏔️ Longtime Friend · Adventurer · San Juan Islands Expert</div>
@@ -410,8 +379,7 @@ footer .heart{color:var(--accent6);}
     <!-- LUCA -->
     <div class="crew-card" style="--ac:#66ffaa;">
       <div class="avatar-wrap">
-        <!-- Replace with: <img src="images/luca.jpg" alt="Luca"> -->
-        <span class="emoji-avatar">🧒</span>
+        <img src="images/luca.jpg" alt="Luca">
       </div>
       <div class="crew-name">LUCA</div>
       <div class="crew-title">🌟 Nick's Son · Z46 Junior Member</div>
@@ -426,8 +394,7 @@ footer .heart{color:var(--accent6);}
     <!-- JAYME -->
     <div class="crew-card" style="--ac:var(--accent6);">
       <div class="avatar-wrap">
-        <!-- Replace with: <img src="images/jayme.jpg" alt="Jayme"> -->
-        <span class="emoji-avatar">📷</span>
+        <img src="images/jayme.jpg" alt="Jayme">
       </div>
       <div class="crew-name">JAYME</div>
       <div class="crew-title">📸 Photographer · Longtime Friend of the Crew</div>
@@ -447,8 +414,7 @@ footer .heart{color:var(--accent6);}
     <!-- DASH -->
     <div class="crew-card" style="--ac:var(--accent2);">
       <div class="avatar-wrap">
-        <!-- Replace with: <img src="images/dash.jpg" alt="Dash"> -->
-        <span class="emoji-avatar">🧒</span>
+        <img src="images/dash.jpg" alt="Dash">
       </div>
       <div class="crew-name">DASH</div>
       <div class="crew-title">⚡ Jayme's Son · Z46 Junior Member</div>
