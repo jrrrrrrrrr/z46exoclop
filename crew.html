@@ -6,27 +6,33 @@
 <title>Z46 Exoclop — The Crew</title>
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#080816;--card:#11112a;--border:rgba(255,255,255,0.07);
+:root{
+  --bg:#080816;--card:#11112a;--border:rgba(255,255,255,0.07);
   --accent1:#ff6b35;--accent2:#00e5ff;--accent3:#ffe135;--accent4:#b34fff;
-  --accent5:#00ff88;--accent6:#ff4fcb;--text:#f0f0ff;--muted:#7777aa;}
+  --accent5:#00ff88;--accent6:#ff4fcb;--text:#f0f0ff;--muted:#7777aa;
+}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;overflow-x:hidden;}
+
 .stars{position:fixed;inset:0;pointer-events:none;z-index:0;}
-.stars::before,.stars::after{content:'';position:absolute;inset:0;}
-.stars::before{background-image:
+.stars::before{content:'';position:absolute;inset:0;background-image:
   radial-gradient(1px 1px at 8% 12%,rgba(255,255,255,.9),transparent),
   radial-gradient(1px 1px at 22% 68%,rgba(255,255,255,.7),transparent),
-  radial-gradient(1.5px 1.5px at 48% 28%,rgba(0,229,255,.7),transparent),
+  radial-gradient(1.5px 1.5px at 48% 28%,rgba(0,229,255,.6),transparent),
   radial-gradient(1px 1px at 73% 58%,rgba(255,255,255,.8),transparent),
-  radial-gradient(1px 1px at 91% 8%,rgba(255,107,53,.6),transparent),
-  radial-gradient(2px 2px at 58% 82%,rgba(179,79,255,.6),transparent),
-  radial-gradient(1px 1px at 14% 42%,rgba(255,255,255,.5),transparent),
-  radial-gradient(1px 1px at 79% 32%,rgba(0,255,136,.5),transparent),
-  radial-gradient(1px 1px at 44% 5%,rgba(255,255,255,.8),transparent),
-  radial-gradient(1px 1px at 66% 72%,rgba(255,79,203,.5),transparent);}
+  radial-gradient(1px 1px at 91% 8%,rgba(255,107,53,.5),transparent),
+  radial-gradient(2px 2px at 58% 82%,rgba(179,79,255,.5),transparent),
+  radial-gradient(1px 1px at 14% 42%,rgba(255,255,255,.4),transparent),
+  radial-gradient(1px 1px at 79% 32%,rgba(0,255,136,.4),transparent),
+  radial-gradient(1.5px 1.5px at 44% 5%,rgba(255,255,255,.7),transparent),
+  radial-gradient(1px 1px at 66% 72%,rgba(255,79,203,.4),transparent),
+  radial-gradient(1px 1px at 30% 90%,rgba(255,255,255,.5),transparent),
+  radial-gradient(1px 1px at 88% 55%,rgba(255,225,53,.3),transparent);}
+
+/* ── NAV ── */
 nav{display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;
-  background:rgba(8,8,22,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,229,255,.15);
-  position:sticky;top:0;z-index:1000;gap:1rem;}
+  background:rgba(8,8,22,.92);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(0,229,255,.15);position:sticky;top:0;z-index:1000;gap:1rem;}
 .nav-logo{font-family:'Bangers',cursive;font-size:1.8rem;letter-spacing:3px;
   background:linear-gradient(135deg,#00e5ff,#b34fff);-webkit-background-clip:text;background-clip:text;
   -webkit-text-fill-color:transparent;color:transparent;text-decoration:none;white-space:nowrap;}
@@ -36,7 +42,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 2rem
 .nav-links a:hover{color:var(--text);background:rgba(255,255,255,.07);}
 .nav-links a.active{color:var(--accent2);background:rgba(0,229,255,.1);}
 
-/* HEADER */
+/* ── PAGE HEADER ── */
 .page-header{text-align:center;padding:4rem 2rem 2rem;position:relative;z-index:1;}
 .page-tag{display:inline-block;background:linear-gradient(135deg,var(--accent4),var(--accent6));
   color:#fff;font-family:'Bangers',cursive;font-size:.95rem;letter-spacing:3px;
@@ -47,71 +53,131 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 2rem
   letter-spacing:4px;line-height:1;margin-bottom:1rem;
   background:linear-gradient(135deg,var(--accent4),var(--accent6),var(--accent2));
   background-size:200% auto;animation:shimmer 5s linear infinite;
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;}
 @keyframes shimmer{0%{background-position:0% center;}100%{background-position:200% center;}}
-.page-header p{font-size:1.1rem;color:var(--muted);max-width:620px;margin:0 auto;line-height:1.7;}
+.page-header p{font-size:1.05rem;color:var(--muted);max-width:620px;margin:0 auto;line-height:1.7;}
 .page-header p strong{color:var(--text);}
 
+/* ── CONTAINER & SECTION LABELS ── */
 .container{max-width:1200px;margin:0 auto;padding:0 2rem;position:relative;z-index:1;}
 
-/* CREW CARDS */
-.crew-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2rem;
-  padding:2rem 0 4rem;}
+.section-divider{display:flex;align-items:center;gap:1rem;margin:3rem 0 1.8rem;}
+.section-divider h2{font-family:'Bangers',cursive;font-size:1.5rem;letter-spacing:3px;
+  white-space:nowrap;}
+.section-divider::before,.section-divider::after{content:'';flex:1;
+  height:1px;background:linear-gradient(to right,transparent,rgba(255,255,255,.1),transparent);}
+.section-divider::before{background:linear-gradient(to right,transparent,rgba(255,255,255,.1));}
+.section-divider::after{background:linear-gradient(to left,transparent,rgba(255,255,255,.1));}
 
-.crew-card{background:var(--card);border-radius:24px;border:2px solid var(--border);
-  padding:2rem;transition:all .3s;position:relative;overflow:hidden;}
-.crew-card::after{content:'';position:absolute;inset:0;border-radius:24px;opacity:0;
-  background:var(--glow);transition:opacity .3s;pointer-events:none;}
-.crew-card:hover{transform:translateY(-8px);border-color:var(--accent-color);
-  box-shadow:0 20px 60px rgba(0,0,0,.5);}
+/* ── CREW GRID ── */
+.crew-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:1.8rem;padding-bottom:1rem;}
 
-.crew-avatar{font-size:5rem;text-align:center;margin-bottom:1rem;display:block;
-  animation:float 3s ease-in-out infinite;}
-@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+/* ── BASE CARD ── */
+.crew-card{
+  background:var(--card);border-radius:24px;border:2px solid var(--border);
+  padding:1.8rem 1.8rem 2rem;transition:transform .3s,box-shadow .3s,border-color .3s;
+  position:relative;overflow:hidden;
+}
+.crew-card:hover{
+  transform:translateY(-8px);border-color:var(--ac);
+  box-shadow:0 22px 60px rgba(0,0,0,.5);}
 
-.crew-card:nth-child(1) .crew-avatar{animation-delay:0s;}
-.crew-card:nth-child(2) .crew-avatar{animation-delay:.5s;}
-.crew-card:nth-child(3) .crew-avatar{animation-delay:1s;}
-.crew-card:nth-child(4) .crew-avatar{animation-delay:1.5s;}
-.crew-card:nth-child(5) .crew-avatar{animation-delay:2s;}
-.crew-card:nth-child(6) .crew-avatar{animation-delay:2.5s;}
+/* ── AVATAR — emoji OR photo ── */
+.avatar-wrap{
+  width:100px;height:100px;border-radius:50%;
+  margin:0 auto 1.1rem;display:flex;align-items:center;justify-content:center;
+  position:relative;flex-shrink:0;
+  border:3px solid var(--ac);
+  box-shadow:0 0 22px color-mix(in srgb, var(--ac) 30%, transparent);
+  background:rgba(255,255,255,.04);
+  overflow:hidden;
+}
+.avatar-wrap .emoji-avatar{font-size:3.5rem;line-height:1;animation:float 3s ease-in-out infinite;}
+.avatar-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top;}
 
-.crew-name{font-family:'Bangers',cursive;font-size:2rem;letter-spacing:2px;
-  text-align:center;margin-bottom:.3rem;color:var(--accent-color);}
-.crew-title{text-align:center;font-size:.8rem;text-transform:uppercase;letter-spacing:2px;
-  color:var(--muted);font-weight:700;margin-bottom:1.2rem;}
+/* ── HERO CARD (Rio — full width) ── */
+.hero-card{
+  grid-column:1/-1;
+  display:flex;gap:2.5rem;align-items:center;
+  background:linear-gradient(135deg,rgba(0,229,255,.07),rgba(179,79,255,.07));
+  border-color:rgba(0,229,255,.25);
+}
+.hero-card .avatar-wrap{
+  width:130px;height:130px;flex-shrink:0;
+  border-width:4px;font-size:4.5rem;
+}
+.hero-card .avatar-wrap .emoji-avatar{font-size:5rem;}
+.hero-card .crew-body{flex:1;}
+.hero-card .crew-name{text-align:left;font-size:2.8rem;}
+.hero-card .crew-title{text-align:left;}
+.hero-card .crew-tags{justify-content:flex-start;}
+.hero-card .crew-bio{text-align:left;}
 
-.crew-tags{display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin-bottom:1.2rem;}
-.crew-tag{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
-  border-radius:100px;padding:.25rem .75rem;font-size:.75rem;font-weight:700;
-  letter-spacing:.5px;color:var(--accent-color);}
+/* ── CARD BODY TEXT ── */
+.crew-name{font-family:'Bangers',cursive;font-size:1.9rem;letter-spacing:2px;
+  text-align:center;margin-bottom:.25rem;color:var(--ac);}
+.crew-title{text-align:center;font-size:.72rem;text-transform:uppercase;letter-spacing:2px;
+  color:var(--muted);font-weight:700;margin-bottom:1rem;}
 
-.crew-bio{font-size:.92rem;color:var(--muted);line-height:1.75;text-align:center;}
+.crew-tags{display:flex;gap:.35rem;flex-wrap:wrap;justify-content:center;margin-bottom:1rem;}
+.crew-tag{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  border-radius:100px;padding:.22rem .7rem;font-size:.72rem;font-weight:700;
+  letter-spacing:.4px;color:var(--ac);}
+
+.crew-bio{font-size:.9rem;color:var(--muted);line-height:1.75;text-align:center;}
 .crew-bio strong{color:var(--text);}
 
-/* Special hero card for Rio */
-.crew-card.hero-card{grid-column:1/-1;display:flex;gap:2rem;align-items:center;
-  background:linear-gradient(135deg,rgba(0,229,255,.08),rgba(179,79,255,.08));
-  border-color:rgba(0,229,255,.3);}
-.crew-card.hero-card .crew-avatar{font-size:7rem;flex-shrink:0;animation:float 3s ease-in-out infinite;}
-.crew-card.hero-card .crew-content{flex:1;}
-.crew-card.hero-card .crew-name{text-align:left;font-size:3rem;}
-.crew-card.hero-card .crew-title{text-align:left;}
-.crew-card.hero-card .crew-tags{justify-content:flex-start;}
-.crew-card.hero-card .crew-bio{text-align:left;}
+/* ── STAT PILLS (for pets — fun facts) ── */
+.crew-stats{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:1rem;}
+.crew-stat{background:rgba(255,255,255,.04);border-radius:12px;padding:.5rem .7rem;
+  border:1px solid rgba(255,255,255,.07);}
+.crew-stat-label{font-size:.62rem;text-transform:uppercase;letter-spacing:1.5px;
+  color:var(--muted);font-weight:800;display:block;margin-bottom:.1rem;}
+.crew-stat-value{font-size:.82rem;font-weight:700;color:var(--text);}
 
-/* Add your own crew CTA */
-.crew-add{background:rgba(255,255,255,.03);border:2px dashed rgba(255,255,255,.1);
-  border-radius:24px;padding:2rem;text-align:center;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:1rem;min-height:250px;}
-.crew-add .plus{font-size:4rem;opacity:.3;}
-.crew-add p{color:var(--muted);font-size:.9rem;}
+/* ── QUOTE ── */
+.crew-quote{margin-top:1rem;padding:.7rem 1rem;
+  background:rgba(255,255,255,.04);border-radius:12px;
+  border-left:3px solid var(--ac);font-size:.82rem;
+  font-style:italic;color:var(--muted);}
+.crew-quote strong{color:var(--ac);font-style:normal;}
+
+/* ── PET CARD variant ── */
+.pet-card .avatar-wrap{border-style:dashed;}
+.pet-card .crew-name{font-size:2rem;}
+
+/* Photo instructions card */
+.photo-tip{
+  background:rgba(0,229,255,.04);border:2px dashed rgba(0,229,255,.2);
+  border-radius:20px;padding:1.5rem 1.8rem;
+  display:flex;gap:1rem;align-items:flex-start;
+  margin:0 0 2rem;
+}
+.photo-tip .tip-icon{font-size:1.8rem;flex-shrink:0;}
+.photo-tip h4{font-family:'Fredoka One',cursive;font-size:1rem;color:var(--accent2);margin-bottom:.35rem;}
+.photo-tip p{font-size:.82rem;color:var(--muted);line-height:1.65;}
+.photo-tip code{background:rgba(0,0,0,.3);padding:.1rem .4rem;border-radius:4px;
+  color:var(--accent3);font-size:.78rem;}
+
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
 
 footer{text-align:center;padding:2.5rem 2rem;color:var(--muted);font-size:.85rem;
-  border-top:1px solid rgba(255,255,255,.05);position:relative;z-index:1;}
+  border-top:1px solid rgba(255,255,255,.05);position:relative;z-index:1;margin-top:3rem;}
 footer a{color:var(--accent1);text-decoration:none;}
 footer .heart{color:var(--accent6);}
-@media(max-width:768px){.nav-links{display:none;}.crew-card.hero-card{flex-direction:column;}.crew-card.hero-card .crew-name,.crew-card.hero-card .crew-title,.crew-card.hero-card .crew-tags{text-align:center;justify-content:center;}.crew-card.hero-card .crew-bio{text-align:center;}}
+
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .hero-card{flex-direction:column;text-align:center;}
+  .hero-card .crew-name,.hero-card .crew-title{text-align:center;}
+  .hero-card .crew-tags{justify-content:center;}
+  .hero-card .crew-bio{text-align:center;}
+}
+@media(max-width:500px){
+  .crew-grid{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
@@ -134,93 +200,271 @@ footer .heart{color:var(--accent6);}
 <div class="page-header">
   <div class="page-tag">👥 MEET THE SQUAD</div>
   <h1>THE CREW</h1>
-  <p>The friends and family who make up the <strong>Z46 Exoclop</strong> universe. Every adventure is better together!</p>
+  <p>The friends, family, and furry chaos agents who make up the <strong>Z46 Exoclop</strong> universe. Every adventure is better together!</p>
 </div>
 
 <div class="container">
+
+  <!-- Photo tip -->
+  <div class="photo-tip">
+    <div class="tip-icon">📸</div>
+    <div>
+      <h4>Adding Photos</h4>
+      <p>Create an <code>images/</code> folder next to your HTML files. Add a square photo
+      (600×600px, .jpg or .webp, under 200KB — compress free at squoosh.app).
+      Then replace the emoji inside any <code>.avatar-wrap</code> with:<br>
+      <code>&lt;img src="images/rio.jpg" alt="Rio"&gt;</code><br>
+      The CSS will crop it automatically into a perfect circle.</p>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════
+       SECTION 1: THE FAMILY
+  ═════════════════════════════════════ -->
+  <div class="section-divider">
+    <h2 style="color:var(--accent2)">🏠 THE FAMILY</h2>
+  </div>
+
   <div class="crew-grid">
 
-    <!-- RIO — Hero Card -->
-    <div class="crew-card hero-card" style="--accent-color:var(--accent2);--glow:linear-gradient(135deg,rgba(0,229,255,.05),transparent);">
-      <span class="crew-avatar">🧒</span>
-      <div class="crew-content">
+    <!-- RIO — Hero card -->
+    <div class="crew-card hero-card" style="--ac:var(--accent2);">
+      <div class="avatar-wrap">
+        <!-- Replace with: <img src="images/rio.jpg" alt="Rio"> -->
+        <span class="emoji-avatar">🧒</span>
+      </div>
+      <div class="crew-body">
         <div class="crew-name">RIO</div>
-        <div class="crew-title">⭐ Founder & Chief Adventure Officer</div>
+        <div class="crew-title">⭐ Founder & Chief Adventure Officer · Age 6</div>
         <div class="crew-tags">
           <span class="crew-tag">🎮 Gamer</span>
           <span class="crew-tag">🎬 Director</span>
           <span class="crew-tag">📚 Reader</span>
-          <span class="crew-tag">🔢 Math Lover</span>
+          <span class="crew-tag">🔢 Math Nerd</span>
           <span class="crew-tag">🍳 Chef in Training</span>
-          <span class="crew-tag">🐱 Cat Dad</span>
+          <span class="crew-tag">🍄 Mushroom Quest Creator</span>
         </div>
         <p class="crew-bio">
-          Rio is the creative genius behind Z46 Exoclop. At just <strong>6 years old</strong>, he's already a gamer, filmmaker, mathematician, chef, and storyteller. He loves Nintendo games, mind-blowing numbers like TREE(3), cooking wild recipes, recording himself reading, and directing the Mushroom Quest movie series. The Z46 Exoclop universe exists because of Rio's imagination!
+          The creative genius behind Z46 Exoclop. At just <strong>6 years old</strong>, Rio is already a gamer, filmmaker, mathematician, chef, and storyteller. He loves Nintendo games, mind-blowing numbers like TREE(3), cooking wild recipes, recording read-alouds, and directing the Mushroom Quest trilogy. The entire Z46 Exoclop universe exists because of Rio's imagination!
         </p>
       </div>
     </div>
 
     <!-- DADA -->
-    <div class="crew-card" style="--accent-color:var(--accent1);--glow:linear-gradient(135deg,rgba(255,107,53,.05),transparent);">
-      <span class="crew-avatar">👨</span>
+    <div class="crew-card" style="--ac:var(--accent1);">
+      <div class="avatar-wrap">
+        <!-- Replace with: <img src="images/dada.jpg" alt="Dada"> -->
+        <span class="emoji-avatar">👨</span>
+      </div>
       <div class="crew-name">DADA</div>
-      <div class="crew-title">🎬 Co-Pilot & Camera Person</div>
+      <div class="crew-title">🎬 Co-Pilot, Camera Operator & Sous Chef</div>
       <div class="crew-tags">
         <span class="crew-tag">🎮 Gamer</span>
         <span class="crew-tag">📹 Producer</span>
         <span class="crew-tag">🍳 Cook</span>
+        <span class="crew-tag">🚀 Adventure Partner</span>
       </div>
-      <p class="crew-bio">Rio's dad and partner in all adventures. Dada handles the camera, plays co-op games, cooks alongside Rio, and makes sure the Z46 Exoclop mission keeps moving forward. The original dynamic duo!</p>
+      <p class="crew-bio">Rio's dad and co-pilot on every adventure. Dada handles the camera, plays co-op games, cooks alongside Rio, and keeps the Z46 Exoclop mission rolling. The original dynamic duo — been there since day one!</p>
+      <div class="crew-quote">"Rio, we're supposed to be <strong>cooking it</strong>, not launching it."</div>
     </div>
 
-    <!-- BLACK CAT -->
-    <div class="crew-card" style="--accent-color:var(--accent4);--glow:linear-gradient(135deg,rgba(179,79,255,.05),transparent);">
-      <span class="crew-avatar">🐱</span>
-      <div class="crew-name">THE CAT</div>
-      <div class="crew-title">😼 Chief Mischief Officer</div>
-      <div class="crew-tags">
-        <span class="crew-tag">😺 Fluffy</span>
-        <span class="crew-tag">🕶️ Cool</span>
-        <span class="crew-tag">🎮 Supervisor</span>
+    <!-- MELISSA -->
+    <div class="crew-card" style="--ac:var(--accent6);">
+      <div class="avatar-wrap">
+        <!-- Replace with: <img src="images/melissa.jpg" alt="Melissa"> -->
+        <span class="emoji-avatar">👩</span>
       </div>
-      <p class="crew-bio">The legendary black cat of Z46 Exoclop. Often seen supervising gaming sessions, walking across keyboards at critical moments, and stealing the spotlight. An essential crew member with attitude to spare!</p>
-    </div>
-
-    <!-- PLACEHOLDER CREW MEMBERS — Rio can fill these in! -->
-    <div class="crew-card" style="--accent-color:var(--accent3);--glow:linear-gradient(135deg,rgba(255,225,53,.05),transparent);">
-      <span class="crew-avatar">🧑</span>
-      <div class="crew-name">CREW MEMBER</div>
-      <div class="crew-title">🌟 Add Your Name Here!</div>
+      <div class="crew-name">MELISSA</div>
+      <div class="crew-title">💛 Rio's Mom · Mission Support</div>
       <div class="crew-tags">
-        <span class="crew-tag">👋 Friend</span>
-        <span class="crew-tag">⭐ Z46 Member</span>
+        <span class="crew-tag">💛 Mom</span>
+        <span class="crew-tag">🏠 Home Base</span>
+        <span class="crew-tag">⭐ Z46 OG</span>
       </div>
-      <p class="crew-bio">This spot is reserved for a special member of the Z46 Exoclop crew. Add your friends and family here to show the world who's on the team!</p>
-    </div>
-
-    <div class="crew-card" style="--accent-color:var(--accent5);--glow:linear-gradient(135deg,rgba(0,255,136,.05),transparent);">
-      <span class="crew-avatar">🧑</span>
-      <div class="crew-name">CREW MEMBER</div>
-      <div class="crew-title">🌟 Add Your Name Here!</div>
-      <div class="crew-tags">
-        <span class="crew-tag">👋 Friend</span>
-        <span class="crew-tag">⭐ Z46 Member</span>
-      </div>
-      <p class="crew-bio">Another amazing member of the Z46 crew! Every great adventure needs a great team. Who will fill this spot?</p>
-    </div>
-
-    <div class="crew-card" style="--accent-color:var(--accent6);--glow:linear-gradient(135deg,rgba(255,79,203,.05),transparent);">
-      <span class="crew-avatar">🧑</span>
-      <div class="crew-name">CREW MEMBER</div>
-      <div class="crew-title">🌟 Add Your Name Here!</div>
-      <div class="crew-tags">
-        <span class="crew-tag">👋 Friend</span>
-        <span class="crew-tag">⭐ Z46 Member</span>
-      </div>
-      <p class="crew-bio">The Z46 Exoclop crew keeps growing! This card is ready for the next legendary member of the squad. Could it be you?</p>
+      <p class="crew-bio">Rio's mom and the heart of the Z46 Exoclop home base. The crew couldn't do any of this without her love and support behind the scenes. An essential part of everything Z46 stands for!</p>
     </div>
 
   </div>
+
+  <!-- ════════════════════════════════════
+       SECTION 2: THE ANIMALS
+  ═════════════════════════════════════ -->
+  <div class="section-divider">
+    <h2 style="color:var(--accent3)">🐾 THE ANIMALS</h2>
+  </div>
+
+  <div class="crew-grid">
+
+    <!-- SUNSHINE -->
+    <div class="crew-card pet-card" style="--ac:#f5c842;">
+      <div class="avatar-wrap">
+        <!-- Replace with: <img src="images/sunshine.jpg" alt="Sunshine"> -->
+        <span class="emoji-avatar">🐕</span>
+      </div>
+      <div class="crew-name">SUNSHINE</div>
+      <div class="crew-title">🌟 Newest Family Member · Yellow Lab · Chief Chaos Officer</div>
+      <div class="crew-tags">
+        <span class="crew-tag">🐾 Mischievous</span>
+        <span class="crew-tag">👃 Food Detector</span>
+        <span class="crew-tag">🎾 Fetch Fanatic</span>
+        <span class="crew-tag">🪵 Stick Destroyer</span>
+        <span class="crew-tag">🏃 Jog Buddy</span>
+      </div>
+      <p class="crew-bio">The newest — and possibly most chaotic — member of the Z46 Exoclop family. Sunshine has an <strong>uncanny ability to smell out any food</strong> within a 3-mile radius and is absolutely devoted to the art of fetch. She does not discriminate between sticks found outdoors and sticks that are still part of your furniture.</p>
+      <div class="crew-stats">
+        <div class="crew-stat">
+          <span class="crew-stat-label">Breed</span>
+          <span class="crew-stat-value">Yellow Lab</span>
+        </div>
+        <div class="crew-stat">
+          <span class="crew-stat-label">Superpower</span>
+          <span class="crew-stat-value">Food Detection</span>
+        </div>
+        <div class="crew-stat">
+          <span class="crew-stat-label">Fav Activity</span>
+          <span class="crew-stat-value">Long jogs 🏃</span>
+        </div>
+        <div class="crew-stat">
+          <span class="crew-stat-label">Known Crime</span>
+          <span class="crew-stat-value">Stick theft 🪵</span>
+        </div>
+      </div>
+      <div class="crew-quote">No stick is safe. No sandwich is hidden. <strong>I will find both.</strong></div>
+    </div>
+
+    <!-- SUSHI -->
+    <div class="crew-card pet-card" style="--ac:var(--accent4);">
+      <div class="avatar-wrap">
+        <!-- Replace with: <img src="images/sushi.jpg" alt="Sushi"> -->
+        <span class="emoji-avatar">🐱</span>
+      </div>
+      <div class="crew-name">SUSHI</div>
+      <div class="crew-title">😼 Polydactyl Cat · Smooth Operator · Toilet Connoisseur</div>
+      <div class="crew-tags">
+        <span class="crew-tag">🐾 Polydactyl</span>
+        <span class="crew-tag">🚽 Toilet Drinker</span>
+        <span class="crew-tag">😎 Smooth Operator</span>
+        <span class="crew-tag">🎤 Vocal Activist</span>
+        <span class="crew-tag">🖐️ Extra Toes</span>
+      </div>
+      <p class="crew-bio">Sushi is not your average cat. Born with <strong>extra toes on each paw</strong> (that's polydactyl, look it up — it's wild), Sushi moves through life with an effortless cool that can't be taught. Has strong opinions about everything and will meow about them at full volume. Refuses to drink from a bowl like a normal cat. The toilet is preferred.</p>
+      <div class="crew-stats">
+        <div class="crew-stat">
+          <span class="crew-stat-label">Special Trait</span>
+          <span class="crew-stat-value">Extra toes 🖐️</span>
+        </div>
+        <div class="crew-stat">
+          <span class="crew-stat-label">Drink of Choice</span>
+          <span class="crew-stat-value">Toilet water 🚽</span>
+        </div>
+        <div class="crew-stat">
+          <span class="crew-stat-label">Vibe</span>
+          <span class="crew-stat-value">Smooth operator</span>
+        </div>
+        <div class="crew-stat">
+          <span class="crew-stat-label">Communication</span>
+          <span class="crew-stat-value">Passionate meows</span>
+        </div>
+      </div>
+      <div class="crew-quote">I have more toes than you. I drink what I want. <strong>Respect the process.</strong></div>
+    </div>
+
+  </div>
+
+  <!-- ════════════════════════════════════
+       SECTION 3: THE FRIENDS
+  ═════════════════════════════════════ -->
+  <div class="section-divider">
+    <h2 style="color:var(--accent5)">🤝 THE FRIENDS</h2>
+  </div>
+
+  <div class="crew-grid">
+
+    <!-- NICK -->
+    <div class="crew-card" style="--ac:var(--accent5);">
+      <div class="avatar-wrap">
+        <!-- Replace with: <img src="images/nick.jpg" alt="Nick"> -->
+        <span class="emoji-avatar">🧗</span>
+      </div>
+      <div class="crew-name">NICK</div>
+      <div class="crew-title">🏔️ Longtime Friend · Adventurer · San Juan Islands Expert</div>
+      <div class="crew-tags">
+        <span class="crew-tag">🏔️ Mountain Person</span>
+        <span class="crew-tag">🏝️ San Juan Islands</span>
+        <span class="crew-tag">🧗 Adventurer</span>
+        <span class="crew-tag">👨‍👦 Luca's Dad</span>
+      </div>
+      <p class="crew-bio">A longtime friend of the Z46 family and certified adventurer. Nick knows the <strong>San Juan Islands and mountain trails</strong> like the back of his hand. If there's an epic outdoor adventure happening, Nick has either already done it or is currently planning it.</p>
+      <div class="crew-stats">
+        <div class="crew-stat">
+          <span class="crew-stat-label">Home Turf</span>
+          <span class="crew-stat-value">San Juan Islands 🏝️</span>
+        </div>
+        <div class="crew-stat">
+          <span class="crew-stat-label">Also Loves</span>
+          <span class="crew-stat-value">Mountains ⛰️</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- LUCA -->
+    <div class="crew-card" style="--ac:#66ffaa;">
+      <div class="avatar-wrap">
+        <!-- Replace with: <img src="images/luca.jpg" alt="Luca"> -->
+        <span class="emoji-avatar">🧒</span>
+      </div>
+      <div class="crew-name">LUCA</div>
+      <div class="crew-title">🌟 Nick's Son · Z46 Junior Member</div>
+      <div class="crew-tags">
+        <span class="crew-tag">👦 Junior Crew</span>
+        <span class="crew-tag">🏔️ Adventure Kid</span>
+        <span class="crew-tag">🤝 Rio's Friend</span>
+      </div>
+      <p class="crew-bio">Nick's son and a fellow young adventurer in the Z46 Exoclop universe. Growing up with a dad who explores the San Juan Islands and mountains means Luca is no stranger to epic adventures. A great addition to any mission!</p>
+    </div>
+
+    <!-- JAYME -->
+    <div class="crew-card" style="--ac:var(--accent6);">
+      <div class="avatar-wrap">
+        <!-- Replace with: <img src="images/jayme.jpg" alt="Jayme"> -->
+        <span class="emoji-avatar">📷</span>
+      </div>
+      <div class="crew-name">JAYME</div>
+      <div class="crew-title">📸 Photographer · Longtime Friend of the Crew</div>
+      <div class="crew-tags">
+        <span class="crew-tag">📷 Photographer</span>
+        <span class="crew-tag">🎨 Creative</span>
+        <span class="crew-tag">🤝 Longtime Friend</span>
+        <span class="crew-tag">👩‍👦 Dash's Mom</span>
+      </div>
+      <p class="crew-bio">A longtime friend of the Z46 crew and the one behind the lens when it counts. Jayme's <strong>photography skills</strong> bring out the best moments — and she's been part of the crew long enough to know where all the good stuff happens!</p>
+      <div class="crew-stat" style="margin-top:1rem;border-radius:12px;padding:.5rem .7rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);">
+        <span class="crew-stat-label">Superpower</span>
+        <span class="crew-stat-value">Capturing perfect moments 📸</span>
+      </div>
+    </div>
+
+    <!-- DASH -->
+    <div class="crew-card" style="--ac:var(--accent2);">
+      <div class="avatar-wrap">
+        <!-- Replace with: <img src="images/dash.jpg" alt="Dash"> -->
+        <span class="emoji-avatar">🧒</span>
+      </div>
+      <div class="crew-name">DASH</div>
+      <div class="crew-title">⚡ Jayme's Son · Z46 Junior Member</div>
+      <div class="crew-tags">
+        <span class="crew-tag">👦 Junior Crew</span>
+        <span class="crew-tag">⚡ Fast</span>
+        <span class="crew-tag">🤝 Rio's Friend</span>
+      </div>
+      <p class="crew-bio">Jayme's son and a bonafide Z46 junior crew member. Growing up with a photographer mom means Dash has been around creativity and cool moments his whole life. A great friend and fellow adventurer in the Z46 universe!</p>
+    </div>
+
+  </div>
+
+  <!-- padding at bottom -->
+  <div style="height:3rem"></div>
+
 </div>
 
 <footer>
