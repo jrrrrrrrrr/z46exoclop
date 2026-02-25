@@ -9,12 +9,11 @@
 :root{--bg:#080816;--card:#11112a;--border:rgba(255,255,255,0.07);
   --accent1:#ff6b35;--accent2:#00e5ff;--accent3:#ffe135;--accent4:#b34fff;
   --accent5:#00ff88;--accent6:#ff4fcb;--text:#f0f0ff;--muted:#7777aa;
-  --switch-red:#e4000f;--switch2-gold:#d4af37;}
+  --switch-red:#e4000f;--sw2:#00c8e0;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;overflow-x:hidden;}
 .stars{position:fixed;inset:0;pointer-events:none;z-index:0;}
-.stars::before,.stars::after{content:'';position:absolute;inset:0;}
-.stars::before{background-image:
+.stars::before{content:'';position:absolute;inset:0;background-image:
   radial-gradient(1px 1px at 8% 12%,rgba(255,255,255,.9),transparent),
   radial-gradient(1px 1px at 22% 68%,rgba(255,255,255,.7),transparent),
   radial-gradient(1.5px 1.5px at 48% 28%,rgba(0,229,255,.7),transparent),
@@ -22,8 +21,8 @@ body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;over
   radial-gradient(2px 2px at 58% 82%,rgba(179,79,255,.6),transparent),
   radial-gradient(1px 1px at 14% 42%,rgba(255,255,255,.5),transparent),
   radial-gradient(1px 1px at 44% 5%,rgba(255,255,255,.8),transparent),
-  radial-gradient(1px 1px at 66% 72%,rgba(255,79,203,.5),transparent),
   radial-gradient(1px 1px at 88% 88%,rgba(255,255,255,.6),transparent);}
+
 nav{display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;
   background:rgba(8,8,22,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,229,255,.15);
   position:sticky;top:0;z-index:1000;gap:1rem;}
@@ -37,14 +36,14 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 2rem
 .nav-links a.active{color:var(--accent2);background:rgba(0,229,255,.1);}
 
 .page-header{text-align:center;padding:4rem 2rem 2rem;position:relative;z-index:1;}
-.page-tag{display:inline-block;background:linear-gradient(135deg,var(--switch-red),var(--accent1));
-  color:#fff;font-family:'Bangers',cursive;font-size:.95rem;letter-spacing:3px;
+.page-tag{display:inline-block;background:linear-gradient(135deg,var(--sw2),var(--accent1));
+  color:#000;font-family:'Bangers',cursive;font-size:.95rem;letter-spacing:3px;
   padding:.3rem 1.2rem;border-radius:100px;margin-bottom:1.2rem;
   animation:tagpulse 2s ease-in-out infinite;}
 @keyframes tagpulse{0%,100%{transform:scale(1);}50%{transform:scale(1.04);}}
 .page-header h1{font-family:'Bangers',cursive;font-size:clamp(3rem,8vw,6rem);
   letter-spacing:4px;line-height:1;margin-bottom:1rem;
-  background:linear-gradient(135deg,var(--switch-red),var(--accent1),var(--accent3));
+  background:linear-gradient(135deg,var(--sw2),var(--accent1),var(--accent3));
   background-size:200% auto;animation:shimmer 5s linear infinite;
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
 @keyframes shimmer{0%{background-position:0% center;}100%{background-position:200% center;}}
@@ -52,55 +51,70 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 2rem
 
 .container{max-width:1200px;margin:0 auto;padding:0 2rem;position:relative;z-index:1;}
 
-/* Platform tabs */
-.platform-tabs{display:flex;gap:1rem;margin:2rem 0;flex-wrap:wrap;}
-.platform-tab{font-family:'Fredoka One',cursive;font-size:1rem;letter-spacing:1px;
-  padding:.6rem 1.5rem;border-radius:100px;cursor:pointer;transition:all .2s;
-  border:2px solid var(--border);background:transparent;color:var(--muted);}
-.platform-tab.active,.platform-tab:hover{color:#fff;}
-.platform-tab.switch.active,.platform-tab.switch:hover{
-  background:linear-gradient(135deg,var(--switch-red),#ff4444);border-color:var(--switch-red);}
-.platform-tab.switch2.active,.platform-tab.switch2:hover{
-  background:linear-gradient(135deg,var(--switch2-gold),#c8960c);border-color:var(--switch2-gold);color:#000;}
-.platform-tab.all.active,.platform-tab.all:hover{
-  background:linear-gradient(135deg,var(--accent2),var(--accent4));border-color:var(--accent2);}
-
-/* Section labels */
 .section-label{display:flex;align-items:center;gap:1rem;margin:2.5rem 0 1.5rem;}
 .section-label h2{font-family:'Bangers',cursive;font-size:2rem;letter-spacing:3px;}
-.section-label .platform-badge{font-family:'Fredoka One',cursive;font-size:.85rem;
-  padding:.3rem 1rem;border-radius:100px;letter-spacing:1px;}
-.switch-badge{background:var(--switch-red);color:#fff;}
-.switch2-badge{background:var(--switch2-gold);color:#000;}
+.platform-badge{font-family:'Fredoka One',cursive;font-size:.85rem;padding:.3rem 1rem;border-radius:100px;letter-spacing:1px;}
+.sw2-badge{background:linear-gradient(135deg,var(--sw2),#0090a8);color:#000;}
+.sw1-badge{background:var(--switch-red);color:#fff;}
 
-/* Game cards */
-.games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.2rem;margin-bottom:3rem;}
+/* ── GRID ── */
+.games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1.4rem;margin-bottom:3rem;}
 
-.game-card{background:var(--card);border-radius:16px;border:1.5px solid var(--border);
-  padding:1.4rem 1.2rem;transition:all .25s;cursor:default;position:relative;overflow:hidden;}
-.game-card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(0,0,0,.4);border-color:var(--g-color);}
-.game-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:var(--g-color);opacity:0;transition:opacity .25s;}
-.game-card:hover::before{opacity:1;}
+/* ── CARD ── */
+.game-card{background:var(--card);border-radius:18px;border:1.5px solid var(--border);
+  overflow:hidden;transition:all .28s;position:relative;display:flex;flex-direction:column;}
+.game-card:hover{transform:translateY(-6px);box-shadow:0 18px 48px rgba(0,0,0,.5);border-color:var(--g-color);}
 
-.game-emoji{font-size:2.5rem;margin-bottom:.8rem;display:block;transition:transform .2s;}
-.game-card:hover .game-emoji{transform:scale(1.15);}
-.game-title{font-family:'Fredoka One',cursive;font-size:1rem;color:var(--text);margin-bottom:.4rem;line-height:1.3;}
-.game-desc{font-size:.78rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem;}
+/* Cover */
+.cover-wrap{position:relative;overflow:hidden;}
+.game-cover{width:100%;aspect-ratio:2/3;object-fit:cover;object-position:center top;
+  display:block;background:#08081a;transition:transform .3s;}
+.game-card:hover .game-cover{transform:scale(1.04);}
+.cover-emoji{width:100%;aspect-ratio:2/3;background:linear-gradient(135deg,rgba(255,255,255,.05),transparent);
+  display:none;align-items:center;justify-content:center;font-size:5rem;}
 
-.game-rating{display:flex;gap:.15rem;margin-bottom:.5rem;}
-.star{color:var(--accent3);font-size:.9rem;}
-.star.empty{color:var(--border);filter:brightness(3);}
+.cover-pip{position:absolute;top:8px;left:8px;z-index:2;font-family:'Fredoka One',cursive;
+  font-size:.58rem;letter-spacing:1px;padding:.18rem .55rem;border-radius:100px;backdrop-filter:blur(6px);}
+.pip-sw2{background:rgba(0,200,224,.92);color:#000;}
+.pip-sw1{background:rgba(228,0,15,.9);color:#fff;}
+
+.cover-score{position:absolute;top:8px;right:8px;z-index:2;font-family:'Bangers',cursive;
+  font-size:1.05rem;letter-spacing:.5px;background:rgba(0,0,0,.78);backdrop-filter:blur(6px);
+  padding:.22rem .6rem;border-radius:8px;color:var(--g-color);}
+.score-undecided{color:var(--muted);font-family:'Nunito',sans-serif;font-size:.65rem;
+  font-weight:800;letter-spacing:.5px;}
+.score-goat{color:var(--accent3);text-shadow:0 0 12px rgba(255,225,53,.7);}
+
+/* Body */
+.game-body{padding:.9rem 1rem 1.1rem;flex:1;display:flex;flex-direction:column;gap:.5rem;}
+.game-title{font-family:'Fredoka One',cursive;font-size:.98rem;color:var(--text);line-height:1.3;}
+.game-edition{font-size:.72rem;color:var(--muted);font-style:italic;}
+
+.score-row{display:flex;align-items:center;gap:.6rem;}
+.score-bar-bg{flex:1;background:rgba(255,255,255,.06);border-radius:100px;height:5px;overflow:hidden;}
+.score-bar-fill{height:100%;border-radius:100px;
+  background:linear-gradient(90deg,var(--g-color),color-mix(in srgb,var(--g-color) 55%,#fff));}
+.score-label{font-family:'Bangers',cursive;font-size:.92rem;color:var(--g-color);white-space:nowrap;}
+
+.rio-says{background:rgba(255,255,255,.04);border-left:3px solid var(--g-color);
+  border-radius:0 8px 8px 0;padding:.4rem .65rem;font-size:.75rem;
+  font-style:italic;color:var(--muted);line-height:1.55;}
+.rio-says-label{color:var(--g-color);font-style:normal;font-size:.65rem;
+  font-weight:900;text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:.1rem;}
 
 .game-tags{display:flex;gap:.3rem;flex-wrap:wrap;}
-.game-tag{font-size:.65rem;font-weight:800;letter-spacing:.5px;text-transform:uppercase;
-  padding:.2rem .5rem;border-radius:100px;border:1px solid currentColor;opacity:.8;}
+.game-tag{font-size:.62rem;font-weight:800;letter-spacing:.4px;text-transform:uppercase;
+  padding:.17rem .48rem;border-radius:100px;border:1px solid currentColor;opacity:.8;}
+.dlc-chip{font-size:.6rem;font-weight:800;letter-spacing:.5px;
+  background:rgba(255,225,53,.12);border:1px solid rgba(255,225,53,.35);
+  color:var(--accent3);padding:.12rem .48rem;border-radius:100px;white-space:nowrap;}
 
 footer{text-align:center;padding:2.5rem 2rem;color:var(--muted);font-size:.85rem;
-  border-top:1px solid rgba(255,255,255,.05);position:relative;z-index:1;margin-top:2rem;}
+  border-top:1px solid rgba(255,255,255,.05);position:relative;z-index:1;margin-top:1rem;}
 footer a{color:var(--accent1);text-decoration:none;}
 footer .heart{color:var(--accent6);}
-@media(max-width:768px){.nav-links{display:none;}.games-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));}}
+@media(max-width:768px){.nav-links{display:none;}.games-grid{grid-template-columns:repeat(auto-fill,minmax(155px,1fr));}}
+@media(max-width:440px){.games-grid{grid-template-columns:1fr 1fr;}}
 </style>
 </head>
 <body>
@@ -123,143 +137,377 @@ footer .heart{color:var(--accent6);}
 <div class="page-header">
   <div class="page-tag">🎮 OUR GAME LIBRARY</div>
   <h1>NINTENDO<br>GAMES</h1>
-  <p>Every game Rio and the crew have played on <strong>Nintendo Switch</strong> and <strong>Switch 2</strong>. Our honest ratings and thoughts!</p>
+  <p>Every game Rio and the crew have played. Real ratings, honest thoughts — no fluff!</p>
 </div>
 
 <div class="container">
 
-  <!-- Switch Section -->
-  <div class="section-label">
-    <h2 style="color:#e4000f;">NINTENDO SWITCH</h2>
-    <span class="platform-badge switch-badge">SWITCH</span>
+<!-- ════════════════════════════════
+     NINTENDO SWITCH 2
+════════════════════════════════ -->
+<div class="section-label">
+  <h2 style="color:var(--sw2)">NINTENDO SWITCH 2</h2>
+  <span class="platform-badge sw2-badge">✦ SWITCH 2</span>
+</div>
+
+<div class="games-grid">
+
+  <!-- KIRBY AIR RIDERS 668/100 -->
+  <div class="game-card" style="--g-color:#ff79c6;">
+    <div class="cover-wrap">
+      <img class="game-cover" alt="Kirby Air Riders"
+        src="https://cdn02.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_2_1/H2x1_NSwitch2_KirbyAirRiders_image1600w.jpg"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="cover-emoji">🌸</div>
+      <span class="cover-pip pip-sw2">SWITCH 2</span>
+      <span class="cover-score score-goat">668 🐐</span>
+    </div>
+    <div class="game-body">
+      <div class="game-title">Kirby Air Riders</div>
+      <div class="score-row">
+        <div class="score-bar-bg"><div class="score-bar-fill" style="width:100%"></div></div>
+        <span class="score-label">668 🐐</span>
+      </div>
+      <div class="game-tags">
+        <span class="game-tag" style="color:#ff79c6">🏁 Racing</span>
+        <span class="game-tag" style="color:var(--accent3)">👑 GOAT</span>
+      </div>
+    </div>
   </div>
 
-  <div class="games-grid">
-
-    <div class="game-card" style="--g-color:#e60012;">
-      <span class="game-emoji">🍄</span>
-      <div class="game-title">Super Mario Odyssey</div>
-      <div class="game-desc">Travel the world collecting Moons with Mario and Cappy!</div>
-      <div class="game-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-      <div class="game-tags"><span class="game-tag" style="color:var(--accent1)">🎮 Platformer</span><span class="game-tag" style="color:var(--accent5)">✅ Played</span></div>
+  <!-- ZELDA TOTK SW2 96/100 -->
+  <div class="game-card" style="--g-color:#00d97e;">
+    <div class="cover-wrap">
+      <img class="game-cover" alt="Zelda: Tears of the Kingdom Switch 2 Edition"
+        src="https://cdn02.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_2_1/H2x1_NSwitch2_TheLegendOfZeldaTearsOfTheKingdomNintendoSwitch2Edition_image1600w.jpg"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="cover-emoji">⚔️</div>
+      <span class="cover-pip pip-sw2">SWITCH 2</span>
+      <span class="cover-score">96/100</span>
     </div>
-
-    <div class="game-card" style="--g-color:#00b900;">
-      <span class="game-emoji">⚔️</span>
-      <div class="game-title">Zelda: Breath of the Wild</div>
-      <div class="game-desc">Open world adventure in Hyrule. Climb anything, go anywhere!</div>
-      <div class="game-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-      <div class="game-tags"><span class="game-tag" style="color:var(--accent5)">🗺️ Adventure</span><span class="game-tag" style="color:var(--accent5)">✅ Played</span></div>
-    </div>
-
-    <div class="game-card" style="--g-color:#ff6b35;">
-      <span class="game-emoji">🦊</span>
-      <div class="game-title">Super Mario Bros. Wonder</div>
-      <div class="game-desc">The most creative 2D Mario ever! Flower Power changes everything!</div>
-      <div class="game-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-      <div class="game-tags"><span class="game-tag" style="color:var(--accent1)">🎮 Platformer</span><span class="game-tag" style="color:var(--accent5)">✅ Played</span></div>
-    </div>
-
-    <div class="game-card" style="--g-color:#4fc3f7;">
-      <span class="game-emoji">🏎️</span>
-      <div class="game-title">Mario Kart 8 Deluxe</div>
-      <div class="game-desc">The ultimate racing game. 96 tracks of pure chaos and fun!</div>
-      <div class="game-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-      <div class="game-tags"><span class="game-tag" style="color:var(--accent2)">🏁 Racing</span><span class="game-tag" style="color:var(--accent5)">✅ Played</span></div>
-    </div>
-
-    <div class="game-card" style="--g-color:#ff4fcb;">
-      <span class="game-emoji">🌺</span>
-      <div class="game-title">Animal Crossing: New Horizons</div>
-      <div class="game-desc">Build your dream island! Fish, catch bugs, and make friends.</div>
-      <div class="game-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-      <div class="game-tags"><span class="game-tag" style="color:var(--accent6)">🏝️ Life Sim</span><span class="game-tag" style="color:var(--accent5)">✅ Played</span></div>
-    </div>
-
-    <div class="game-card" style="--g-color:#b34fff;">
-      <span class="game-emoji">🥊</span>
-      <div class="game-title">Super Smash Bros. Ultimate</div>
-      <div class="game-desc">Everyone is here! 80+ fighters, epic battles.</div>
-      <div class="game-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-      <div class="game-tags"><span class="game-tag" style="color:var(--accent4)">⚔️ Fighter</span><span class="game-tag" style="color:var(--accent5)">✅ Played</span></div>
-    </div>
-
-    <div class="game-card" style="--g-color:#00ff88;">
-      <span class="game-emoji">🦕</span>
+    <div class="game-body">
       <div class="game-title">Zelda: Tears of the Kingdom</div>
-      <div class="game-desc">Build ANYTHING and explore the sky, surface, and depths of Hyrule!</div>
-      <div class="game-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-      <div class="game-tags"><span class="game-tag" style="color:var(--accent5)">🗺️ Adventure</span><span class="game-tag" style="color:var(--accent5)">✅ Played</span></div>
+      <div class="game-edition">Nintendo Switch 2 Edition</div>
+      <div class="score-row">
+        <div class="score-bar-bg"><div class="score-bar-fill" style="width:96%"></div></div>
+        <span class="score-label">96</span>
+      </div>
+      <div class="rio-says">
+        <span class="rio-says-label">Rio says</span>
+        Kinda fun but sometimes you have to find shelter and can't really do anything
+      </div>
+      <div class="game-tags">
+        <span class="game-tag" style="color:#00d97e">🗺️ Adventure</span>
+        <span class="game-tag" style="color:var(--sw2)">✦ SW2 Ed.</span>
+      </div>
     </div>
-
-    <div class="game-card" style="--g-color:#ffe135;">
-      <span class="game-emoji">🎪</span>
-      <div class="game-title">Kirby and the Forgotten Land</div>
-      <div class="game-desc">Kirby goes 3D in an abandoned city! Mouthful Mode is wild.</div>
-      <div class="game-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span></div>
-      <div class="game-tags"><span class="game-tag" style="color:var(--accent3)">🎀 Action</span><span class="game-tag" style="color:var(--accent5)">✅ Played</span></div>
-    </div>
-
-    <div class="game-card" style="--g-color:#ff6b35;">
-      <span class="game-emoji">🐉</span>
-      <div class="game-title">Pokémon Scarlet/Violet</div>
-      <div class="game-desc">Open world Pokémon adventures in Paldea! Gotta catch 'em all!</div>
-      <div class="game-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span></div>
-      <div class="game-tags"><span class="game-tag" style="color:var(--accent1)">⚡ RPG</span><span class="game-tag" style="color:var(--accent5)">✅ Played</span></div>
-    </div>
-
-    <div class="game-card" style="--g-color:#00e5ff;">
-      <span class="game-emoji">🌟</span>
-      <div class="game-title">Splatoon 3</div>
-      <div class="game-desc">Ink-based battles! Squids, octopi, and tons of paint everywhere.</div>
-      <div class="game-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span></div>
-      <div class="game-tags"><span class="game-tag" style="color:var(--accent2)">🎨 Shooter</span><span class="game-tag" style="color:var(--accent5)">✅ Played</span></div>
-    </div>
-
-    <div class="game-card" style="--g-color:#ff4fcb;">
-      <span class="game-emoji">🏄</span>
-      <div class="game-title">Sonic Frontiers</div>
-      <div class="game-desc">Sonic goes open world! Speed through the Starfall Islands!</div>
-      <div class="game-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span><span class="star empty">★</span></div>
-      <div class="game-tags"><span class="game-tag" style="color:var(--accent6)">💨 Action</span><span class="game-tag" style="color:var(--accent5)">✅ Played</span></div>
-    </div>
-
-    <div class="game-card" style="--g-color:#b34fff;">
-      <span class="game-emoji">🗡️</span>
-      <div class="game-title">Luigi's Mansion 3</div>
-      <div class="game-desc">Luigi busts ghosts in a haunted hotel. Gooigi is hilarious!</div>
-      <div class="game-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-      <div class="game-tags"><span class="game-tag" style="color:var(--accent4)">👻 Adventure</span><span class="game-tag" style="color:var(--accent5)">✅ Played</span></div>
-    </div>
-
   </div>
 
-  <!-- Switch 2 Section -->
-  <div class="section-label">
-    <h2 style="color:var(--switch2-gold);">NINTENDO SWITCH 2</h2>
-    <span class="platform-badge switch2-badge">SWITCH 2</span>
+  <!-- DK BANANZA 94/100 -->
+  <div class="game-card" style="--g-color:#ff9500;">
+    <div class="cover-wrap">
+      <img class="game-cover" alt="Donkey Kong Bananza"
+        src="https://cdn02.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_2_1/H2x1_NSwitch2_DonkeyKongBananza_image1600w.jpg"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="cover-emoji">🦍</div>
+      <span class="cover-pip pip-sw2">SWITCH 2</span>
+      <span class="cover-score">94/100</span>
+    </div>
+    <div class="game-body">
+      <div class="game-title">Donkey Kong Bananza <span class="dlc-chip">+ DLC</span></div>
+      <div class="score-row">
+        <div class="score-bar-bg"><div class="score-bar-fill" style="width:94%"></div></div>
+        <span class="score-label">94</span>
+      </div>
+      <div class="rio-says">
+        <span class="rio-says-label">Rio says</span>
+        Not the best game ever but DK finally got a new game after 26 years
+      </div>
+      <div class="game-tags">
+        <span class="game-tag" style="color:#ff9500">🦍 Platformer</span>
+        <span class="game-tag" style="color:var(--sw2)">✦ SW2</span>
+      </div>
+    </div>
   </div>
 
-  <div class="games-grid">
+  <!-- ZELDA BOTW SW2 90/100 -->
+  <div class="game-card" style="--g-color:#7ec8e3;">
+    <div class="cover-wrap">
+      <img class="game-cover" alt="Zelda: Breath of the Wild Switch 2 Edition"
+        src="https://cdn02.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_2_1/H2x1_NSwitch2_TheLegendOfZeldaBreathOfTheWildNintendoSwitch2Edition_image1600w.jpg"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="cover-emoji">🌿</div>
+      <span class="cover-pip pip-sw2">SWITCH 2</span>
+      <span class="cover-score">90/100</span>
+    </div>
+    <div class="game-body">
+      <div class="game-title">Zelda: Breath of the Wild</div>
+      <div class="game-edition">Nintendo Switch 2 Edition</div>
+      <div class="score-row">
+        <div class="score-bar-bg"><div class="score-bar-fill" style="width:90%"></div></div>
+        <span class="score-label">90</span>
+      </div>
+      <div class="game-tags">
+        <span class="game-tag" style="color:#7ec8e3">🗺️ Adventure</span>
+        <span class="game-tag" style="color:var(--sw2)">✦ SW2 Ed.</span>
+      </div>
+    </div>
+  </div>
 
-    <div class="game-card" style="--g-color:#d4af37;">
-      <span class="game-emoji">🏎️</span>
+  <!-- MARIO KART WORLD 63/100 -->
+  <div class="game-card" style="--g-color:#ff4444;">
+    <div class="cover-wrap">
+      <img class="game-cover" alt="Mario Kart World"
+        src="https://cdn02.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_2_1/H2x1_NSwitch2_MarioKartWorld_image1600w.jpg"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="cover-emoji">🏎️</div>
+      <span class="cover-pip pip-sw2">SWITCH 2</span>
+      <span class="cover-score">63/100</span>
+    </div>
+    <div class="game-body">
       <div class="game-title">Mario Kart World</div>
-      <div class="game-desc">The biggest Mario Kart ever! Drive anywhere, anytime. Open world racing!</div>
-      <div class="game-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-      <div class="game-tags"><span class="game-tag" style="color:var(--switch2-gold)">🆕 Switch 2</span><span class="game-tag" style="color:var(--accent5)">✅ Played</span></div>
+      <div class="score-row">
+        <div class="score-bar-bg"><div class="score-bar-fill" style="width:63%"></div></div>
+        <span class="score-label">63</span>
+      </div>
+      <div class="rio-says">
+        <span class="rio-says-label">Rio says</span>
+        It's cool but we don't really play it much
+      </div>
+      <div class="game-tags">
+        <span class="game-tag" style="color:#ff4444">🏁 Racing</span>
+        <span class="game-tag" style="color:var(--sw2)">✦ SW2</span>
+      </div>
     </div>
-
-    <div class="game-card" style="--g-color:#d4af37;border-style:dashed;">
-      <span class="game-emoji">🌌</span>
-      <div class="game-title">Add More Games!</div>
-      <div class="game-desc">More Switch 2 adventures coming soon as we play them!</div>
-      <div class="game-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-      <div class="game-tags"><span class="game-tag" style="color:var(--switch2-gold)">🔜 Coming Soon</span></div>
-    </div>
-
   </div>
 
+  <!-- METROID PRIME 4 undecided -->
+  <div class="game-card" style="--g-color:#b34fff;">
+    <div class="cover-wrap">
+      <img class="game-cover" alt="Metroid Prime 4: Beyond"
+        src="https://cdn02.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_2_1/H2x1_NSwitch2_MetroidPrime4Beyond_image1600w.jpg"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="cover-emoji">🪐</div>
+      <span class="cover-pip pip-sw2">SWITCH 2</span>
+      <span class="cover-score score-undecided">UNDECIDED</span>
+    </div>
+    <div class="game-body">
+      <div class="game-title">Metroid Prime 4: Beyond</div>
+      <div class="game-edition">Nintendo Switch 2 Edition</div>
+      <div class="game-tags">
+        <span class="game-tag" style="color:#b34fff">🪐 Action</span>
+        <span class="game-tag" style="color:var(--muted)">⏳ TBD</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TMNT SPLINTERED FATE undecided -->
+  <div class="game-card" style="--g-color:#00ff88;">
+    <div class="cover-wrap">
+      <img class="game-cover" alt="TMNT: Splintered Fate Switch 2 Edition"
+        src="https://cdn02.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_2_1/H2x1_NSwitch2_TeenageMutantNinjaTurtlesSplintered Fate_image1600w.jpg"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="cover-emoji">🐢</div>
+      <span class="cover-pip pip-sw2">SWITCH 2</span>
+      <span class="cover-score score-undecided">UNDECIDED</span>
+    </div>
+    <div class="game-body">
+      <div class="game-title">TMNT: Splintered Fate</div>
+      <div class="game-edition">Nintendo Switch 2 Edition</div>
+      <div class="game-tags">
+        <span class="game-tag" style="color:#00ff88">🐢 Action</span>
+        <span class="game-tag" style="color:var(--muted)">⏳ TBD</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- WELCOME TOUR undecided -->
+  <div class="game-card" style="--g-color:var(--sw2);">
+    <div class="cover-wrap">
+      <img class="game-cover" alt="Nintendo Switch 2 Welcome Tour"
+        src="https://cdn02.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_2_1/H2x1_NSwitch2_WelcomeTour_image1600w.jpg"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="cover-emoji">🎮</div>
+      <span class="cover-pip pip-sw2">SWITCH 2</span>
+      <span class="cover-score score-undecided">UNDECIDED</span>
+    </div>
+    <div class="game-body">
+      <div class="game-title">Nintendo Switch 2 Welcome Tour</div>
+      <div class="game-tags">
+        <span class="game-tag" style="color:var(--sw2)">🎮 Tech Demo</span>
+        <span class="game-tag" style="color:var(--muted)">⏳ TBD</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════
+     NINTENDO SWITCH
+════════════════════════════════ -->
+<div class="section-label">
+  <h2 style="color:var(--switch-red)">NINTENDO SWITCH</h2>
+  <span class="platform-badge sw1-badge">SWITCH</span>
+</div>
+
+<div class="games-grid">
+
+  <div class="game-card" style="--g-color:#ff6b35;">
+    <div class="cover-wrap">
+      <img class="game-cover" alt="Super Mario Odyssey"
+        src="https://cdn02.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_SuperMarioOdyssey_image1600w.jpg"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="cover-emoji">🎩</div>
+      <span class="cover-pip pip-sw1">SWITCH</span>
+    </div>
+    <div class="game-body">
+      <div class="game-title">Super Mario Odyssey</div>
+      <div class="game-tags"><span class="game-tag" style="color:var(--accent1)">🎮 Platformer</span></div>
+    </div>
+  </div>
+
+  <div class="game-card" style="--g-color:#00b900;">
+    <div class="cover-wrap">
+      <img class="game-cover" alt="Zelda: Breath of the Wild"
+        src="https://cdn02.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_TheLegendofZeldaBreathoftheWild_image1600w.jpg"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="cover-emoji">⚔️</div>
+      <span class="cover-pip pip-sw1">SWITCH</span>
+    </div>
+    <div class="game-body">
+      <div class="game-title">Zelda: Breath of the Wild</div>
+      <div class="game-tags"><span class="game-tag" style="color:var(--accent5)">🗺️ Adventure</span></div>
+    </div>
+  </div>
+
+  <div class="game-card" style="--g-color:#ff6b35;">
+    <div class="cover-wrap">
+      <img class="game-cover" alt="Super Mario Bros. Wonder"
+        src="https://cdn02.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_SuperMarioBrosWonder_image1600w.jpg"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="cover-emoji">🌸</div>
+      <span class="cover-pip pip-sw1">SWITCH</span>
+    </div>
+    <div class="game-body">
+      <div class="game-title">Super Mario Bros. Wonder</div>
+      <div class="game-tags"><span class="game-tag" style="color:var(--accent1)">🎮 Platformer</span></div>
+    </div>
+  </div>
+
+  <div class="game-card" style="--g-color:#4fc3f7;">
+    <div class="cover-wrap">
+      <img class="game-cover" alt="Mario Kart 8 Deluxe"
+        src="https://cdn02.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_MarioKart8Deluxe_image1600w.jpg"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="cover-emoji">🏎️</div>
+      <span class="cover-pip pip-sw1">SWITCH</span>
+    </div>
+    <div class="game-body">
+      <div class="game-title">Mario Kart 8 Deluxe</div>
+      <div class="game-tags"><span class="game-tag" style="color:var(--accent2)">🏁 Racing</span></div>
+    </div>
+  </div>
+
+  <div class="game-card" style="--g-color:#ff4fcb;">
+    <div class="cover-wrap">
+      <img class="game-cover" alt="Animal Crossing: New Horizons"
+        src="https://cdn02.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_AnimalCrossingNewHorizons_image1600w.jpg"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="cover-emoji">🌺</div>
+      <span class="cover-pip pip-sw1">SWITCH</span>
+    </div>
+    <div class="game-body">
+      <div class="game-title">Animal Crossing: New Horizons</div>
+      <div class="game-tags"><span class="game-tag" style="color:var(--accent6)">🏝️ Life Sim</span></div>
+    </div>
+  </div>
+
+  <div class="game-card" style="--g-color:#b34fff;">
+    <div class="cover-wrap">
+      <img class="game-cover" alt="Super Smash Bros. Ultimate"
+        src="https://cdn02.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_SuperSmashBrosUltimate_image1600w.jpg"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="cover-emoji">🥊</div>
+      <span class="cover-pip pip-sw1">SWITCH</span>
+    </div>
+    <div class="game-body">
+      <div class="game-title">Super Smash Bros. Ultimate</div>
+      <div class="game-tags"><span class="game-tag" style="color:var(--accent4)">⚔️ Fighter</span></div>
+    </div>
+  </div>
+
+  <div class="game-card" style="--g-color:#00ff88;">
+    <div class="cover-wrap">
+      <img class="game-cover" alt="Zelda: Tears of the Kingdom"
+        src="https://cdn02.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_TheLegendOfZeldaTearsOfTheKingdom_image1600w.jpg"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="cover-emoji">🦅</div>
+      <span class="cover-pip pip-sw1">SWITCH</span>
+    </div>
+    <div class="game-body">
+      <div class="game-title">Zelda: Tears of the Kingdom</div>
+      <div class="game-tags"><span class="game-tag" style="color:var(--accent5)">🗺️ Adventure</span></div>
+    </div>
+  </div>
+
+  <div class="game-card" style="--g-color:#ffe135;">
+    <div class="cover-wrap">
+      <img class="game-cover" alt="Kirby and the Forgotten Land"
+        src="https://cdn02.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_KirbyAndTheForgottenLand_image1600w.jpg"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="cover-emoji">🎀</div>
+      <span class="cover-pip pip-sw1">SWITCH</span>
+    </div>
+    <div class="game-body">
+      <div class="game-title">Kirby and the Forgotten Land</div>
+      <div class="game-tags"><span class="game-tag" style="color:var(--accent3)">🎀 Action</span></div>
+    </div>
+  </div>
+
+  <div class="game-card" style="--g-color:#00e5ff;">
+    <div class="cover-wrap">
+      <img class="game-cover" alt="Splatoon 3"
+        src="https://cdn02.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_Splatoon3_image1600w.jpg"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="cover-emoji">🦑</div>
+      <span class="cover-pip pip-sw1">SWITCH</span>
+    </div>
+    <div class="game-body">
+      <div class="game-title">Splatoon 3</div>
+      <div class="game-tags"><span class="game-tag" style="color:var(--accent2)">🎨 Shooter</span></div>
+    </div>
+  </div>
+
+  <div class="game-card" style="--g-color:#ff4fcb;">
+    <div class="cover-wrap">
+      <img class="game-cover" alt="Sonic Frontiers"
+        src="https://cdn02.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_SonicFrontiers_image1600w.jpg"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="cover-emoji">💨</div>
+      <span class="cover-pip pip-sw1">SWITCH</span>
+    </div>
+    <div class="game-body">
+      <div class="game-title">Sonic Frontiers</div>
+      <div class="game-tags"><span class="game-tag" style="color:var(--accent6)">💨 Action</span></div>
+    </div>
+  </div>
+
+  <div class="game-card" style="--g-color:#b34fff;">
+    <div class="cover-wrap">
+      <img class="game-cover" alt="Luigi's Mansion 3"
+        src="https://cdn02.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_LuigisMansion3_image1600w.jpg"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="cover-emoji">👻</div>
+      <span class="cover-pip pip-sw1">SWITCH</span>
+    </div>
+    <div class="game-body">
+      <div class="game-title">Luigi's Mansion 3</div>
+      <div class="game-tags"><span class="game-tag" style="color:var(--accent4)">👻 Adventure</span></div>
+    </div>
+  </div>
+
+</div>
 </div>
 
 <footer>
